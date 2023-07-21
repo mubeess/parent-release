@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "106968535461",
+    "project_id": "safsims-parent",
+    "storage_bucket": "safsims-parent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106968535461:android:f72b05f781fa4cd6e0984c",
+        "android_client_info": {
+          "package_name": "com.safsims"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106968535461-2s3lj3lae00jst0f5qu0ork041q4pgn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALXFpi_CbeECwrWHf_Ri5NwKyQ4NAtaiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106968535461-2s3lj3lae00jst0f5qu0ork041q4pgn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

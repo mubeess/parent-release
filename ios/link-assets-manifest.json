@@ -1,0 +1,65 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/config.json",
+      "sha1": "f9b369f5f82dd72c5c1a523a59d3bc8c8bdb4c02"
+    },
+    {
+      "path": "assets/fonts/fontello/css/animation.css",
+      "sha1": "f763298ac4912e0e83793883936107722f130250"
+    },
+    {
+      "path": "assets/fonts/fontello/css/saf-codes.css",
+      "sha1": "f18834e00d218979c8ca3a74476646bd0c1c09c8"
+    },
+    {
+      "path": "assets/fonts/fontello/css/saf-embedded.css",
+      "sha1": "7536bd4db6f78c40f54123afd808cef4a528238e"
+    },
+    {
+      "path": "assets/fonts/fontello/css/saf-ie7-codes.css",
+      "sha1": "e12b7f8d54b46e270ea65d044bd769092de2d546"
+    },
+    {
+      "path": "assets/fonts/fontello/css/saf-ie7.css",
+      "sha1": "4486b1e784e52c32aff7a740e6d4a9b6dfe4a66c"
+    },
+    {
+      "path": "assets/fonts/fontello/css/saf.css",
+      "sha1": "f08a4681c60f1c147c3875688503389c88dca176"
+    },
+    {
+      "path": "assets/fonts/fontello/demo.html",
+      "sha1": "faf9081239f57561563785982d5e694cf8f64ce9"
+    },
+    {
+      "path": "assets/fonts/fontello/font/saf.eot",
+      "sha1": "f13ee7f94912594a87515807e99f35ce122fd146"
+    },
+    {
+      "path": "assets/fonts/fontello/font/saf.svg",
+      "sha1": "90fef0b0d30aed2dee82658cf9ec94a14ec97c7c"
+    },
+    {
+      "path": "assets/fonts/fontello/font/saf.ttf",
+      "sha1": "47fddfcf844dfd11fba4049db4dee4d15492fad4"
+    },
+    {
+      "path": "assets/fonts/fontello/font/saf.woff",
+      "sha1": "46e2fbb7f237458a2551b26145b78ddf3f0b4a6f"
+    },
+    {
+      "path": "assets/fonts/fontello/font/saf.woff2",
+      "sha1": "ce4a8c8d33ee553102b8b89ace44bd19ad849260"
+    },
+    {
+      "path": "assets/fonts/fontello/LICENSE.txt",
+      "sha1": "9410144bfb729b9428cf3270a17cf685619f9d86"
+    },
+    {
+      "path": "assets/fonts/fontello/README.txt",
+      "sha1": "4f3eb6cf3c834ad207db1fe4a2a0ed4383ddc4af"
+    }
+  ]
+}
