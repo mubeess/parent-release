@@ -5,4 +5,4 @@ const publicUrl = {
   production: 'safsims.com',
 };
 
-export default publicUrl[process.env.REACT_APP_ENV || process.env.NODE_ENV || 'production'];
+export default publicUrl.production;

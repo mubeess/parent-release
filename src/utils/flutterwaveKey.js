@@ -4,4 +4,4 @@ const flutterwaveKey = {
   production: 'FLWPUBK-223072b06bff79b7c5432d0f0c34d998-X',
 };
 
-export default flutterwaveKey[process.env.REACT_APP_ENV || process.env.NODE_ENV];
+export default flutterwaveKey.production;

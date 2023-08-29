@@ -15,4 +15,4 @@ const redirect_url = {
   },
 };
 
-export default redirect_url[process.env.REACT_APP_ENV || process.env.NODE_ENV];
+export default redirect_url.production;

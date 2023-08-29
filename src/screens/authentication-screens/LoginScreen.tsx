@@ -1,16 +1,17 @@
 import { useTheme } from '@react-navigation/native';
 import Button from '@safsims/components/Button/Button';
 import Icon from '@safsims/components/Icon/Icon';
-import { GoogleIcon } from '@safsims/components/Images';
+import { AppleLogo, GoogleIcon } from '@safsims/components/Images';
 import AuthInput from '@safsims/components/Input/AuthInput';
 import Text from '@safsims/components/Text/Text';
 import { lightTheme } from '@safsims/utils/Theme';
 import config from '@safsims/utils/config';
 import useDeepLink from '@safsims/utils/useDeepLink/useDeepLink';
 import { useState } from 'react';
-import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Linking, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Colors } from 'react-native-ui-lib';
 import AuthLayout from './components/AuthLayout';
+import useAppleAuth from './hooks/useAppleAuth';
 import useGoogleAuth from './hooks/useGoogleAuth';
 import useLogin from './hooks/useLogin';
 const { API_BASE_URL } = config;
@@ -32,6 +33,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const { loading: googleLoading, startGoogleLogin } = useGoogleAuth();
+  const { loading: appleLoading, startAppleLogin } = useAppleAuth();
 
   return (
     <>
@@ -39,6 +41,7 @@ const LoginScreen = ({ navigation }) => {
         title={'Login'}
         InputComponents={
           <>
+            {appleLoading && <ActivityIndicator style={{ marginVertical: 20 }} color="#000" />}
             <AuthInput
               label="Email"
               text={values.username}
@@ -80,15 +83,10 @@ const LoginScreen = ({ navigation }) => {
                 height: 60,
               }}
             />
-
             <Button
-              label="Login with Google"
-              onPress={async () => {
-                const res = await startGoogleLogin();
-                Linking.openURL(res?.redirect_url || '');
-              }}
-              isLoading={googleLoading}
-              IconLeft={<GoogleIcon />}
+              label="Login with Apple"
+              onPress={() => startAppleLogin()}
+              IconLeft={<AppleLogo />}
               fontStyle={{
                 fontSize: 16,
                 fontWeight: '500',
@@ -104,11 +102,28 @@ const LoginScreen = ({ navigation }) => {
               }}
             />
 
-            {/* <TouchableOpacity style={[styles.google, { borderColor: colors.PrimaryBorderColor }]}>
-              <GoogleIcon />
-              <Text>Login with Google</Text>
-              <View />
-            </TouchableOpacity> */}
+            <Button
+              label="Login with Google"
+              onPress={async () => {
+                const res = await startGoogleLogin();
+                Linking.openURL(res?.redirect_url || '');
+              }}
+              isLoading={googleLoading}
+              IconLeft={<GoogleIcon />}
+              fontStyle={{
+                fontSize: 16,
+                fontWeight: '500',
+                color: '#666',
+              }}
+              style={{
+                marginTop: 20,
+                height: 60,
+                marginVertical: 20,
+                backgroundColor: '#FFF',
+                borderWidth: 1,
+                borderColor: colors.PrimaryBorderColor,
+              }}
+            />
 
             <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center' }}>
               <Text>Not your child's school?</Text>
@@ -122,17 +137,6 @@ const LoginScreen = ({ navigation }) => {
           </>
         }
       />
-
-      {/* <Pattern2
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 5,
-          bottom: 0,
-          zIndex: 0,
-        }}
-      /> */}
     </>
   );
 };
@@ -161,5 +165,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     borderWidth: 1,
+  },
+  appleButton: {
+    width: '100%',
+    height: 60,
+    marginTop: 20,
   },
 });
