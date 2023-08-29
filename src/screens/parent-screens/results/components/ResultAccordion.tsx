@@ -43,7 +43,9 @@ export default function ResultAccordion({
           <Text>Term</Text>
           <View style={styles.term}>
             <Icon name="calendar-1" size={20} color={lightTheme.colors.PrimaryFontColor} />
-            <Text style={{ marginLeft: 5 }}>First Term- 2021-2022</Text>
+            <Text style={{ marginLeft: 5 }}>
+              {termValue?.label}- {sessionValue?.label}
+            </Text>
           </View>
         </View>
 
