@@ -11,7 +11,13 @@ interface IProps {
   resizeMode?: ImageResizeMode;
 }
 
-const Avatar = ({ image = '', style = {}, size = 50, isSchool, resizeMode = 'cover' }: IProps) => {
+const Avatar = ({
+  image = '',
+  style = {},
+  size = 50,
+  isSchool = false,
+  resizeMode = 'cover',
+}: IProps) => {
   const isSvg = () => {
     const svg = image.split('.com')[1].split('.')[1];
     if (svg == 'svg') {

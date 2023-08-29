@@ -44,6 +44,7 @@ export default function CheckButton({
   return (
     <AnimatedTouchable onPress={onPress} style={[styles.container, reanimatedStyle, style]}>
       <Checkbox
+        onValueChange={onPress}
         value={active}
         color={active ? lightTheme.colors.PrimaryGreen : lightTheme.colors.PrimaryBorderColor}
         style={styles.check}

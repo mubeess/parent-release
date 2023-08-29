@@ -8,27 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SAFSIMSParentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SAFSIMSParentTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-SAFSIMSParent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SAFSIMSParent.a */; };
+		0118ABF04A894C1102C4E57E /* Pods_SAFSIMSParent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED22C6ABBE402D2FC25BB7D2 /* Pods_SAFSIMSParent.framework */; };
+		0974C8B5457947349882E90A /* saf-ie7-codes.css in Resources */ = {isa = PBXBuildFile; fileRef = 22C5EBF4324E4EB4A97060F7 /* saf-ie7-codes.css */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-SAFSIMSParent-SAFSIMSParentTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SAFSIMSParent-SAFSIMSParentTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		DF1F15C320A8492ABA076FA0 /* saf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CAD59BF02ED43668EE1D772 /* saf.ttf */; };
-		D3C9EC884F2D465D8B819B02 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F378738ECD7419C99462088 /* config.json */; };
-		AF3670E69E3F450B9A36F5B0 /* animation.css in Resources */ = {isa = PBXBuildFile; fileRef = C012C52E3C924B9C896EC846 /* animation.css */; };
-		63D639AD47024890810C726A /* saf-codes.css in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0A7E440FE402BA042EC11 /* saf-codes.css */; };
-		383861A091F849CDB886AF76 /* saf-embedded.css in Resources */ = {isa = PBXBuildFile; fileRef = D0B60FBBB51C40DC8813C4EE /* saf-embedded.css */; };
-		0974C8B5457947349882E90A /* saf-ie7-codes.css in Resources */ = {isa = PBXBuildFile; fileRef = 22C5EBF4324E4EB4A97060F7 /* saf-ie7-codes.css */; };
-		EB7DB2F4BF184194AF38E703 /* saf-ie7.css in Resources */ = {isa = PBXBuildFile; fileRef = FF7549AE660F4F5F80464E39 /* saf-ie7.css */; };
-		B8ACB3A9A188404C896AFA73 /* saf.css in Resources */ = {isa = PBXBuildFile; fileRef = D09AF0B3AF71457D90199FD8 /* saf.css */; };
-		589B871D4FDA4BF7B625DD84 /* demo.html in Resources */ = {isa = PBXBuildFile; fileRef = 69FF207300B44A9BB9A6B20C /* demo.html */; };
-		B1B8FC41111C47E0914D7989 /* saf.eot in Resources */ = {isa = PBXBuildFile; fileRef = 4F59D8571CAD4EB9A448DD8A /* saf.eot */; };
-		9EA243B0BF444700884A4C77 /* saf.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7DC03A919FAB472CADC8B3B7 /* saf.svg */; };
-		94E5267A443842CCA8EF6B68 /* saf.woff in Resources */ = {isa = PBXBuildFile; fileRef = 2450218FDD524A16A9F322B9 /* saf.woff */; };
 		1445DC4F7C084BDCAC306970 /* saf.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = FF73574965A9465D9E61378E /* saf.woff2 */; };
-		B82F927720BB49A6933E1F79 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BD31584238A4540B45CBC97 /* LICENSE.txt */; };
 		2BAE8DFD134F4CFBAE375DA0 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2EC574873774CA3A7E4F935 /* README.txt */; };
+		383861A091F849CDB886AF76 /* saf-embedded.css in Resources */ = {isa = PBXBuildFile; fileRef = D0B60FBBB51C40DC8813C4EE /* saf-embedded.css */; };
+		589B871D4FDA4BF7B625DD84 /* demo.html in Resources */ = {isa = PBXBuildFile; fileRef = 69FF207300B44A9BB9A6B20C /* demo.html */; };
+		63D639AD47024890810C726A /* saf-codes.css in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0A7E440FE402BA042EC11 /* saf-codes.css */; };
+		736C155E2A6AE03F009A4113 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 736C155D2A6AE03F009A4113 /* GoogleService-Info.plist */; };
+		7FB1105C5B9028BFA8CCD88F /* Pods_SAFSIMSParent_SAFSIMSParentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC442306BCC2868209F65111 /* Pods_SAFSIMSParent_SAFSIMSParentTests.framework */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		94E5267A443842CCA8EF6B68 /* saf.woff in Resources */ = {isa = PBXBuildFile; fileRef = 2450218FDD524A16A9F322B9 /* saf.woff */; };
+		9EA243B0BF444700884A4C77 /* saf.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7DC03A919FAB472CADC8B3B7 /* saf.svg */; };
+		AF3670E69E3F450B9A36F5B0 /* animation.css in Resources */ = {isa = PBXBuildFile; fileRef = C012C52E3C924B9C896EC846 /* animation.css */; };
+		B1B8FC41111C47E0914D7989 /* saf.eot in Resources */ = {isa = PBXBuildFile; fileRef = 4F59D8571CAD4EB9A448DD8A /* saf.eot */; };
+		B82F927720BB49A6933E1F79 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BD31584238A4540B45CBC97 /* LICENSE.txt */; };
+		B8ACB3A9A188404C896AFA73 /* saf.css in Resources */ = {isa = PBXBuildFile; fileRef = D09AF0B3AF71457D90199FD8 /* saf.css */; };
+		D3C9EC884F2D465D8B819B02 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F378738ECD7419C99462088 /* config.json */; };
+		DF1F15C320A8492ABA076FA0 /* saf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CAD59BF02ED43668EE1D772 /* saf.ttf */; };
+		EB7DB2F4BF184194AF38E703 /* saf-ie7.css in Resources */ = {isa = PBXBuildFile; fileRef = FF7549AE660F4F5F80464E39 /* saf-ie7.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,43 +38,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = "SAFSIMSParent";
+			remoteInfo = SAFSIMSParent;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* SAFSIMSParentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SAFSIMSParentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* SAFSIMSParentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SAFSIMSParentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* SAFSIMSParentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SAFSIMSParentTests.m"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* SAFSIMSParent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SAFSIMSParent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "SAFSIMSParent/AppDelegate.h"; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "SAFSIMSParent/AppDelegate.mm"; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "SAFSIMSParent/Images.xcassets"; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "SAFSIMSParent/Info.plist"; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "SAFSIMSParent/main.m"; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-SAFSIMSParent-SAFSIMSParentTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SAFSIMSParent-SAFSIMSParentTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-SAFSIMSParent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent.debug.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-SAFSIMSParent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent.release.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-SAFSIMSParent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SAFSIMSParent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "SAFSIMSParent/LaunchScreen.storyboard"; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* SAFSIMSParentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAFSIMSParentTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SAFSIMSParent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SAFSIMSParent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SAFSIMSParent/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = SAFSIMSParent/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SAFSIMSParent/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SAFSIMSParent/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SAFSIMSParent/main.m; sourceTree = "<group>"; };
+		22C5EBF4324E4EB4A97060F7 /* saf-ie7-codes.css */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "saf-ie7-codes.css"; path = "../assets/fonts/fontello/css/saf-ie7-codes.css"; sourceTree = "<group>"; };
+		2450218FDD524A16A9F322B9 /* saf.woff */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.woff; path = ../assets/fonts/fontello/font/saf.woff; sourceTree = "<group>"; };
+		28806AACA3F63EC8F79637CB /* Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig"; sourceTree = "<group>"; };
+		2AA0A7E440FE402BA042EC11 /* saf-codes.css */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "saf-codes.css"; path = "../assets/fonts/fontello/css/saf-codes.css"; sourceTree = "<group>"; };
+		2CAD59BF02ED43668EE1D772 /* saf.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.ttf; path = ../assets/fonts/fontello/font/saf.ttf; sourceTree = "<group>"; };
+		3BD31584238A4540B45CBC97 /* LICENSE.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = LICENSE.txt; path = ../assets/fonts/fontello/LICENSE.txt; sourceTree = "<group>"; };
+		3F378738ECD7419C99462088 /* config.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = config.json; path = ../assets/fonts/config.json; sourceTree = "<group>"; };
+		43C5F41879FDA2FB6431D39E /* Pods-SAFSIMSParent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent.debug.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent.debug.xcconfig"; sourceTree = "<group>"; };
+		4F59D8571CAD4EB9A448DD8A /* saf.eot */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.eot; path = ../assets/fonts/fontello/font/saf.eot; sourceTree = "<group>"; };
+		69FF207300B44A9BB9A6B20C /* demo.html */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = demo.html; path = ../assets/fonts/fontello/demo.html; sourceTree = "<group>"; };
+		734D0B3A2A6FF9C400545282 /* SAFSIMSParent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SAFSIMSParent.entitlements; path = SAFSIMSParent/SAFSIMSParent.entitlements; sourceTree = "<group>"; };
+		736C155D2A6AE03F009A4113 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7DC03A919FAB472CADC8B3B7 /* saf.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.svg; path = ../assets/fonts/fontello/font/saf.svg; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SAFSIMSParent/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BD92D7DE274A67C2A275C48B /* Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C012C52E3C924B9C896EC846 /* animation.css */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = animation.css; path = ../assets/fonts/fontello/css/animation.css; sourceTree = "<group>"; };
+		D09AF0B3AF71457D90199FD8 /* saf.css */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.css; path = ../assets/fonts/fontello/css/saf.css; sourceTree = "<group>"; };
+		D0B60FBBB51C40DC8813C4EE /* saf-embedded.css */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "saf-embedded.css"; path = "../assets/fonts/fontello/css/saf-embedded.css"; sourceTree = "<group>"; };
+		D2EC574873774CA3A7E4F935 /* README.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = README.txt; path = ../assets/fonts/fontello/README.txt; sourceTree = "<group>"; };
+		ED22C6ABBE402D2FC25BB7D2 /* Pods_SAFSIMSParent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SAFSIMSParent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		2CAD59BF02ED43668EE1D772 /* saf.ttf */ = {isa = PBXFileReference; name = "saf.ttf"; path = "../assets/fonts/fontello/font/saf.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3F378738ECD7419C99462088 /* config.json */ = {isa = PBXFileReference; name = "config.json"; path = "../assets/fonts/config.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C012C52E3C924B9C896EC846 /* animation.css */ = {isa = PBXFileReference; name = "animation.css"; path = "../assets/fonts/fontello/css/animation.css"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2AA0A7E440FE402BA042EC11 /* saf-codes.css */ = {isa = PBXFileReference; name = "saf-codes.css"; path = "../assets/fonts/fontello/css/saf-codes.css"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D0B60FBBB51C40DC8813C4EE /* saf-embedded.css */ = {isa = PBXFileReference; name = "saf-embedded.css"; path = "../assets/fonts/fontello/css/saf-embedded.css"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		22C5EBF4324E4EB4A97060F7 /* saf-ie7-codes.css */ = {isa = PBXFileReference; name = "saf-ie7-codes.css"; path = "../assets/fonts/fontello/css/saf-ie7-codes.css"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		FF7549AE660F4F5F80464E39 /* saf-ie7.css */ = {isa = PBXFileReference; name = "saf-ie7.css"; path = "../assets/fonts/fontello/css/saf-ie7.css"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D09AF0B3AF71457D90199FD8 /* saf.css */ = {isa = PBXFileReference; name = "saf.css"; path = "../assets/fonts/fontello/css/saf.css"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		69FF207300B44A9BB9A6B20C /* demo.html */ = {isa = PBXFileReference; name = "demo.html"; path = "../assets/fonts/fontello/demo.html"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4F59D8571CAD4EB9A448DD8A /* saf.eot */ = {isa = PBXFileReference; name = "saf.eot"; path = "../assets/fonts/fontello/font/saf.eot"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7DC03A919FAB472CADC8B3B7 /* saf.svg */ = {isa = PBXFileReference; name = "saf.svg"; path = "../assets/fonts/fontello/font/saf.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2450218FDD524A16A9F322B9 /* saf.woff */ = {isa = PBXFileReference; name = "saf.woff"; path = "../assets/fonts/fontello/font/saf.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		FF73574965A9465D9E61378E /* saf.woff2 */ = {isa = PBXFileReference; name = "saf.woff2"; path = "../assets/fonts/fontello/font/saf.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3BD31584238A4540B45CBC97 /* LICENSE.txt */ = {isa = PBXFileReference; name = "LICENSE.txt"; path = "../assets/fonts/fontello/LICENSE.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D2EC574873774CA3A7E4F935 /* README.txt */ = {isa = PBXFileReference; name = "README.txt"; path = "../assets/fonts/fontello/README.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F9E4447E2F3F3885F18F0E22 /* Pods-SAFSIMSParent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAFSIMSParent.release.xcconfig"; path = "Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent.release.xcconfig"; sourceTree = "<group>"; };
+		FC442306BCC2868209F65111 /* Pods_SAFSIMSParent_SAFSIMSParentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SAFSIMSParent_SAFSIMSParentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF73574965A9465D9E61378E /* saf.woff2 */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.woff2; path = ../assets/fonts/fontello/font/saf.woff2; sourceTree = "<group>"; };
+		FF7549AE660F4F5F80464E39 /* saf-ie7.css */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "saf-ie7.css"; path = "../assets/fonts/fontello/css/saf-ie7.css"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-SAFSIMSParent-SAFSIMSParentTests.a in Frameworks */,
+				7FB1105C5B9028BFA8CCD88F /* Pods_SAFSIMSParent_SAFSIMSParentTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-SAFSIMSParent.a in Frameworks */,
+				0118ABF04A894C1102C4E57E /* Pods_SAFSIMSParent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +105,7 @@
 				00E356F21AD99517003FC87E /* SAFSIMSParentTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = "SAFSIMSParentTests";
+			path = SAFSIMSParentTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -116,6 +119,7 @@
 		13B07FAE1A68108700A75B9A /* SAFSIMSParent */ = {
 			isa = PBXGroup;
 			children = (
+				734D0B3A2A6FF9C400545282 /* SAFSIMSParent.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -123,15 +127,37 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = "SAFSIMSParent";
+			name = SAFSIMSParent;
+			sourceTree = "<group>";
+		};
+		1E850596B41D471FAEF56E8C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2CAD59BF02ED43668EE1D772 /* saf.ttf */,
+				3F378738ECD7419C99462088 /* config.json */,
+				C012C52E3C924B9C896EC846 /* animation.css */,
+				2AA0A7E440FE402BA042EC11 /* saf-codes.css */,
+				D0B60FBBB51C40DC8813C4EE /* saf-embedded.css */,
+				22C5EBF4324E4EB4A97060F7 /* saf-ie7-codes.css */,
+				FF7549AE660F4F5F80464E39 /* saf-ie7.css */,
+				D09AF0B3AF71457D90199FD8 /* saf.css */,
+				69FF207300B44A9BB9A6B20C /* demo.html */,
+				4F59D8571CAD4EB9A448DD8A /* saf.eot */,
+				7DC03A919FAB472CADC8B3B7 /* saf.svg */,
+				2450218FDD524A16A9F322B9 /* saf.woff */,
+				FF73574965A9465D9E61378E /* saf.woff2 */,
+				3BD31584238A4540B45CBC97 /* LICENSE.txt */,
+				D2EC574873774CA3A7E4F935 /* README.txt */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-SAFSIMSParent.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-SAFSIMSParent-SAFSIMSParentTests.a */,
+				ED22C6ABBE402D2FC25BB7D2 /* Pods_SAFSIMSParent.framework */,
+				FC442306BCC2868209F65111 /* Pods_SAFSIMSParent_SAFSIMSParentTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -146,6 +172,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				736C155D2A6AE03F009A4113 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* SAFSIMSParent */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SAFSIMSParentTests */,
@@ -171,36 +198,13 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-SAFSIMSParent.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-SAFSIMSParent.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig */,
+				43C5F41879FDA2FB6431D39E /* Pods-SAFSIMSParent.debug.xcconfig */,
+				F9E4447E2F3F3885F18F0E22 /* Pods-SAFSIMSParent.release.xcconfig */,
+				BD92D7DE274A67C2A275C48B /* Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig */,
+				28806AACA3F63EC8F79637CB /* Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		1E850596B41D471FAEF56E8C /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				2CAD59BF02ED43668EE1D772 /* saf.ttf */,
-				3F378738ECD7419C99462088 /* config.json */,
-				C012C52E3C924B9C896EC846 /* animation.css */,
-				2AA0A7E440FE402BA042EC11 /* saf-codes.css */,
-				D0B60FBBB51C40DC8813C4EE /* saf-embedded.css */,
-				22C5EBF4324E4EB4A97060F7 /* saf-ie7-codes.css */,
-				FF7549AE660F4F5F80464E39 /* saf-ie7.css */,
-				D09AF0B3AF71457D90199FD8 /* saf.css */,
-				69FF207300B44A9BB9A6B20C /* demo.html */,
-				4F59D8571CAD4EB9A448DD8A /* saf.eot */,
-				7DC03A919FAB472CADC8B3B7 /* saf.svg */,
-				2450218FDD524A16A9F322B9 /* saf.woff */,
-				FF73574965A9465D9E61378E /* saf.woff2 */,
-				3BD31584238A4540B45CBC97 /* LICENSE.txt */,
-				D2EC574873774CA3A7E4F935 /* README.txt */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -209,12 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SAFSIMSParentTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				DA0699719CB49DB7DD505F1C /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				486EAA89994AE8BA8C9E3581 /* [CP] Embed Pods Frameworks */,
+				51F3EAA1E663F95E1F1EDCA9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,21 +234,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SAFSIMSParent" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				E1CCECF22BA1F72DCB59E2A5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				A7BA4F8369A1DF044AB2C227 /* [CP] Embed Pods Frameworks */,
+				21A1E48CB8E06075346D9C2B /* [CP] Copy Pods Resources */,
+				9080119C8DD23C93162B2F89 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "SAFSIMSParent";
-			productName = "SAFSIMSParent";
+			name = SAFSIMSParent;
+			productName = SAFSIMSParent;
 			productReference = 13B07F961A680F5B00A75B9A /* SAFSIMSParent.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -307,6 +312,7 @@
 				EB7DB2F4BF184194AF38E703 /* saf-ie7.css in Resources */,
 				B8ACB3A9A188404C896AFA73 /* saf.css in Resources */,
 				589B871D4FDA4BF7B625DD84 /* demo.html in Resources */,
+				736C155E2A6AE03F009A4113 /* GoogleService-Info.plist in Resources */,
 				B1B8FC41111C47E0914D7989 /* saf.eot in Resources */,
 				9EA243B0BF444700884A4C77 /* saf.svg in Resources */,
 				94E5267A443842CCA8EF6B68 /* saf.woff in Resources */,
@@ -335,7 +341,71 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		21A1E48CB8E06075346D9C2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		486EAA89994AE8BA8C9E3581 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51F3EAA1E663F95E1F1EDCA9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9080119C8DD23C93162B2F89 /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+		};
+		A7BA4F8369A1DF044AB2C227 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -352,7 +422,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		DA0699719CB49DB7DD505F1C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,7 +444,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		E1CCECF22BA1F72DCB59E2A5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -394,57 +464,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent/Pods-SAFSIMSParent-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SAFSIMSParent-SAFSIMSParentTests/Pods-SAFSIMSParent-SAFSIMSParentTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -499,14 +518,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig */;
+			baseConfigurationReference = BD92D7DE274A67C2A275C48B /* Pods-SAFSIMSParent-SAFSIMSParentTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SAFSIMSParentTests/Info.plist";
+				INFOPLIST_FILE = SAFSIMSParentTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -518,7 +537,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flexisaf.safsimsparent";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flexisaf.safsimsparent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SAFSIMSParent.app/SAFSIMSParent";
 			};
@@ -526,11 +545,11 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig */;
+			baseConfigurationReference = 28806AACA3F63EC8F79637CB /* Pods-SAFSIMSParent-SAFSIMSParentTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = "SAFSIMSParentTests/Info.plist";
+				INFOPLIST_FILE = SAFSIMSParentTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -542,7 +561,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flexisaf.safsimsparent";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flexisaf.safsimsparent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SAFSIMSParent.app/SAFSIMSParent";
 			};
@@ -550,26 +569,30 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-SAFSIMSParent.debug.xcconfig */;
+			baseConfigurationReference = 43C5F41879FDA2FB6431D39E /* Pods-SAFSIMSParent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = SAFSIMSParent/SAFSIMSParent.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KKQ9PY9AD8;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "SAFSIMSParent/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "SAFSIMS Parent";
+				INFOPLIST_FILE = SAFSIMSParent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SAFSIMS Parent";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flexisaf.safsimsparent";
-				PRODUCT_NAME = "SAFSIMSParent";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flexisaf.safsimsparent;
+				PRODUCT_NAME = SAFSIMSParent;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -578,25 +601,29 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-SAFSIMSParent.release.xcconfig */;
+			baseConfigurationReference = F9E4447E2F3F3885F18F0E22 /* Pods-SAFSIMSParent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = SAFSIMSParent/SAFSIMSParent.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "SAFSIMSParent/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "SAFSIMS Parent";
+				DEVELOPMENT_TEAM = KKQ9PY9AD8;
+				INFOPLIST_FILE = SAFSIMSParent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SAFSIMS Parent";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flexisaf.safsimsparent";
-				PRODUCT_NAME = "SAFSIMSParent";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flexisaf.safsimsparent;
+				PRODUCT_NAME = SAFSIMSParent;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -635,7 +662,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -669,6 +696,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -706,7 +734,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -732,6 +760,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

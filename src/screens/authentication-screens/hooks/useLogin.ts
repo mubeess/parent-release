@@ -31,7 +31,7 @@ const useLogin = ({ transfer_code }: Props) => {
 
   const loginUser = async ({ username, password, code, callback }: IProps) => {
     startLoading();
-    const url = code ? `/auth/google/transfer` : '/auth/login';
+    const url = code ? '/auth/google/transfer' : '/auth/login';
     const payload = code ? { code } : { username, password };
     try {
       const { data: ref } = await httpClient.post(url, payload);

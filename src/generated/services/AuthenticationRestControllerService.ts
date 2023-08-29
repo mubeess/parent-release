@@ -19,6 +19,7 @@ import type { VerifyEmailLinkRequest } from '../models/VerifyEmailLinkRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
+import { AppleSigninRequest } from '../models/AppleSignInRequest';
 
 export class AuthenticationRestControllerService {
   /**
@@ -421,4 +422,29 @@ export class AuthenticationRestControllerService {
       },
     });
   }
+  public static appleSigninUsingPost({
+    appleSigninRequest,
+  }: {
+    /**
+     * appleSigninRequest
+     */
+    appleSigninRequest: AppleSigninRequest;
+  }): CancelablePromise<LoginToUmsResponse | any> {
+    return __request(OpenAPI, {
+      method: 'POST',
+      url: '/auth/apple/signin',
+      body: appleSigninRequest,
+      errors: {
+        401: `Unauthorized`,
+        403: `Forbidden`,
+        404: `Not Found`,
+      },
+    });
+  }
+
+  /**
+   * changeUsernameRequest
+   * @returns any OK
+   * @throws ApiError
+   */
 }
