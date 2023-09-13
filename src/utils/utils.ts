@@ -16,14 +16,19 @@ export const InsertBeginning = (originalArray, objectToInsert) => {
 
 export const findIndexInArray = (originalArray, objectToFInd, key, key2?: string | undefined) => {
   return originalArray.findIndex((item) => {
-    if (key2) return item[key][key2] === objectToFInd[key][key2];
-    else return item[key] === objectToFInd[key];
+    if (key2) {
+      return item[key][key2] === objectToFInd[key][key2];
+    } else {
+      return item[key] === objectToFInd[key];
+    }
   });
 };
 
 export const returnUpdatedList = (newObj, oldList, key = 'id', key2 = '') => {
   const indexOfLocal = findIndexInArray(oldList, newObj, key, key2);
-  if (indexOfLocal !== -1) oldList[indexOfLocal] = newObj;
+  if (indexOfLocal !== -1) {
+    oldList[indexOfLocal] = newObj;
+  }
   return oldList;
 };
 
@@ -71,7 +76,7 @@ export const handleError = (err: any, obj?: IObj, show = true, override = false)
       console.error(err);
     }
   }
-  // eslint-disable-next-line prefer-const
+
   let { response, body, status } = err;
   if (body && !response) {
     response = {
@@ -89,7 +94,7 @@ export const handleError = (err: any, obj?: IObj, show = true, override = false)
     '600': 'Sorry, an error occurred. Please check your internet conection and try again.',
     '500':
       'Sorry Something went wrong. We have logged this error and our engineers are working to fix it as soon as possible. If you need immediate assistance, please contact our support.',
-    '401': '',
+    '401': 'Aunauthorized access',
     '403':
       'Sorry, You do not have a permission to access the document or program that you requested',
     '408': 'Sorry, your request took too long to process, please try again.',
@@ -128,7 +133,7 @@ export const handleError = (err: any, obj?: IObj, show = true, override = false)
   if (statusCode === 401 && msgObj['401'] === '') {
     return;
   }
-  if (show && (statusCode !== 401 || override)) {
+  if (show && override) {
     Toast.show({
       type: 'error',
       text1: 'An error occurred',

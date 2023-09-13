@@ -354,6 +354,7 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
         amount={config.amount}
         email={config.email}
         ref={paystackWebViewRef}
+        reference={config.reference}
       />
 
       <PaymentVerificationModal

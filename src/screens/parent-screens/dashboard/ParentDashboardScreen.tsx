@@ -4,6 +4,7 @@ import { FeesLine, InvoiceLine, PaymentLine, ResultLine } from '@safsims/compone
 import SafeAreaComponent from '@safsims/components/SafeAreaComponent/SafeAreaComponent';
 import Text from '@safsims/components/Text/Text';
 
+import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
 import { useMemo } from 'react';
@@ -14,8 +15,9 @@ import MenuItem from './components/MenuItem';
 import PaymentOverview from './components/PaymentOverview';
 const ParentDashboardScreen = ({ navigation }) => {
   const user = useAppSelector((state) => state.user.parent);
-  const schoolInfo = useAppSelector((state) => state.configuration.schoolInfo);
-  const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
+  const schoolInfo = useAppSelector((state) => state.configuration.selectedSchool);
+  const { currentTerm } = useCurrentTermGet();
+  // const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
 
   const linked_students = user?.linked_students;
 
@@ -45,15 +47,11 @@ const ParentDashboardScreen = ({ navigation }) => {
         <AppHeader navigation={navigation} pageTitle="Dashboard" />
         <View style={styles.content}>
           <View style={styles.schoolInfo}>
-            <Avatar
-              image={schoolInfo?.basic_school_information_dto?.logo}
-              isSchool
-              style={{ marginRight: 10 }}
-            />
+            <Avatar image={schoolInfo?.logo} isSchool style={{ marginRight: 10 }} />
 
             <View>
-              <Text h3>{schoolInfo?.basic_school_information_dto?.school_name}</Text>
-              <Text>{schoolInfo?.basic_school_information_dto?.motto}</Text>
+              <Text h3>{schoolInfo?.school_name}</Text>
+              <Text>{schoolInfo?.motto}</Text>
             </View>
           </View>
 

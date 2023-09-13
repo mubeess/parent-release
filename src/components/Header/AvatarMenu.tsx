@@ -98,7 +98,9 @@ const AvatarMenu = ({ navigation }) => {
                 icon="frame-1"
               />
               <MenuItem
-                onClick={() => dispatch(logoutUser())}
+                onClick={() => {
+                  dispatch(logoutUser());
+                }}
                 title="Logout"
                 icon="logout"
                 color={colors.PrimaryRed}

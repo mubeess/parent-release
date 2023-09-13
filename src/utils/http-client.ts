@@ -12,7 +12,7 @@ const httpClient = axios.create({
 
 const refreshExpiredToken = async (refreshToken) => {
   try {
-    const { data } = await httpClient.post(`/token`, { refresh_token: refreshToken });
+    const { data } = await httpClient.post('/token', { refresh_token: refreshToken });
     await AsyncStorage.setItem('access_token', data.access_token);
     return data;
   } catch (error) {
@@ -98,6 +98,10 @@ export async function httpRequest<T>(request: () => Promise<T>): Promise<T> {
     } catch (error) {
       if (error?.response?.status === 401 || error?.status === 401) {
         const originalRequest = error.response?.config || error.body?.config;
+        if (originalRequest.url == '/auth/apple/signin') {
+          reject(error);
+          return;
+        }
         if (!isRefreshingToken) {
           isRefreshingToken = true;
           const refresh_token = await AsyncStorage.getItem('refresh_token');

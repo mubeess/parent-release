@@ -136,7 +136,6 @@ export default function ChildInvoiceScreen({ navigation, route }) {
   const getUpdatedList = () => {
     let display = checkItems();
     for (let i = 0; i < itemList.length; i++) {
-      // eslint-disable-next-line @typescript-eslint/no-loop-func
       display = display.filter(({ item_id }) => item_id !== itemList[i].item_id);
     }
     return [...display, ...itemList];
@@ -290,7 +289,7 @@ export default function ChildInvoiceScreen({ navigation, route }) {
                 <Currency amount={checkout?.total_discount} />
               </Text>
             </View>
-            <View style={styles.seperator}></View>
+            <View style={styles.seperator} />
             <View>
               <Text style={{ textAlign: 'right' }}>Paid</Text>
               <Text style={{ color: lightTheme.colors.PrimaryColor, textAlign: 'right' }} h3>
@@ -438,6 +437,7 @@ export default function ChildInvoiceScreen({ navigation, route }) {
             amount={config.amount}
             email={config.email}
             ref={paystackWebViewRef}
+            referrer={config.reference}
           />
 
           <PaymentVerificationModal

@@ -23,7 +23,6 @@ const useOfflinePaymentPost = () => {
       });
       callback?.();
     } catch (error) {
-      console.log("err: ", error?.response)
       stopLoading();
       handleError(error);
     }

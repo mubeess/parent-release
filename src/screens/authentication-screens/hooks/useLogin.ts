@@ -12,6 +12,7 @@ import httpClient from '@safsims/utils/http-client';
 import useLoading from '@safsims/utils/useLoading/useLoading';
 import { ADMIN_ROLE, DIRECTOR_ROLE, ONBOARDING_ROLE, handleError } from '@safsims/utils/utils';
 import { useEffect } from 'react';
+import Toast from 'react-native-toast-message';
 import { useDispatch } from 'react-redux';
 
 interface IProps {
@@ -52,17 +53,23 @@ const useLogin = ({ transfer_code }: Props) => {
         user_type: item.toLowerCase(),
         ...ref[item.toLowerCase()],
       }));
-      dispatch(setUserTypes(userTypes));
-      dispatch(
-        updateAppUserState({
-          access_token: ums?.access_token,
-        }),
-      );
+
+      const parent = userTypes.find((item) => item.user_type === UserTypesEnum.PARENT);
+
+      if (!parent) {
+        Toast.show({
+          type: 'error',
+          text1: 'Error',
+          text2: "You don't a parent role",
+        });
+        stopLoading();
+        return;
+      }
+
       await AsyncStorage.setItem('access_token', ums?.access_token || '');
       await AsyncStorage.setItem('refresh_token', ums?.refresh_token || '');
       httpClient.defaults.headers.common.Authorization = `Bearer ${ums?.access_token}`;
 
-      const parent = userTypes.find((item) => item.user_type === UserTypesEnum.PARENT);
       if (parent) {
         dispatch(setActiveUserType(UserTypesEnum.PARENT));
         dispatch(userLoginSuccess(parent));
@@ -72,6 +79,12 @@ const useLogin = ({ transfer_code }: Props) => {
           }),
         );
         dispatch(setLoginAttempts(0));
+        dispatch(setUserTypes(userTypes));
+        dispatch(
+          updateAppUserState({
+            access_token: ums?.access_token,
+          }),
+        );
       }
 
       callback?.();

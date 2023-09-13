@@ -14,7 +14,7 @@ import AuthLayout from './components/AuthLayout';
 import useAppleAuth from './hooks/useAppleAuth';
 import useGoogleAuth from './hooks/useGoogleAuth';
 import useLogin from './hooks/useLogin';
-const { API_BASE_URL } = config;
+
 
 const LoginScreen = ({ navigation }) => {
   const { colors } = useTheme();
