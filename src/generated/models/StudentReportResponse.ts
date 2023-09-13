@@ -5,6 +5,7 @@
 import type { AttendanceSummaryResponse } from './AttendanceSummaryResponse';
 import type { BasicSchoolInformationDto } from './BasicSchoolInformationDto';
 import type { ClassInformationDto } from './ClassInformationDto';
+import type { ClassLevelTraitConfigurationResponse } from './ClassLevelTraitConfigurationResponse';
 import type { GradeDto } from './GradeDto';
 import type { SkillRatingDefinitionDto } from './SkillRatingDefinitionDto';
 import type { StudentDto } from './StudentDto';
@@ -17,6 +18,7 @@ import type { TermResultAndAssessmentDef } from './TermResultAndAssessmentDef';
 export type StudentReportResponse = {
   attendance?: AttendanceSummaryResponse;
   class_information?: ClassInformationDto;
+  class_level_trait_configuration_response?: ClassLevelTraitConfigurationResponse;
   class_size?: number;
   grades?: Array<GradeDto>;
   school_information?: BasicSchoolInformationDto;

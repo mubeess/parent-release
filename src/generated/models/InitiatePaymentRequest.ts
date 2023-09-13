@@ -5,8 +5,9 @@
 export type InitiatePaymentRequest = {
   amount: number;
   client_secret?: string;
-  currency?: 'EUR' | 'GBP' | 'NGN' | 'USD';
+  currency?: 'EUR' | 'GBP' | 'GHC' | 'KES' | 'NGN' | 'USD';
   email: string;
+  latest_version?: boolean;
   parent_id?: string;
   payment_method:
     | 'BANK_DEPOSIT'
@@ -14,9 +15,11 @@ export type InitiatePaymentRequest = {
     | 'CASH'
     | 'FLUTTERWAVE'
     | 'PAYSTACK'
+    | 'PESAPAL'
     | 'POS'
     | 'STRIPE';
   redirect_url: string;
   student_id: string;
   term_id: string;
+  web?: boolean;
 };

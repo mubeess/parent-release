@@ -1,7 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { logoutUser } from '@safsims/redux/users/actions';
-import { lightTheme } from '@safsims/utils/Theme';
 import { useRef, useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Colors } from 'react-native-ui-lib';
@@ -63,14 +62,6 @@ const AvatarMenu = ({ navigation }) => {
     <>
       <TouchableOpacity
         // @ts-ignore
-        style={{
-          height: 50,
-          width: 50,
-
-          borderRadius: 50,
-          borderWidth: 1,
-          borderColor: lightTheme.colors.PrimaryBorderColor,
-        }}
         ref={ref}
         onPress={handleModal}
       >

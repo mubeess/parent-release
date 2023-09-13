@@ -13,9 +13,10 @@ export type FetchSchoolFeesTransactionRequest = {
     | 'CASH'
     | 'FLUTTERWAVE'
     | 'PAYSTACK'
+    | 'PESAPAL'
     | 'POS'
     | 'STRIPE';
-  payment_status?: 'FAILED' | 'PENDING' | 'SUCCESSFUL';
+  payment_status?: 'COMPLETED' | 'FAILED' | 'INVALID' | 'PENDING' | 'REVERSED' | 'SUCCESSFUL';
   search_text?: string;
   start_date: string;
 };

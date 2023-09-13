@@ -18,15 +18,23 @@ export class InvoiceTemplateRestControllerService {
    */
   public static createTemplateUsingPost({
     request,
+    xTenantId,
   }: {
     /**
      * request
      */
     request: InvoiceTemplateRequest;
+    /**
+     * X-TENANT-ID
+     */
+    xTenantId: string;
   }): CancelablePromise<InvoiceTemplateDto | any> {
     return __request(OpenAPI, {
       method: 'POST',
       url: '/invoice-templates',
+      headers: {
+        'X-TENANT-ID': xTenantId,
+      },
       body: request,
       errors: {
         401: `Unauthorized`,
@@ -102,15 +110,23 @@ export class InvoiceTemplateRestControllerService {
    */
   public static createTemplatesUsingPost({
     request,
+    xTenantId,
   }: {
     /**
      * request
      */
     request: BulkInvoiceTemplateRequest;
+    /**
+     * X-TENANT-ID
+     */
+    xTenantId: string;
   }): CancelablePromise<Array<InvoiceTemplateDto> | any> {
     return __request(OpenAPI, {
       method: 'POST',
       url: '/invoice-templates/bulk',
+      headers: {
+        'X-TENANT-ID': xTenantId,
+      },
       body: request,
       errors: {
         401: `Unauthorized`,

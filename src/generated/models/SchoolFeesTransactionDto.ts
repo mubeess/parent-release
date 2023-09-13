@@ -21,9 +21,10 @@ export type SchoolFeesTransactionDto = {
     | 'CASH'
     | 'FLUTTERWAVE'
     | 'PAYSTACK'
+    | 'PESAPAL'
     | 'POS'
     | 'STRIPE';
-  payment_status?: 'FAILED' | 'PENDING' | 'SUCCESSFUL';
+  payment_status?: 'COMPLETED' | 'FAILED' | 'INVALID' | 'PENDING' | 'REVERSED' | 'SUCCESSFUL';
   safsims_transaction_ref?: string;
   student?: BasicStudentInfo;
   student_bill_data?: StudentBillData;

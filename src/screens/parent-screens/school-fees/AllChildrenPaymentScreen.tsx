@@ -21,7 +21,7 @@ import ChildRow from './components/Table/ChildRow';
 import useBulkPayment from './hooks/useBulkPayment';
 import useMakeBulkPayment from './hooks/useMakeBulkPayment';
 import PaymentVerificationModal from './modals/PaymentVerificationModal';
-import PaystackModal from './modals/PaystackModal';
+import usePaystack from './modals/hooks/usePaystack';
 
 const OnlinePayments = [
   {
@@ -153,7 +153,7 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
     publicKey,
   };
 
-  const [config, setConfig] = useState(configObj);
+  const [config, setConfig] = useState<any>(configObj);
 
   const onPaystackPaymentSuccess = useCallback(() => {
     setSafsimsTransactionRef(config.reference);
@@ -187,30 +187,22 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
     }
   };
 
-  const paystackCheckoutCallback = ({ reference, subaccounts }) => {
+  const paystackCheckoutCallback = ({ reference, splitCode, splitId, subaccounts }) => {
     const obj = {
       ...config,
       reference,
-      split: {
-        subaccounts,
-        type: 'flat',
-        bearer_type: 'account',
-      },
+      splitCode,
+      splitId,
     };
     setConfig(obj);
     setStartOnlinePayment(true);
-    paystackWebViewRef?.current?.startTransaction();
   };
 
   const flutterwaveChekoutCallback = ({ reference, subaccounts }) => {
     const obj = {
       ...config,
       reference,
-      split: {
-        subaccounts,
-        type: 'flat',
-        bearer_type: 'account',
-      },
+      subaccounts,
     };
     setConfig(obj);
     // setStartOnlinePayment(true);
@@ -221,6 +213,8 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
     setSafsimsTransactionRef(config.reference);
     validationModalHandler.onOpen();
   };
+
+  const { PaystackModal } = usePaystack();
 
   return (
     <View style={styles.container}>
@@ -314,7 +308,14 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
           {paymentMethod == 'FLUTTERWAVE' ? (
             <PayWithFlutterwave
               onRedirect={handleFlutterRedirect}
-              onInitializeError={(error) => console.log('error: ', error)}
+              onInitializeError={(error) => {
+                console.log('error: ', error);
+
+                Notify({
+                  type: 'error',
+                  message: 'An error occurred while initializing flutterwave. Please retry',
+                });
+              }}
               options={{
                 tx_ref: config?.reference,
                 authorization: flutterwaveKey,
@@ -324,6 +325,7 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
                 amount: config.amount,
                 currency: 'NGN',
                 payment_options: 'card',
+                subaccounts: config?.subaccounts,
               }}
               customButton={(props) => (
                 <Button
@@ -346,14 +348,16 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
       </ScrollView>
 
       <PaystackModal
-        isOpen={startOnlinePayment && paymentMethod.toUpperCase() === 'PAYSTACK'}
-        onClose={() => setStartOnlinePayment(false)}
-        publicKey={publicKey}
+        isOpen={
+          startOnlinePayment && paymentMethod.toUpperCase() === 'PAYSTACK' && !!config.splitCode
+        }
         onSuccess={onPaystackPaymentSuccess}
         onCancel={onClosePaystackPayment}
         amount={config.amount}
         email={config.email}
-        ref={paystackWebViewRef}
+        splitCode={config.splitCode}
+        splitId={config.splitId}
+        paymentRef={config.reference}
       />
 
       <PaymentVerificationModal
@@ -367,7 +371,7 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
         onSuccess={() => {
           setSafsimsTransactionRef('');
           validationModalHandler.onClose();
-          navigation.navigate('Fees');
+          navigation.navigate('Fees', { screen: 'FeesHome' });
         }}
       />
     </View>

@@ -10,6 +10,7 @@ import type { StateDto } from './StateDto';
 
 export type StudentDto = {
   active_status?: 'ACTIVE' | 'INACTIVE';
+  arm_id?: string;
   arm_name?: string;
   city?: CityDto;
   class_level_id?: string;

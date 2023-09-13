@@ -11,6 +11,8 @@ export type InitiateBulkPaymentResponse = {
   link?: string;
   message?: string;
   safsims_transaction_ref?: string;
+  split_code?: string;
+  split_id?: number;
   status?: string;
   total?: number;
 };

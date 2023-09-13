@@ -6,6 +6,7 @@ import type { AttendanceDateRangeStatsResponse } from '../models/AttendanceDateR
 import type { AttendanceDto } from '../models/AttendanceDto';
 import type { AttendanceRequest } from '../models/AttendanceRequest';
 import type { StudentAttendanceSummaryResponse } from '../models/StudentAttendanceSummaryResponse';
+import type { StudentClassAttendanceResponse } from '../models/StudentClassAttendanceResponse';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
@@ -167,6 +168,54 @@ export class AttendanceRestControllerService {
         studentId: studentId,
       },
       query: {
+        termId: termId,
+      },
+      errors: {
+        401: `Unauthorized`,
+        403: `Forbidden`,
+        404: `Not Found`,
+      },
+    });
+  }
+
+  /**
+   * getStudentClassLevelAttendance
+   * @returns StudentClassAttendanceResponse OK
+   * @throws ApiError
+   */
+  public static getStudentClassLevelAttendanceUsingGet({
+    endDate,
+    startDate,
+    studentId,
+    armId,
+    classLevelId,
+    termId,
+  }: {
+    /**
+     * end-date
+     */
+    endDate: string;
+    /**
+     * start-date
+     */
+    startDate: string;
+    /**
+     * student-id
+     */
+    studentId: string;
+    armId?: string;
+    classLevelId?: string;
+    termId?: string;
+  }): CancelablePromise<Array<StudentClassAttendanceResponse>> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/attendance/students',
+      query: {
+        armId: armId,
+        classLevelId: classLevelId,
+        'end-date': endDate,
+        'start-date': startDate,
+        'student-id': studentId,
         termId: termId,
       },
       errors: {

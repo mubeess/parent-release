@@ -3,10 +3,10 @@ import AppHeader from '@safsims/components/Header/AppHeader';
 import { FeesLine, InvoiceLine, PaymentLine, ResultLine } from '@safsims/components/Images';
 import SafeAreaComponent from '@safsims/components/SafeAreaComponent/SafeAreaComponent';
 import Text from '@safsims/components/Text/Text';
-
+import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import { View } from 'react-native-ui-lib';
 import useBulkPayment from '../school-fees/hooks/useBulkPayment';
@@ -14,9 +14,9 @@ import MenuItem from './components/MenuItem';
 import PaymentOverview from './components/PaymentOverview';
 const ParentDashboardScreen = ({ navigation }) => {
   const user = useAppSelector((state) => state.user.parent);
-  const schoolInfo = useAppSelector((state) => state.configuration.schoolInfo);
+  const schoolInfo = useAppSelector((state) => state.configuration.selectedSchool);
   const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
-
+  const { logEvent } = useLogAnalytics();
   const linked_students = user?.linked_students;
 
   const parentChildren = useMemo(
@@ -34,6 +34,9 @@ const ParentDashboardScreen = ({ navigation }) => {
   const outstandingAmount = bulkCheckout.map((item) => item.total_balance || 0);
   const total_amount = outstandingAmount.reduce((a, b) => a + b, 0);
 
+  useEffect(() => {
+    logEvent('parentDashboard');
+  }, []);
   return (
     <View style={{ flex: 1 }}>
       <ScrollView
@@ -45,15 +48,11 @@ const ParentDashboardScreen = ({ navigation }) => {
         <AppHeader navigation={navigation} pageTitle="Dashboard" />
         <View style={styles.content}>
           <View style={styles.schoolInfo}>
-            <Avatar
-              image={schoolInfo?.basic_school_information_dto?.logo}
-              isSchool
-              style={{ marginRight: 10 }}
-            />
+            <Avatar image={schoolInfo?.logo} isSchool style={{ marginRight: 10 }} />
 
             <View>
-              <Text h3>{schoolInfo?.basic_school_information_dto?.school_name}</Text>
-              <Text>{schoolInfo?.basic_school_information_dto?.motto}</Text>
+              <Text h3>{schoolInfo?.school_name}</Text>
+              <Text>{schoolInfo?.motto}</Text>
             </View>
           </View>
 

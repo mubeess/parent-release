@@ -18,6 +18,7 @@ export class StudentInvoiceSummaryRestControllerService {
    */
   public static getAllByTermUsingGet1({
     termId,
+    armId,
     classLevelId,
     limit,
     offset,
@@ -28,6 +29,10 @@ export class StudentInvoiceSummaryRestControllerService {
      * term-id
      */
     termId: string;
+    /**
+     * arm-id
+     */
+    armId?: string;
     /**
      * class-level-id
      */
@@ -47,6 +52,7 @@ export class StudentInvoiceSummaryRestControllerService {
       method: 'GET',
       url: '/invoice-summaries',
       query: {
+        'arm-id': armId,
         'class-level-id': classLevelId,
         limit: limit,
         offset: offset,
@@ -186,6 +192,7 @@ export class StudentInvoiceSummaryRestControllerService {
    */
   public static getAllByTermUsingGet({
     termId,
+    armId,
     classLevelId,
     paymentType,
     search,
@@ -194,6 +201,10 @@ export class StudentInvoiceSummaryRestControllerService {
      * term-id
      */
     termId: string;
+    /**
+     * arm-id
+     */
+    armId?: string;
     /**
      * class-level-id
      */
@@ -211,6 +222,7 @@ export class StudentInvoiceSummaryRestControllerService {
       method: 'GET',
       url: '/invoice-summaries/unpaged',
       query: {
+        'arm-id': armId,
         'class-level-id': classLevelId,
         'payment-type': paymentType,
         search: search,

@@ -34,9 +34,9 @@ export default function PaymentOverview({ amount, navigation }) {
       <View style={styles.payment}>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Fees', {
-              params: { term: currentTerm, defaultPaymentOpen: true },
-              screen: 'AllChildrenPayment',
+            navigation.navigate('AllChildrenPayment', {
+              term: currentTerm,
+              defaultPaymentOpen: true,
             })
           }
           activeOpacity={0.8}
@@ -48,8 +48,9 @@ export default function PaymentOverview({ amount, navigation }) {
 
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Fees', {
-              screen: 'FeesHome',
+            navigation.navigate('AllChildrenPayment', {
+              term: currentTerm,
+              defaultPaymentOpen: false,
             })
           }
           activeOpacity={0.8}

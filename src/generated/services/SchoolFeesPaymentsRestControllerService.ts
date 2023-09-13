@@ -295,7 +295,7 @@ export class SchoolFeesPaymentsRestControllerService {
     maxDate?: string;
     minDate?: string;
     offset?: number;
-    paymentStatus?: 'FAILED' | 'PENDING' | 'SUCCESSFUL';
+    paymentStatus?: 'COMPLETED' | 'FAILED' | 'INVALID' | 'PENDING' | 'REVERSED' | 'SUCCESSFUL';
   }): CancelablePromise<Page_SchoolFeesTransactionDto_> {
     return __request(OpenAPI, {
       method: 'GET',

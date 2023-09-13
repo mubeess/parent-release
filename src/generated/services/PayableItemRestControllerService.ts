@@ -89,6 +89,33 @@ export class PayableItemRestControllerService {
   }
 
   /**
+   * getCollectibleItems
+   * @returns PayableItemDto OK
+   * @throws ApiError
+   */
+  public static getCollectibleItemsUsingGet({
+    search,
+  }: {
+    /**
+     * search
+     */
+    search?: string;
+  }): CancelablePromise<Array<PayableItemDto>> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/payable-items/collectibles',
+      query: {
+        search: search,
+      },
+      errors: {
+        401: `Unauthorized`,
+        403: `Forbidden`,
+        404: `Not Found`,
+      },
+    });
+  }
+
+  /**
    * getPayableItem
    * @returns PayableItemDto OK
    * @throws ApiError

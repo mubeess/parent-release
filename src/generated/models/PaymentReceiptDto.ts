@@ -20,6 +20,7 @@ export type PaymentReceiptDto = {
     | 'CASH'
     | 'FLUTTERWAVE'
     | 'PAYSTACK'
+    | 'PESAPAL'
     | 'POS'
     | 'STRIPE';
   reference_number?: string;

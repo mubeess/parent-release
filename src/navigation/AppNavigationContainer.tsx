@@ -1,4 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
+import NewAppUpdateModal from '@safsims/components/updates/NewAppUpdateModal';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { updateAppUserState } from '@safsims/redux/users/actions';
 import { darkTheme, lightTheme } from '@safsims/utils/Theme';
@@ -45,6 +46,7 @@ const AppNavigationContainer = () => {
 
   return (
     <>
+      <NewAppUpdateModal />
       <NavigationContainer
         // @ts-ignore
         theme={theme === 'dark' ? darkTheme : lightTheme}

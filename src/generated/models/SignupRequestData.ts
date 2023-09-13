@@ -7,7 +7,7 @@ import type { State } from './State';
 
 export type SignupRequestData = {
   country?: Country;
-  currency?: 'EUR' | 'GBP' | 'NGN' | 'USD';
+  currency?: 'EUR' | 'GBP' | 'GHC' | 'KES' | 'NGN' | 'USD';
   email_address: string;
   first_name: string;
   gender: 'FEMALE' | 'MALE';

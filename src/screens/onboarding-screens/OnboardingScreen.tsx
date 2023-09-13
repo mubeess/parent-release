@@ -41,23 +41,15 @@ export default function OnboardingScreen({ navigation }) {
   });
 
   const handleSwipe = (val) => {
-    if (val === 0) {
-      setStep(1);
-    }
-    if (val === width) {
-      setStep(2);
-    }
-    if (val.toFixed(2) === (width * 2).toFixed(2)) {
-      setStep(3);
-    }
+    if (val === 0) setStep(1);
+    if (val === width) setStep(2);
+    if (val.toFixed(2) === (width * 2).toFixed(2)) setStep(3);
   };
 
   const scrollHandler = useAnimatedScrollHandler(
     {
       onScroll: (event) => {
-        if (manualScrolling.value) {
-          return;
-        }
+        if (manualScrolling.value) return;
         sharedValue.value = event.contentOffset.x;
       },
     },
@@ -99,7 +91,7 @@ export default function OnboardingScreen({ navigation }) {
     },
     {
       title: 'Result & Performance',
-      body: 'Have your child’s result and performance always ready and with you on the go',
+      body: `Have your child’s result and performance always ready and with you on the go`,
       image: require('../../../assets/screen3.png'),
     },
   ];
@@ -200,7 +192,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imagesContainer: {
-    height: height * 0.6,
+    height: height * 0.7,
     backgroundColor: lightTheme.colors.PrimaryColor,
     justifyContent: 'center',
     alignItems: 'center',

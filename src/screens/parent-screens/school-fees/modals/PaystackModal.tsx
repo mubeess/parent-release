@@ -6,7 +6,8 @@ import { Paystack } from 'react-native-paystack-webview';
 // import Modal from '@safsims/components/Modal/Modal'
 
 const PaystackModal = React.forwardRef<any, any>((props, ref) => {
-  const { isOpen, onClose, onSuccess, onCancel, amount, email, publicKey } = props;
+  const { isOpen, onClose, onSuccess, onCancel, amount, email, publicKey, reference, config } =
+    props;
   return (
     <Modal visible={isOpen} animationType="none">
       <View style={{ flex: 1, padding: 20 }}>
@@ -17,6 +18,9 @@ const PaystackModal = React.forwardRef<any, any>((props, ref) => {
           </TouchableOpacity>
         </View>
         <Paystack
+          // @ts-ignore
+          channels={['card', 'ussd', 'bank', 'qr', 'mobile_money', 'bank_transfer']}
+          refNumber={reference}
           paystackKey={publicKey}
           billingEmail={email}
           amount={amount}

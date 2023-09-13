@@ -10,4 +10,4 @@ const umsConfig = {
   },
 };
 
-export default umsConfig.production;
+export default umsConfig[process.env.REACT_APP_ENV || process.env.NODE_ENV];

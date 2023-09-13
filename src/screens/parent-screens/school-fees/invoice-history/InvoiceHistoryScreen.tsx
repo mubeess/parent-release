@@ -8,10 +8,10 @@ import Select from '@safsims/components/Select/Select';
 import Text from '@safsims/components/Text/Text';
 import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
 import useGroupTermsBySessions from '@safsims/general-hooks/useGroupTermsBySessions';
-
+import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { calculateSummaryTotals } from '../SchoolFeesScreen';
 import FeesAccordion from '../components/Accordion/FeesAccordion';
@@ -20,6 +20,7 @@ import useTermAttendedByChildren from '../hooks/useTermsAttendedByChildren';
 
 const InvoiceHistoryScreen = ({ navigation }) => {
   const { colors } = useTheme();
+  const { logEvent } = useLogAnalytics();
 
   const { currentTerm } = useCurrentTermGet();
 
@@ -49,7 +50,9 @@ const InvoiceHistoryScreen = ({ navigation }) => {
     );
     return !sessionValue ? true : arr.length > 0 ? true : false;
   };
-
+  useEffect(() => {
+    logEvent('invoiceScreen');
+  }, []);
   return (
     <View style={{ flex: 1, backgroundColor: colors.PrimaryBackground }}>
       <AppHeader navigation={navigation} pageTitle="Invoice History" />

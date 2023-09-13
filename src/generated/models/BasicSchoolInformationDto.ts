@@ -9,10 +9,11 @@ export type BasicSchoolInformationDto = {
   address?: string;
   color?: string;
   country?: Country;
-  currency?: 'EUR' | 'GBP' | 'NGN' | 'USD';
+  currency?: 'EUR' | 'GBP' | 'GHC' | 'KES' | 'NGN' | 'USD';
   email?: string;
   logo?: string;
   motto?: string;
+  on_subscription_plan?: boolean;
   owner?: string;
   phone_number?: string;
   principal_signature?: string;
