@@ -3,6 +3,7 @@ import AppHeader from '@safsims/components/Header/AppHeader';
 import { FeesLine, InvoiceLine, PaymentLine, ResultLine } from '@safsims/components/Images';
 import SafeAreaComponent from '@safsims/components/SafeAreaComponent/SafeAreaComponent';
 import Text from '@safsims/components/Text/Text';
+import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
 import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
@@ -15,7 +16,8 @@ import PaymentOverview from './components/PaymentOverview';
 const ParentDashboardScreen = ({ navigation }) => {
   const user = useAppSelector((state) => state.user.parent);
   const schoolInfo = useAppSelector((state) => state.configuration.selectedSchool);
-  const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
+  // const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
+  const { currentTerm } = useCurrentTermGet();
   const { logEvent } = useLogAnalytics();
   const linked_students = user?.linked_students;
 

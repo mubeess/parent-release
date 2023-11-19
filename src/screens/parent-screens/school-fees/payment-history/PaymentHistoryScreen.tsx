@@ -4,7 +4,7 @@ import DatePicker from '@safsims/components/DatePicker/DatePicker';
 import EmptyState from '@safsims/components/EmptyState/EmptyState';
 import AppHeader from '@safsims/components/Header/AppHeader';
 import Icon from '@safsims/components/Icon/Icon';
-import { EmptyFees } from '@safsims/components/Images';
+import { ArrowLeftIcon, EmptyFees } from '@safsims/components/Images';
 import InfiniteScrollView from '@safsims/components/InfiniteScrollView/InfiniteScrollView';
 import Loader from '@safsims/components/Loader/Loader';
 import Select, { ISelectOptionType } from '@safsims/components/Select/Select';
@@ -33,6 +33,7 @@ const PaymentHistoryScreen = ({ navigation }) => {
 
   const user = useAppSelector((state) => state.user.currentUser);
   const schoolInfo = useAppSelector((state) => state.configuration.schoolInfo);
+  const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
   const photo = schoolInfo?.basic_school_information_dto?.logo;
   const schoolName = schoolInfo?.basic_school_information_dto?.school_name;
 
@@ -73,12 +74,12 @@ const PaymentHistoryScreen = ({ navigation }) => {
   };
 
   if (dateData[0] && dateData[1] && dateData[1] > dateData[0]) {
-    filterParams['min'] = dateData[0];
-    filterParams['max'] = dateData[1];
+    filterParams.min = dateData[0];
+    filterParams.max = dateData[1];
   }
 
   if (status?.value) {
-    filterParams['status'] = status.value;
+    filterParams.status = status.value;
   }
 
   const { loading, transactions, refetchTransactions, infiniteScrollCallback } =
@@ -91,6 +92,16 @@ const PaymentHistoryScreen = ({ navigation }) => {
     <>
       <View style={{ flex: 1, backgroundColor: colors.PrimaryBackground, position: 'relative' }}>
         <AppHeader navigation={navigation} pageTitle="Payment History" />
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('Fees', {
+              screen: 'FeesHome',
+            })
+          }
+          style={styles.back}
+        >
+          <ArrowLeftIcon />
+        </TouchableOpacity>
         <View style={{ flex: 1 }}>
           <View style={styles.filters}>
             <Button
@@ -278,5 +289,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
 
     borderRadius: 10,
+  },
+  back: {
+    height: 40,
+    width: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 20,
+    marginVertical: 20,
+    backgroundColor: '#fff',
+    borderRadius: 40,
   },
 });

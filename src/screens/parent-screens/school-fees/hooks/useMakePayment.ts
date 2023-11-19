@@ -21,6 +21,7 @@ const useMakePayment = () => {
           xTenantId: school_id,
         }),
       );
+
       const configObj = {
         reference: data?.data?.safsims_transaction_ref,
         subaccount: data?.data?.subaccount_ref,

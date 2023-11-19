@@ -4,16 +4,32 @@ import EmptyState from '@safsims/components/EmptyState/EmptyState';
 import AppSubHeader from '@safsims/components/Header/AppSubHeader';
 import Icon from '@safsims/components/Icon/Icon';
 import { Student } from '@safsims/components/Images';
+import Input from '@safsims/components/Input/Input';
 import Loader from '@safsims/components/Loader/Loader';
 import ProgressBar from '@safsims/components/ProgressBar/ProgressBar';
 import SafeAreaComponent from '@safsims/components/SafeAreaComponent/SafeAreaComponent';
 import Text from '@safsims/components/Text/Text';
 import { StudentDto, TermDto } from '@safsims/generated';
 import useTermAttendedByStudentGet from '@safsims/parent-hooks/useTermAttendedByStudentGet';
+import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
 import { SelectOptionType } from '@safsims/utils/types';
 import React, { useEffect, useState } from 'react';
-import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { PERMISSIONS, RESULTS, check, request } from 'react-native-permissions';
+import Toast from 'react-native-toast-message';
+
+import {
+  Dimensions,
+  Linking,
+  Modal,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import Pdf from 'react-native-pdf';
+import RNFetchBlob from 'rn-fetch-blob';
 import ResultAccordion from './components/ResultAccordion';
 import SkillCard from './components/SkillCard';
 import SubjectAccordion from './components/SubjectAccordion';
@@ -21,23 +37,35 @@ import useChildAttendanceSummaryGet from './hooks/useChildAttendanceSummaryGet';
 import useChildResultGet from './hooks/useChildResultGet';
 import useChildSkillsGet from './hooks/useChildSkillsGet';
 import useConfigurations from './hooks/useConfigurations';
+import useFetchReportTemplate from './hooks/useFetchReportTemplate';
+import useGenerateAsposeReport from './hooks/useGenerateAsposeReport';
+import useShareResult from './hooks/useShareResult';
 import useStudentCommentsGet from './hooks/useStudentCommentsGet';
 import useStudentTraitAssessmentGet from './hooks/useStudentTraitAssessmentGet';
-
 type ViewType = 'chart' | 'text';
 
 export default function ResulDetailsScreen({ navigation, route }) {
   const { colors } = useTheme();
   const [activeView, setActiveView] = useState<ViewType>('text');
-
+  const [modalVisible, setModalVisible] = useState(false);
+  const [mailText, setMail] = useState('');
+  const [emailList, setEmailList] = useState([]);
+  const { loadingResult, pdfURL, singleResult, setPdfURL } = useGenerateAsposeReport();
+  const { allTemplates, fetchTemplates, loadingTemplates } = useFetchReportTemplate();
+  const { shareResult, loading: sharing } = useShareResult();
   const handleActiveView = () => {
-    if (activeView === 'chart') setActiveView('text');
-    else setActiveView('chart');
+    if (activeView === 'chart') {
+      setActiveView('text');
+    } else {
+      setActiveView('chart');
+    }
   };
 
   const student: StudentDto = route.params.student;
   const termObj: TermDto = route.params.term;
   const studentId = student?.id;
+  const user = useAppSelector((user) => user.user);
+  const schoolConfig = useAppSelector((data) => data.configuration.selectedSchool);
 
   const { groupedTermsBySessions } = useTermAttendedByStudentGet({
     studentId: student.id,
@@ -114,12 +142,53 @@ export default function ResulDetailsScreen({ navigation, route }) {
       studentId,
     });
   };
+  const downloadResult = () => {
+    const { config, fs } = RNFetchBlob;
+    let PictureDir = fs.dirs.DownloadDir;
+
+    let options = {
+      fileCache: true,
+      addAndroidDownloads: {
+        useDownloadManager: true,
+        notification: true,
+        path: PictureDir + '/safsims.pdf',
+        description: 'Downloading File',
+      },
+    };
+    config(options)
+      .fetch('GET', `https://safsims.s3.us-east-2.amazonaws.com/${pdfURL}`)
+      .then((res) => {
+        Toast.show({
+          type: 'success',
+          text1: 'Download Successful',
+          text2: 'Check your downloads!!',
+        });
+      });
+  };
+
+  const reportTemplate = allTemplates.filter(
+    (report) => report.id === filterdConfig?.report_template_id,
+  );
+  const isAspose = reportTemplate[0]?.aspose;
 
   useEffect(() => {
-    if (filterdConfig) {
+    if (isAspose) {
+      singleResult(
+        student?.id,
+        termValue?.value,
+        filterdConfig?.id,
+        filterdConfig?.report_template_id,
+      );
+    } else if (configurations.length && student) {
       handleStudenAssessment(termObj?.term_id);
+      setPdfURL('');
     }
-  }, [filterdConfig]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAspose, student, filterdConfig]);
+
+  useEffect(() => {
+    fetchTemplates();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -151,6 +220,71 @@ export default function ResulDetailsScreen({ navigation, route }) {
       />
       {loading || loadingComments || loadingSkills ? (
         <Loader />
+      ) : isAspose ? (
+        <>
+          {pdfURL && (
+            <>
+              <Pdf
+                trustAllCerts={false}
+                source={{ uri: `https://safsims.s3.us-east-2.amazonaws.com/${pdfURL}` }}
+                onLoadComplete={(numberOfPages, filePath) => {
+                  console.log(`Number of pages: ${numberOfPages}`);
+                }}
+                style={styles.pdf}
+              />
+              <View style={styles.share_button}>
+                <Button
+                  onPress={() => setModalVisible(true)}
+                  style={{
+                    width: '45%',
+                  }}
+                  label="Share result"
+                />
+                <Button
+                  disabled={pdfURL == ''}
+                  onPress={() => {
+                    check(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE)
+                      .then(async (result) => {
+                        switch (result) {
+                          case RESULTS.UNAVAILABLE:
+                            return;
+
+                          case RESULTS.DENIED:
+                            const permited = await request(
+                              PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+                            );
+                            if (permited == 'granted') {
+                              downloadResult();
+                            }
+                            break;
+
+                          case RESULTS.GRANTED:
+                            console.log('permision');
+                            downloadResult();
+                            break;
+                          case RESULTS.BLOCKED:
+                            return;
+                        }
+                      })
+                      .catch((error) => {
+                        // …
+                      });
+                  }}
+                  fontStyle={{
+                    color: '#000',
+                  }}
+                  style={{
+                    width: '45%',
+                    backgroundColor: '#fff',
+                    borderWidth: 1,
+                    borderColor: lightTheme.colors.PrimaryBorderColor,
+                  }}
+                  label="Download and print"
+                />
+              </View>
+            </>
+          )}
+        </>
       ) : childResult?.term_result && childResult?.term_result?.result_approved ? (
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -280,6 +414,37 @@ export default function ResulDetailsScreen({ navigation, route }) {
             </View>
             <Text>{principalComment.length ? principalComment[0].comments : ''}</Text>
           </View>
+          <View style={styles.share_button}>
+            <Button
+              onPress={() => setModalVisible(true)}
+              style={{
+                width: '45%',
+              }}
+              label="Share result"
+            />
+            <Button
+              disabled={filterdConfig ? (reportTemplate.length > 0 ? false : true) : true}
+              onPress={() => {
+                if (!filterdConfig || reportTemplate.length == 0) {
+                  return;
+                }
+                Linking.openURL(
+                  `${schoolConfig?.school_url}/student-report?studentId=${studentId}&termId=${termId}&configId=${filterdConfig?.id}&reportId=${reportTemplate[0].id}&fromParent=true`,
+                );
+              }}
+              fontStyle={{
+                color: '#000',
+              }}
+              style={{
+                width: '45%',
+                backgroundColor: '#fff',
+                borderWidth: 1,
+                borderColor: lightTheme.colors.PrimaryBorderColor,
+                opacity: filterdConfig ? (reportTemplate.length > 0 ? 1 : 0.3) : 0.3,
+              }}
+              label="Download and print"
+            />
+          </View>
         </ScrollView>
       ) : (
         <EmptyState
@@ -302,6 +467,86 @@ export default function ResulDetailsScreen({ navigation, route }) {
           }
         />
       )}
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <View style={styles.overlay}>
+          <ScrollView style={styles.content}>
+            <TouchableOpacity
+              onPress={() => {
+                setModalVisible(false);
+              }}
+              style={{
+                ...styles.cancel,
+                backgroundColor: '#000',
+                marginLeft: 'auto',
+                marginTop: 20,
+                marginBottom: 20,
+              }}
+            >
+              <Text style={{ color: '#fff' }}>X</Text>
+            </TouchableOpacity>
+            <Input value={mailText} onChange={(text) => setMail(text)} placeholder="add email" />
+            <View style={styles.share_button}>
+              <Button
+                onPress={() => {
+                  setEmailList((prev) => [...prev, mailText]);
+                  setMail('');
+                }}
+                fontStyle={{
+                  color: '#000',
+                }}
+                style={{
+                  width: '45%',
+                  backgroundColor: '#fff',
+                  borderWidth: 1,
+                  borderColor: lightTheme.colors.PrimaryBorderColor,
+                }}
+                label="Add email"
+              />
+              <Button
+                isLoading={sharing}
+                onPress={async () => {
+                  if (emailList.length == 0) {
+                    Toast.show({
+                      type: 'error',
+                      text1: 'emails are required',
+                      text2: 'At least one email is required',
+                    });
+                    return;
+                  }
+                  const response = await shareResult({
+                    emails: emailList,
+                    term_id: termValue?.value,
+                    parent_id: user.currentUser.parent_id,
+                  });
+
+                  if (response) {
+                    setModalVisible(false);
+                    setEmailList([]);
+                  }
+                }}
+                style={{
+                  width: '45%',
+                }}
+                label="Share result"
+              />
+            </View>
+            {emailList.map((mail) => (
+              <View style={styles.itemList} key={mail}>
+                <Text>{mail}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    const filtered = emailList.filter((_mail) => _mail !== mail);
+                    setEmailList(filtered);
+                  }}
+                  style={styles.cancel}
+                >
+                  <Text style={{ color: '#fff' }}>X</Text>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      </Modal>
       <SafeAreaComponent style={{ backgroundColor: colors.PrimaryWhite }} />
     </View>
   );
@@ -404,5 +649,41 @@ const styles = StyleSheet.create({
   commentHeader: {
     flexDirection: 'row',
     marginTop: 10,
+  },
+  pdf: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+  share_button: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  content: {
+    maxHeight: Dimensions.get('window').height / 2 + 50,
+    width: '100%',
+    backgroundColor: '#fff',
+    marginTop: 'auto',
+    paddingHorizontal: 20,
+  },
+  itemList: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  cancel: {
+    width: 25,
+    height: 25,
+    borderRadius: 40,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

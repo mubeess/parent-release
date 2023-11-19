@@ -5,7 +5,7 @@ import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
 import { BasicStudentInfo, StudentTermInvoiceSummaryDto, TermDto } from '@safsims/generated';
 import { lightTheme } from '@safsims/utils/Theme';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import Button from '../../../../../components/Button/Button';
 import Text from '../../../../../components/Text/Text';
@@ -39,11 +39,11 @@ export default function FeesAccordion({
   const { currentTerm } = useCurrentTermGet();
   const { colors } = useTheme();
 
-  const heightValue = useSharedValue(256);
+  const heightValue = useSharedValue(235);
   const [buttonValue, setButtonValue] = useState('Expand');
   const reanimatedStyle = useAnimatedStyle(() => {
     return {
-      height: heightValue.value,
+      maxHeight: heightValue.value,
     };
   });
   return (
@@ -61,10 +61,12 @@ export default function FeesAccordion({
         </View>
         <Button
           onPress={() => {
-            heightValue.value == 256
-              ? ((heightValue.value = withTiming(520, { duration: 500 })),
+            heightValue.value == 235
+              ? ((heightValue.value = withTiming(Dimensions.get('window').height, {
+                  duration: 500,
+                })),
                 setButtonValue('Collapse'))
-              : ((heightValue.value = withTiming(256, { duration: 500 })),
+              : ((heightValue.value = withTiming(235, { duration: 500 })),
                 setButtonValue('Expand'));
           }}
           fontStyle={{ color: '#000' }}
@@ -111,7 +113,7 @@ export default function FeesAccordion({
             <Currency amount={discount} />
           </Text>
         </View>
-        <View style={styles.seperator}></View>
+        <View style={styles.seperator} />
         <View style={{ alignItems: 'flex-end' }}>
           <Text>OUTSTANDING </Text>
           <Text style={{ color: colors.PrimaryRed }} h3>
@@ -138,7 +140,9 @@ export default function FeesAccordion({
           children.map((child, index) => (
             <TouchableOpacity
               onPress={() => {
-                if ((child.invoice_summary?.balance || 0) <= 0) return;
+                if ((child.invoice_summary?.balance || 0) <= 0) {
+                  return;
+                }
                 navigation.navigate('ChildInvoice', {
                   id: child.invoice_summary?.student_info?.id,
                   termId: term?.term_id,
@@ -238,7 +242,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   children: {
-    flex: 1,
+    height: 'auto',
     backgroundColor: '#ffffff',
   },
   child: {

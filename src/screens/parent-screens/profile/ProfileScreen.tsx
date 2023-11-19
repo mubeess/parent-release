@@ -2,12 +2,12 @@ import { useNavigation } from '@react-navigation/native';
 import AppHeader from '@safsims/components/Header/AppHeader';
 import Icon from '@safsims/components/Icon/Icon';
 
+import Text from '@safsims/components/Text/Text';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
 import { Image, StyleSheet, View } from 'react-native';
-import Animated, { FadeIn } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import ProfileDetail from './components/ProfileDetail';
-import Text from '@safsims/components/Text/Text';
 
 export default function ProfileScreen() {
   const navigation = useNavigation();
@@ -16,10 +16,7 @@ export default function ProfileScreen() {
   const avatar = user?.profile_pic || '';
 
   return (
-    <Animated.ScrollView
-      showsVerticalScrollIndicator={false}
-      style={styles.container}
-    >
+    <Animated.ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <AppHeader navigation={navigation} onBack={() => navigation.goBack()} pageTitle="Profile" />
       <View style={styles.profileDetails}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -43,8 +40,8 @@ export default function ProfileScreen() {
         </View>
         <Text style={{ marginTop: 50 }}>Biodata</Text>
         <View style={styles.line}>
-          <View style={styles.lineBorder}></View>
-          <View style={styles.lineDeco}></View>
+          <View style={styles.lineBorder} />
+          <View style={styles.lineDeco} />
         </View>
         <ProfileDetail
           firtsHeader="First name"

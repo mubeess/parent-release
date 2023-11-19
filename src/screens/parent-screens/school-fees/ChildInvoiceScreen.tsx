@@ -4,7 +4,7 @@ import Button from '@safsims/components/Button/Button';
 import CheckButton from '@safsims/components/Button/CheckButton';
 import Currency from '@safsims/components/Currency/Currency';
 import Icon from '@safsims/components/Icon/Icon';
-import { FlutterWave, Paystack as PaystackIcon } from '@safsims/components/Images';
+import { Paystack as PaystackIcon } from '@safsims/components/Images';
 import Input from '@safsims/components/Input/Input';
 import SafeAreaComponent from '@safsims/components/SafeAreaComponent/SafeAreaComponent';
 import Text from '@safsims/components/Text/Text';
@@ -48,10 +48,10 @@ const OnlinePayments = [
     title: 'PAYSTACK',
     Logo: <PaystackIcon />,
   },
-  {
-    title: 'FLUTTERWAVE',
-    Logo: <FlutterWave />,
-  },
+  // {
+  //   title: 'FLUTTERWAVE',
+  //   Logo: <FlutterWave />,
+  // },
 ];
 
 export default function ChildInvoiceScreen({ navigation, route }) {
@@ -136,7 +136,6 @@ export default function ChildInvoiceScreen({ navigation, route }) {
   const getUpdatedList = () => {
     let display = checkItems();
     for (let i = 0; i < itemList.length; i++) {
-      // eslint-disable-next-line @typescript-eslint/no-loop-func
       display = display.filter(({ item_id }) => item_id !== itemList[i].item_id);
     }
     return [...display, ...itemList];
@@ -293,7 +292,7 @@ export default function ChildInvoiceScreen({ navigation, route }) {
                 <Currency amount={checkout?.total_discount} />
               </Text>
             </View>
-            <View style={styles.seperator}></View>
+            <View style={styles.seperator} />
             <View>
               <Text style={{ textAlign: 'right' }}>Paid</Text>
               <Text style={{ color: lightTheme.colors.PrimaryColor, textAlign: 'right' }} h3>

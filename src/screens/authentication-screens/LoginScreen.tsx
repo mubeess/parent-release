@@ -26,6 +26,7 @@ const LoginScreen = ({ navigation }) => {
 
   const onSubmit = () => {
     const { username, password } = values;
+    console.log(API_BASE_URL);
     if (username && password) {
       loginUser(values);
     }
@@ -46,6 +47,7 @@ const LoginScreen = ({ navigation }) => {
               onChange={(val) => setValues((prev) => ({ ...prev, username: val }))}
             />
             <AuthInput
+            
               label="Password"
               style={{
                 marginTop: 15,
@@ -61,7 +63,10 @@ const LoginScreen = ({ navigation }) => {
           <>
             <View style={{ marginTop: 30, flexDirection: 'row' }}>
               <Text style={{ color: colors.PrimaryFontColor }}>Forgot your password?</Text>
-              <TouchableOpacity style={{ marginLeft: 5 }}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('ResetLink')}
+                style={{ marginLeft: 5 }}
+              >
                 <Text style={{ color: colors.SafsimsBlue }}>Click here</Text>
               </TouchableOpacity>
             </View>

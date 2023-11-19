@@ -12,6 +12,7 @@ import httpClient from '@safsims/utils/http-client';
 import useLoading from '@safsims/utils/useLoading/useLoading';
 import { ADMIN_ROLE, DIRECTOR_ROLE, ONBOARDING_ROLE, handleError } from '@safsims/utils/utils';
 import { useEffect } from 'react';
+import Toast from 'react-native-toast-message';
 import { useDispatch } from 'react-redux';
 
 interface IProps {
@@ -31,7 +32,8 @@ const useLogin = ({ transfer_code }: Props) => {
 
   const loginUser = async ({ username, password, code, callback }: IProps) => {
     startLoading();
-    const url = code ? `/auth/google/transfer` : '/auth/login';
+
+    const url = code ? '/auth/google/transfer' : '/auth/login';
     const payload = code ? { code } : { username, password };
     try {
       const { data: ref } = await httpClient.post(url, payload);
@@ -52,6 +54,16 @@ const useLogin = ({ transfer_code }: Props) => {
         user_type: item.toLowerCase(),
         ...ref[item.toLowerCase()],
       }));
+      const parent = userTypes.find((item) => item.user_type === UserTypesEnum.PARENT);
+      if (!parent) {
+        Toast.show({
+          type: 'error',
+          text1: 'Error',
+          text2: "You don't have permission to access this app",
+        });
+        stopLoading();
+        return;
+      }
       dispatch(setUserTypes(userTypes));
       dispatch(
         updateAppUserState({
@@ -62,7 +74,6 @@ const useLogin = ({ transfer_code }: Props) => {
       await AsyncStorage.setItem('refresh_token', ums?.refresh_token || '');
       httpClient.defaults.headers.common.Authorization = `Bearer ${ums?.access_token}`;
 
-      const parent = userTypes.find((item) => item.user_type === UserTypesEnum.PARENT);
       if (parent) {
         dispatch(setActiveUserType(UserTypesEnum.PARENT));
         dispatch(userLoginSuccess(parent));

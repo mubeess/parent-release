@@ -2,7 +2,7 @@ import { useTheme } from '@react-navigation/native';
 import Checkbox from '@safsims/components/Checkbox/Checkbox';
 import EmptyState from '@safsims/components/EmptyState/EmptyState';
 import AppHeader from '@safsims/components/Header/AppHeader';
-import { EmptyFees } from '@safsims/components/Images';
+import { ArrowLeftIcon, EmptyFees } from '@safsims/components/Images';
 import Loader from '@safsims/components/Loader/Loader';
 import Select from '@safsims/components/Select/Select';
 import Text from '@safsims/components/Text/Text';
@@ -12,7 +12,7 @@ import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
 import { useEffect, useMemo, useState } from 'react';
-import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { calculateSummaryTotals } from '../SchoolFeesScreen';
 import FeesAccordion from '../components/Accordion/FeesAccordion';
 import useChildrenInvoiceSummariesGet from '../hooks/useChildrenInvoiceSummariesGet';
@@ -56,6 +56,16 @@ const InvoiceHistoryScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: colors.PrimaryBackground }}>
       <AppHeader navigation={navigation} pageTitle="Invoice History" />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Fees', {
+            screen: 'FeesHome',
+          })
+        }
+        style={styles.back}
+      >
+        <ArrowLeftIcon />
+      </TouchableOpacity>
       <View style={{ flex: 1 }}>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -85,7 +95,9 @@ const InvoiceHistoryScreen = ({ navigation }) => {
                 onValueChange={() => {
                   const val = !showAll;
                   setShowAll(val);
-                  if (val) setSessionValue(null);
+                  if (val) {
+                    setSessionValue(null);
+                  }
                 }}
                 color={colors.PrimaryColor}
               />
@@ -203,5 +215,15 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     marginRight: 10,
     elevation: 5,
+  },
+  back: {
+    height: 40,
+    width: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 20,
+    marginVertical: 20,
+    backgroundColor: '#fff',
+    borderRadius: 40,
   },
 });
