@@ -17,13 +17,15 @@ const useMakePayment = () => {
     try {
       const data = await apiWrapper(() =>
         SchoolFeesPaymentsRestControllerService.initOnlinePaymentUsingPost({
-          request: payload,
+          request: { ...payload, web: true, latest_version: true },
           xTenantId: school_id,
         }),
       );
       const configObj = {
         reference: data?.data?.safsims_transaction_ref,
         subaccount: data?.data?.subaccount_ref,
+        splitCode: data?.split_code,
+        splitId: data?.split_id,
       };
       callback?.(configObj);
       stopLoading();

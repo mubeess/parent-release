@@ -5,7 +5,6 @@ import { AppleLogo, GoogleIcon } from '@safsims/components/Images';
 import AuthInput from '@safsims/components/Input/AuthInput';
 import Text from '@safsims/components/Text/Text';
 import { lightTheme } from '@safsims/utils/Theme';
-import config from '@safsims/utils/config';
 import useDeepLink from '@safsims/utils/useDeepLink/useDeepLink';
 import { useState } from 'react';
 import { ActivityIndicator, Linking, StyleSheet, TouchableOpacity, View } from 'react-native';
@@ -14,7 +13,6 @@ import AuthLayout from './components/AuthLayout';
 import useAppleAuth from './hooks/useAppleAuth';
 import useGoogleAuth from './hooks/useGoogleAuth';
 import useLogin from './hooks/useLogin';
-
 
 const LoginScreen = ({ navigation }) => {
   const { colors } = useTheme();

@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type ParentSignupStatistics = {
-  approved?: number;
-  declined?: number;
-  submitted?: number;
+    approved?: number;
+    declined?: number;
+    submitted?: number;
 };
+

@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type LocalTimeRes = {
-  hour?: number;
-  minute?: number;
-  nano?: number;
-  second?: number;
+    hour?: number;
+    minute?: number;
+    nano?: number;
+    second?: number;
 };
+

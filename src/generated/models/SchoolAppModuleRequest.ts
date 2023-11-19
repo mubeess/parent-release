@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type SchoolAppModuleRequest = {
-  modules?: Array<'ACADEMICS' | 'FEES_MANAGEMENT'>;
+    modules?: Array<'ACADEMICS' | 'FEES_MANAGEMENT'>;
 };
+

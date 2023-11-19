@@ -8,28 +8,30 @@ import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 
 export class PaystackWebhookRestControllerService {
-  /**
-   * updateTransactionStatus
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static updateTransactionStatusUsingPost1({
-    requestBody,
-  }: {
+
     /**
-     * requestBody
+     * updateTransactionStatus
+     * @returns any OK
+     * @throws ApiError
      */
-    requestBody: PaystackWebhookRequest;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/paystack-webhook',
-      body: requestBody,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static updateTransactionStatusUsingPost1({
+        requestBody,
+    }: {
+        /**
+         * requestBody
+         */
+        requestBody: PaystackWebhookRequest,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/paystack-webhook',
+            body: requestBody,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
 }

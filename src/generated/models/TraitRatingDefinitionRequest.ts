@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type TraitRatingDefinitionRequest = {
-  comment: string;
-  rating: string;
-  rating_order: number;
+    comment: string;
+    rating: string;
+    rating_order: number;
 };
+

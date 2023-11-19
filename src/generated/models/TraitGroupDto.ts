@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type TraitGroupDto = {
-  group_name?: string;
-  id?: string;
+    group_name?: string;
+    id?: string;
 };
+

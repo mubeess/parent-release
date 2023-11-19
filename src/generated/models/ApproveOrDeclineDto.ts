@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type ApproveOrDeclineDto = {
-  decline_reason?: string;
-  status?: 'APPROVED' | 'DECLINED' | 'PENDING';
+    decline_reason?: string;
+    status?: 'APPROVED' | 'DECLINED' | 'PENDING';
 };
+

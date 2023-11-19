@@ -13,7 +13,8 @@ import useTermAttendedByStudentGet from '@safsims/parent-hooks/useTermAttendedBy
 import { lightTheme } from '@safsims/utils/Theme';
 import { SelectOptionType } from '@safsims/utils/types';
 import React, { useEffect, useState } from 'react';
-import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { Dimensions, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import Pdf from 'react-native-pdf';
 import ResultAccordion from './components/ResultAccordion';
 import SkillCard from './components/SkillCard';
 import SubjectAccordion from './components/SubjectAccordion';
@@ -21,18 +22,23 @@ import useChildAttendanceSummaryGet from './hooks/useChildAttendanceSummaryGet';
 import useChildResultGet from './hooks/useChildResultGet';
 import useChildSkillsGet from './hooks/useChildSkillsGet';
 import useConfigurations from './hooks/useConfigurations';
+import useFetchReportTemplate from './hooks/useFetchReportTemplate';
+import useGenerateAsposeReport from './hooks/useGenerateAsposeReport';
 import useStudentCommentsGet from './hooks/useStudentCommentsGet';
 import useStudentTraitAssessmentGet from './hooks/useStudentTraitAssessmentGet';
-
 type ViewType = 'chart' | 'text';
 
 export default function ResulDetailsScreen({ navigation, route }) {
   const { colors } = useTheme();
   const [activeView, setActiveView] = useState<ViewType>('text');
-
+  const { loadingResult, pdfURL, singleResult, setPdfURL } = useGenerateAsposeReport();
+  const { allTemplates, fetchTemplates, loadingTemplates } = useFetchReportTemplate();
   const handleActiveView = () => {
-    if (activeView === 'chart') setActiveView('text');
-    else setActiveView('chart');
+    if (activeView === 'chart') {
+      setActiveView('text');
+    } else {
+      setActiveView('chart');
+    }
   };
 
   const student: StudentDto = route.params.student;
@@ -115,11 +121,29 @@ export default function ResulDetailsScreen({ navigation, route }) {
     });
   };
 
+  const reportTemplate = allTemplates.filter(
+    (report) => report.id === filterdConfig?.report_template_id,
+  );
+  const isAspose = reportTemplate[0]?.aspose;
+
   useEffect(() => {
-    if (filterdConfig) {
+    if (isAspose) {
+      singleResult(
+        student?.id,
+        termValue?.value,
+        filterdConfig?.id,
+        filterdConfig?.report_template_id,
+      );
+    } else if (configurations.length && student) {
       handleStudenAssessment(termObj?.term_id);
+      setPdfURL('');
     }
-  }, [filterdConfig]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAspose, student, filterdConfig]);
+
+  useEffect(() => {
+    fetchTemplates();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -131,6 +155,7 @@ export default function ResulDetailsScreen({ navigation, route }) {
         name={`${student?.first_name} ${student?.surname}`}
         onIconPress={handleActiveView}
       />
+
       <ResultAccordion
         selectTermOptions={selectTermOptions}
         termValue={termValue}
@@ -151,6 +176,19 @@ export default function ResulDetailsScreen({ navigation, route }) {
       />
       {loading || loadingComments || loadingSkills ? (
         <Loader />
+      ) : isAspose ? (
+        <>
+          {pdfURL && (
+            <Pdf
+              trustAllCerts={false}
+              source={{ uri: `https://safsims.s3.us-east-2.amazonaws.com/${pdfURL}` }}
+              onLoadComplete={(numberOfPages, filePath) => {
+                console.log(`Number of pages: ${numberOfPages}`);
+              }}
+              style={styles.pdf}
+            />
+          )}
+        </>
       ) : childResult?.term_result && childResult?.term_result?.result_approved ? (
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -325,6 +363,7 @@ const Item = ({ score, title, color }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   score: {
     fontWeight: '600',
@@ -404,5 +443,10 @@ const styles = StyleSheet.create({
   commentHeader: {
     flexDirection: 'row',
     marginTop: 10,
+  },
+  pdf: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });

@@ -220,7 +220,6 @@ const sendRequest = async <T>(
 
   const token = await AsyncStorage.getItem('access_token');
   const school_id = (await AsyncStorage.getItem('school_id')) || '';
-
   const requestConfig: AxiosRequestConfig = {
     url,
     headers: {

@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type TemplateData = {
-  metadata?: any;
-  schema?: any;
-  tags?: any;
-  template?: any;
+    metadata?: any;
+    schema?: any;
+    tags?: any;
+    template?: any;
 };
+

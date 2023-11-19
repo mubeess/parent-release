@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type AmountBreakdown = {
-  amount: number;
-  student_id: string;
+    amount: number;
+    student_id: string;
 };
+

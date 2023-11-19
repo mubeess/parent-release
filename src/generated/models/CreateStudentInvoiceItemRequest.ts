@@ -5,6 +5,7 @@
 import type { RequestItem } from './RequestItem';
 
 export type CreateStudentInvoiceItemRequest = {
-  items?: Array<RequestItem>;
-  parent_id?: string;
+    items?: Array<RequestItem>;
+    parent_id?: string;
 };
+

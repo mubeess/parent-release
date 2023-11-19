@@ -12,6 +12,7 @@ const useDeepLink = () => {
         const parsedUrl: any = queryString.parseUrl(url);
         const queryParams = parsedUrl.query;
         const data = queryParams.value;
+        console.log(data, 'my data');
         setValue(data);
       }
     };

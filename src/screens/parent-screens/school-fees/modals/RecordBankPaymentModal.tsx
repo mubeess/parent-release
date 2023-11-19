@@ -140,7 +140,13 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
   };
 
   const onSubmit = () => {
-    if (!values.accountName || !values.accountNumber || !values.amountPaid || !values.bank) {
+    if (
+      !values.accountName ||
+      !values.accountNumber ||
+      !values.amountPaid ||
+      !values.bank ||
+      !values.tellerNumber
+    ) {
       return Toast.show({
         type: 'error',
         text1: 'Error',
@@ -197,7 +203,7 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
           contentContainerStyle={styles.scrollContent}
         >
           <Select
-            label="Select Bank"
+            label="Bank"
             required
             placeholder="Select bank"
             options={banks.map((bank) => ({
@@ -218,7 +224,7 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
             onChange={(val) => handleChange('accountName', val)}
             placeholder="Enter Acount Name"
             required
-            label="School Account Name"
+            label="Account Name"
           />
           <Input
             Icon={<Text style={styles.iconText}>0-9</Text>}
@@ -228,7 +234,7 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
             onChange={(val) => handleChange('accountNumber', val)}
             placeholder="Enter Acount Number"
             required
-            label="School Account Number"
+            label="Account Number"
           />
           <Input
             Icon={<Text style={styles.iconText}>A-Z</Text>}
@@ -236,6 +242,7 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
             value={values.tellerNumber}
             onChange={(val) => handleChange('tellerNumber', val)}
             placeholder="Enter Teller Number"
+            required
             label="Teller Number"
           />
           <Input

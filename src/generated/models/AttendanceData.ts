@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type AttendanceData = {
-  date?: string;
-  status?: string;
+    date?: string;
+    status?: string;
 };
+

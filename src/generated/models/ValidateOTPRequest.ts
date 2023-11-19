@@ -3,9 +3,10 @@
 /* eslint-disable */
 
 export type ValidateOTPRequest = {
-  code: string;
-  email: string;
-  first_name: string;
-  user_id: string;
-  verification_link: string;
+    code: string;
+    email: string;
+    first_name: string;
+    user_id: string;
+    verification_link: string;
 };
+

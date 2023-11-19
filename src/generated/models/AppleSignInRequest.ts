@@ -3,7 +3,9 @@
 /* eslint-disable */
 
 export type AppleSigninRequest = {
-  authorization_code: string;
-  organization: string;
-  product?: string;
+    authorization_code: string;
+    client?: 'SAFSIMS' | 'SAFSIMS_PARENT';
+    organization: string;
+    product?: string;
 };
+

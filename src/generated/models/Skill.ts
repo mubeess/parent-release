@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type Skill = {
-  id?: string;
-  name?: string;
+    id?: string;
+    name?: string;
 };
+

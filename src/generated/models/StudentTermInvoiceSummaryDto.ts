@@ -6,6 +6,7 @@ import type { StudentInvoiceSummaryDto } from './StudentInvoiceSummaryDto';
 import type { TermDto } from './TermDto';
 
 export type StudentTermInvoiceSummaryDto = {
-  invoice_summary?: StudentInvoiceSummaryDto;
-  term?: TermDto;
+    invoice_summary?: StudentInvoiceSummaryDto;
+    term?: TermDto;
 };
+

@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type BulkDeleteStudentsRequest = {
-  student_ids?: Array<string>;
+    student_ids?: Array<string>;
 };
+

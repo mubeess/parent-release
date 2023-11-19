@@ -3,9 +3,10 @@
 /* eslint-disable */
 
 export type AssignSubjectTeachersRequest = {
-  arm_id: string;
-  class_level_id: string;
-  staff_id: Array<string>;
-  subject_id: string;
-  term_id: string;
+    arm_id: string;
+    class_level_id: string;
+    staff_id: Array<string>;
+    subject_id: string;
+    term_id: string;
 };
+

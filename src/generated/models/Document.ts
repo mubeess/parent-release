@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type Document = {
-  aws_s3_key?: string;
-  document_name?: string;
+    aws_s3_key?: string;
+    document_name?: string;
 };
+

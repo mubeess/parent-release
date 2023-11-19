@@ -7,7 +7,8 @@ import type { StudentCumulativeResultDto } from './StudentCumulativeResultDto';
 import type { TermResultAndAssessmentDef } from './TermResultAndAssessmentDef';
 
 export type CumulativeResultAndAssessmentDef = {
-  cumulative_result?: StudentCumulativeResultDto;
-  group_assessment_definition?: GroupAssessmentDefinition;
-  term_results?: Array<TermResultAndAssessmentDef>;
+    cumulative_result?: StudentCumulativeResultDto;
+    group_assessment_definition?: GroupAssessmentDefinition;
+    term_results?: Array<TermResultAndAssessmentDef>;
 };
+

@@ -3,9 +3,10 @@
 /* eslint-disable */
 
 export type FieldData = {
-  name: string;
-  order?: number;
-  required?: boolean;
-  type?: string;
-  value?: string;
+    name: string;
+    order?: number;
+    required?: boolean;
+    type?: string;
+    value?: string;
 };
+

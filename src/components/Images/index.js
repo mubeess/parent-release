@@ -10941,7 +10941,6 @@ export const GoogleIcon = (props) => (
     />
   </Svg>
 );
-
 export const AppleLogo = () => (
   <Svg fill="#000000" height={24} width={24} viewBox="0 0 22.773 22.773" xmlSpace="preserve">
     <G>

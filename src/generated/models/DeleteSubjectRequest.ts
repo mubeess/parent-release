@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type DeleteSubjectRequest = {
-  subject_ids?: Array<string>;
+    subject_ids?: Array<string>;
 };
+

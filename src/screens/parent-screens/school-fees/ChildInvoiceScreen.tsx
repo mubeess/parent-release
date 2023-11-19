@@ -4,7 +4,7 @@ import Button from '@safsims/components/Button/Button';
 import CheckButton from '@safsims/components/Button/CheckButton';
 import Currency from '@safsims/components/Currency/Currency';
 import Icon from '@safsims/components/Icon/Icon';
-import { FlutterWave, Paystack as PaystackIcon } from '@safsims/components/Images';
+import { Paystack as PaystackIcon } from '@safsims/components/Images';
 import Input from '@safsims/components/Input/Input';
 import SafeAreaComponent from '@safsims/components/SafeAreaComponent/SafeAreaComponent';
 import Text from '@safsims/components/Text/Text';
@@ -41,17 +41,17 @@ import useMakePayment from './hooks/useMakePayment';
 import useReceiptsGet from './hooks/useReceiptsGet';
 import useStudentInvoiceEdit from './hooks/useStudentInvoiceEdit';
 import PaymentVerificationModal from './modals/PaymentVerificationModal';
-import PaystackModal from './modals/PaystackModal';
+import usePaystack from './modals/hooks/usePaystack';
 
 const OnlinePayments = [
   {
     title: 'PAYSTACK',
     Logo: <PaystackIcon />,
   },
-  {
-    title: 'FLUTTERWAVE',
-    Logo: <FlutterWave />,
-  },
+  // {
+  //   title: 'FLUTTERWAVE',
+  //   Logo: <FlutterWave />,
+  // },
 ];
 
 export default function ChildInvoiceScreen({ navigation, route }) {
@@ -103,7 +103,7 @@ export default function ChildInvoiceScreen({ navigation, route }) {
   const [paymentMethod, setPaymentMethod] = useState<any>('PAYSTACK');
   const [paymentAmount, setPaymentAmount] = useState(checkout?.total_balance || 0);
   const charges = 400;
-  const total = parseInt(`${paymentAmount}`) + charges;
+  const total = Number(parseFloat(`${paymentAmount}`)) + charges;
 
   const handleAmount = (e) => {
     e = Number(e.replace(/[^0-9]/gi, ''));
@@ -200,7 +200,8 @@ export default function ChildInvoiceScreen({ navigation, route }) {
     transaction_charge: 100 * 100,
   };
 
-  const [config, setConfig] = useState(configObj);
+  const [config, setConfig] = useState<any>(configObj);
+  const { PaystackModal } = usePaystack();
 
   const onPaystackPaymentSuccess = useCallback(() => {
     setSafsimsTransactionRef(config.reference);
@@ -225,12 +226,12 @@ export default function ChildInvoiceScreen({ navigation, route }) {
     }));
   }, [paymentAmount]);
 
-  const paystackCheckoutCallback = ({ reference, subaccount }) => {
-    const obj = { ...config, reference, subaccount };
+  const paystackCheckoutCallback = ({ reference, splitCode, splitId }) => {
+    const obj = { ...config, reference, splitCode, splitId };
     setConfig(obj);
     onClose();
     setStartOnlinePayment(true);
-    paystackWebViewRef?.current?.startTransaction();
+    // paystackWebViewRef?.current?.startTransaction();
   };
 
   const paymentCheckoutCallback = (data) => {
@@ -242,15 +243,17 @@ export default function ChildInvoiceScreen({ navigation, route }) {
     }
   };
 
-  const flutterwaveChekoutCallback = ({ reference, subaccounts }) => {
+  const flutterwaveChekoutCallback = ({ reference, subaccount, splitId }) => {
     const obj = {
       ...config,
       reference,
-      split: {
-        subaccounts,
-        type: 'flat',
-        bearer_type: 'account',
-      },
+      subaccounts: [
+        {
+          id: subaccount,
+          transaction_charge_type: 'flat_subaccount',
+          transaction_charge: Number(parseFloat(`${paymentAmount}`)),
+        },
+      ],
     };
     setConfig(obj);
     setStartOnlinePayment(true);
@@ -346,98 +349,104 @@ export default function ChildInvoiceScreen({ navigation, route }) {
           </ScrollView>
           <SafeAreaView style={{ backgroundColor: colors.PrimaryBackground }} />
 
-          <BottomSlider isOpen={isOpen} onClose={onClose} height={height - 200}>
-            <KeyboardAwareScrollView>
-              <View style={{ justifyContent: 'space-between', height: '100%' }}>
-                <View>
-                  <View
-                    style={{
-                      padding: 20,
-                      paddingBottom: 0,
-                    }}
-                  >
-                    <Text h2>Payment Method</Text>
+          <BottomSlider isOpen={isOpen} onClose={onClose} height={height - 50}>
+            <View style={{ flex: 1 }}>
+              <KeyboardAwareScrollView>
+                <View style={{ justifyContent: 'space-between', height: '100%' }}>
+                  <View>
+                    <View
+                      style={{
+                        padding: 20,
+                        paddingBottom: 0,
+                      }}
+                    >
+                      <Text h2>Payment Method</Text>
 
-                    <Input
-                      value={paymentAmount}
-                      type="number-pad"
-                      onChange={(val) => handleAmount(val)}
-                      style={{ marginTop: 20, marginBottom: 10 }}
-                    />
-                  </View>
-
-                  <View style={[styles.fees]}>
-                    <View style={[styles.feesAmount]}>
-                      <Text>TRANSACTION CHARGE</Text>
-                      <Text style={{ color: lightTheme.colors.PrimaryYellow }} h1>
-                        <Currency amount={charges} />
-                      </Text>
+                      <Input
+                        value={paymentAmount}
+                        type="number-pad"
+                        onChange={(val) => handleAmount(val)}
+                        style={{ marginTop: 20, marginBottom: 10 }}
+                      />
                     </View>
-                    <View style={[styles.feesCharge]}>
-                      <Text>TOTAL AMOUNT</Text>
-                      <Text h1>
-                        <Currency amount={total} />
-                      </Text>
+
+                    <View style={[styles.fees]}>
+                      <View style={[styles.feesAmount]}>
+                        <Text>TRANSACTION CHARGE</Text>
+                        <Text style={{ color: lightTheme.colors.PrimaryYellow }} h1>
+                          <Currency amount={charges} />
+                        </Text>
+                      </View>
+                      <View style={[styles.feesCharge]}>
+                        <Text>TOTAL AMOUNT</Text>
+                        <Text h1>
+                          <Currency amount={total} />
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View>
+                    <View style={[styles.checkButtons]}>
+                      {OnlinePayments.map((content, index) => (
+                        <CheckButton
+                          style={{ marginBottom: 20 }}
+                          key={index.toString()}
+                          title={content.title}
+                          Image={content.Logo}
+                          onPress={() => {
+                            setPaymentMethod(content.title);
+                          }}
+                          active={paymentMethod === content.title}
+                        />
+                      ))}
+                    </View>
+
+                    <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
+                      {paymentMethod == 'FLUTTERWAVE' ? (
+                        <PayWithFlutterwave
+                          onRedirect={handleFlutterRedirect}
+                          options={{
+                            tx_ref: config?.reference,
+                            authorization: flutterwaveKey,
+                            customer: {
+                              email: config.email!,
+                            },
+                            amount: config.amount,
+                            currency: 'NGN',
+                            payment_options: 'card',
+                            subaccounts: config?.subaccounts,
+                          }}
+                          customButton={(props) => (
+                            <Button
+                              onPress={() => submitPayment(props.onPress)}
+                              isLoading={loading}
+                              label="Pay now"
+                            />
+                          )}
+                        />
+                      ) : (
+                        <Button
+                          isLoading={loading}
+                          onPress={() => submitPayment()}
+                          label="Pay now"
+                        />
+                      )}
                     </View>
                   </View>
                 </View>
-                <View>
-                  <View style={[styles.checkButtons]}>
-                    {OnlinePayments.map((content, index) => (
-                      <CheckButton
-                        style={{ marginBottom: 20 }}
-                        key={index.toString()}
-                        title={content.title}
-                        Image={content.Logo}
-                        onPress={() => {
-                          setPaymentMethod(content.title);
-                        }}
-                        active={paymentMethod === content.title}
-                      />
-                    ))}
-                  </View>
-
-                  <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
-                    {paymentMethod == 'FLUTTERWAVE' ? (
-                      <PayWithFlutterwave
-                        onRedirect={handleFlutterRedirect}
-                        options={{
-                          tx_ref: config?.reference,
-                          authorization: flutterwaveKey,
-                          customer: {
-                            email: config.email!,
-                          },
-                          amount: config.amount,
-                          currency: 'NGN',
-                          payment_options: 'card',
-                        }}
-                        customButton={(props) => (
-                          <Button
-                            onPress={() => submitPayment(props.onPress)}
-                            isLoading={loading}
-                            label="Pay now"
-                          />
-                        )}
-                      />
-                    ) : (
-                      <Button isLoading={loading} onPress={() => submitPayment()} label="Pay now" />
-                    )}
-                  </View>
-                </View>
-              </View>
-            </KeyboardAwareScrollView>
+              </KeyboardAwareScrollView>
+            </View>
           </BottomSlider>
 
           <PaystackModal
             isOpen={startOnlinePayment && paymentMethod.toUpperCase() === 'PAYSTACK'}
-            onClose={() => setStartOnlinePayment(false)}
-            publicKey={publicKey}
             onSuccess={onPaystackPaymentSuccess}
             onCancel={onClosePaystackPayment}
-            amount={config.amount}
             email={config.email}
-            ref={paystackWebViewRef}
-            referrer={config.reference}
+            amount={config.amount}
+            splitCode={config.splitCode}
+            splitId={config.splitId}
+            paymentRef={config.reference}
           />
 
           <PaymentVerificationModal
@@ -451,7 +460,7 @@ export default function ChildInvoiceScreen({ navigation, route }) {
             onSuccess={() => {
               setSafsimsTransactionRef('');
               validationModalHandler.onClose();
-              navigation.navigate('Fees');
+              navigation.navigate('Fees', { screen: 'FeesHome' });
             }}
           />
         </>

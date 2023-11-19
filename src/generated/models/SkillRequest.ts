@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type SkillRequest = {
-  skill_group_id: string;
-  skill_name: string;
+    skill_group_id: string;
+    skill_name: string;
 };
+

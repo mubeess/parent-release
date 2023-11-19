@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type UmsRoleRequest = {
-  role_id?: string;
+    role_id?: string;
 };
+

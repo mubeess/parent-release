@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type Attempt = {
-  question_id?: string;
-  selected_option_id?: string;
+    question_id?: string;
+    selected_option_id?: string;
 };
+

@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type FormTeacherDto = {
-  full_name?: string;
-  id?: string;
-  profile_url?: string;
-  staff_id?: string;
+    full_name?: string;
+    id?: string;
+    profile_url?: string;
+    staff_id?: string;
 };
+

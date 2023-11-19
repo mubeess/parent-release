@@ -20,386 +20,388 @@ import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 
 export class SchoolFeesPaymentsRestControllerService {
-  /**
-   * createStripePaymentIntent
-   * @returns CreatePaymentIntentResponse OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static createStripePaymentIntentUsingPost({
-    request,
-    xTenantId,
-  }: {
-    /**
-     * request
-     */
-    request: InitiatePaymentRequest;
-    /**
-     * X-TENANT-ID
-     */
-    xTenantId: string;
-  }): CancelablePromise<CreatePaymentIntentResponse | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/payments/intent',
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      body: request,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
 
-  /**
-   * makeOfflinePayment
-   * @returns SchoolFeesTransactionDto OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static makeOfflinePaymentUsingPost({
-    request,
-  }: {
     /**
-     * request
+     * createStripePaymentIntent
+     * @returns CreatePaymentIntentResponse OK
+     * @returns any Created
+     * @throws ApiError
      */
-    request: RegisterOfflinePaymentRequest;
-  }): CancelablePromise<SchoolFeesTransactionDto | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/payments/offline',
-      body: request,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static createStripePaymentIntentUsingPost({
+        request,
+        xTenantId,
+    }: {
+        /**
+         * request
+         */
+        request: InitiatePaymentRequest,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<CreatePaymentIntentResponse | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/payments/intent',
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            body: request,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * deleteOfflinePayment
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static deleteOfflinePaymentUsingDelete({
-    transactionId,
-  }: {
     /**
-     * transactionId
+     * makeOfflinePayment
+     * @returns SchoolFeesTransactionDto OK
+     * @returns any Created
+     * @throws ApiError
      */
-    transactionId: string;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'DELETE',
-      url: '/payments/offline/{transactionId}',
-      path: {
-        transactionId: transactionId,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-      },
-    });
-  }
+    public static makeOfflinePaymentUsingPost({
+        request,
+    }: {
+        /**
+         * request
+         */
+        request: RegisterOfflinePaymentRequest,
+    }): CancelablePromise<SchoolFeesTransactionDto | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/payments/offline',
+            body: request,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * initOnlinePayment
-   * @returns InitiatePaymentResponse OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static initOnlinePaymentUsingPost({
-    request,
-    xTenantId,
-  }: {
     /**
-     * request
+     * deleteOfflinePayment
+     * @returns any OK
+     * @throws ApiError
      */
-    request: InitiatePaymentRequest;
-    /**
-     * X-TENANT-ID
-     */
-    xTenantId: string;
-  }): CancelablePromise<InitiatePaymentResponse | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/payments/online',
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      body: request,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static deleteOfflinePaymentUsingDelete({
+        transactionId,
+    }: {
+        /**
+         * transactionId
+         */
+        transactionId: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/payments/offline/{transactionId}',
+            path: {
+                'transactionId': transactionId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+            },
+        });
+    }
 
-  /**
-   * initOnlineBulkPayment
-   * @returns InitiateBulkPaymentResponse OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static initOnlineBulkPaymentUsingPost({
-    request,
-  }: {
     /**
-     * request
+     * initOnlinePayment
+     * @returns InitiatePaymentResponse OK
+     * @returns any Created
+     * @throws ApiError
      */
-    request: InitiateBulkPaymentRequest;
-  }): CancelablePromise<InitiateBulkPaymentResponse | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/payments/online/bulk',
-      body: request,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static initOnlinePaymentUsingPost({
+        request,
+        xTenantId,
+    }: {
+        /**
+         * request
+         */
+        request: InitiatePaymentRequest,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<InitiatePaymentResponse | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/payments/online',
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            body: request,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * getPaymentReceipt
-   * @returns PaymentReceiptDto OK
-   * @throws ApiError
-   */
-  public static getPaymentReceiptUsingGet1({
-    sessionId,
-    studentId,
-  }: {
     /**
-     * session-id
+     * initOnlineBulkPayment
+     * @returns InitiateBulkPaymentResponse OK
+     * @returns any Created
+     * @throws ApiError
      */
-    sessionId: string;
-    /**
-     * student-id
-     */
-    studentId: string;
-  }): CancelablePromise<Array<PaymentReceiptDto>> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/payments/receipts',
-      query: {
-        'session-id': sessionId,
-        'student-id': studentId,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static initOnlineBulkPaymentUsingPost({
+        request,
+    }: {
+        /**
+         * request
+         */
+        request: InitiateBulkPaymentRequest,
+    }): CancelablePromise<InitiateBulkPaymentResponse | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/payments/online/bulk',
+            body: request,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * getPaymentReceipt
-   * @returns PaymentReceiptDto OK
-   * @throws ApiError
-   */
-  public static getPaymentReceiptUsingGet({
-    transactionId,
-  }: {
     /**
-     * transactionId
+     * getPaymentReceipt
+     * @returns PaymentReceiptDto OK
+     * @throws ApiError
      */
-    transactionId: string;
-  }): CancelablePromise<PaymentReceiptDto> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/payments/receipts/{transactionId}',
-      path: {
-        transactionId: transactionId,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static getPaymentReceiptUsingGet1({
+        sessionId,
+        studentId,
+    }: {
+        /**
+         * session-id
+         */
+        sessionId: string,
+        /**
+         * student-id
+         */
+        studentId: string,
+    }): CancelablePromise<Array<PaymentReceiptDto>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/payments/receipts',
+            query: {
+                'session-id': sessionId,
+                'student-id': studentId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * sendPaymentLink
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static sendPaymentLinkUsingPost({
-    sendPaymentLinkRequest,
-  }: {
     /**
-     * sendPaymentLinkRequest
+     * getPaymentReceipt
+     * @returns PaymentReceiptDto OK
+     * @throws ApiError
      */
-    sendPaymentLinkRequest: SendPaymentLinkRequest;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/payments/send-link',
-      body: sendPaymentLinkRequest,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static getPaymentReceiptUsingGet({
+        transactionId,
+    }: {
+        /**
+         * transactionId
+         */
+        transactionId: string,
+    }): CancelablePromise<PaymentReceiptDto> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/payments/receipts/{transactionId}',
+            path: {
+                'transactionId': transactionId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * transactions
-   * @returns Page_TransactionAndInvoiceInfoDto_ OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static transactionsUsingPost({
-    request,
-  }: {
     /**
-     * request
+     * sendPaymentLink
+     * @returns any OK
+     * @throws ApiError
      */
-    request: FetchSchoolFeesTransactionRequest;
-  }): CancelablePromise<Page_TransactionAndInvoiceInfoDto_ | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/payments/transactions',
-      body: request,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static sendPaymentLinkUsingPost({
+        sendPaymentLinkRequest,
+    }: {
+        /**
+         * sendPaymentLinkRequest
+         */
+        sendPaymentLinkRequest: SendPaymentLinkRequest,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/payments/send-link',
+            body: sendPaymentLinkRequest,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * getParentPaymentHistory
-   * @returns Page_SchoolFeesTransactionDto_ OK
-   * @throws ApiError
-   */
-  public static getParentPaymentHistoryUsingGet({
-    parentId,
-    limit,
-    maxDate,
-    minDate,
-    offset,
-    paymentStatus,
-  }: {
-    parentId: string;
-    limit?: number;
-    maxDate?: string;
-    minDate?: string;
-    offset?: number;
-    paymentStatus?: 'FAILED' | 'PENDING' | 'SUCCESSFUL';
-  }): CancelablePromise<Page_SchoolFeesTransactionDto_> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/payments/transactions/by-parent',
-      query: {
-        limit: limit,
-        maxDate: maxDate,
-        minDate: minDate,
-        offset: offset,
-        parentId: parentId,
-        paymentStatus: paymentStatus,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    /**
+     * transactions
+     * @returns Page_TransactionAndInvoiceInfoDto_ OK
+     * @returns any Created
+     * @throws ApiError
+     */
+    public static transactionsUsingPost({
+        request,
+    }: {
+        /**
+         * request
+         */
+        request: FetchSchoolFeesTransactionRequest,
+    }): CancelablePromise<Page_TransactionAndInvoiceInfoDto_ | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/payments/transactions',
+            body: request,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * transactions
-   * @returns SchoolFeesTransactionDto OK
-   * @throws ApiError
-   */
-  public static transactionsUsingGet({
-    studentId,
-    termId,
-  }: {
     /**
-     * student-id
+     * getParentPaymentHistory
+     * @returns Page_SchoolFeesTransactionDto_ OK
+     * @throws ApiError
      */
-    studentId: string;
-    /**
-     * term-id
-     */
-    termId: string;
-  }): CancelablePromise<Array<SchoolFeesTransactionDto>> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/payments/transactions/per-student',
-      query: {
-        'student-id': studentId,
-        'term-id': termId,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static getParentPaymentHistoryUsingGet({
+        parentId,
+        limit,
+        maxDate,
+        minDate,
+        offset,
+        paymentStatus,
+    }: {
+        parentId: string,
+        limit?: number,
+        maxDate?: string,
+        minDate?: string,
+        offset?: number,
+        paymentStatus?: 'COMPLETED' | 'FAILED' | 'INVALID' | 'PENDING' | 'REVERSED' | 'SUCCESSFUL',
+    }): CancelablePromise<Page_SchoolFeesTransactionDto_> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/payments/transactions/by-parent',
+            query: {
+                'limit': limit,
+                'maxDate': maxDate,
+                'minDate': minDate,
+                'offset': offset,
+                'parentId': parentId,
+                'paymentStatus': paymentStatus,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * getTransaction
-   * @returns SchoolFeesTransactionDto OK
-   * @throws ApiError
-   */
-  public static getTransactionUsingGet({
-    id,
-  }: {
     /**
-     * id
+     * transactions
+     * @returns SchoolFeesTransactionDto OK
+     * @throws ApiError
      */
-    id: string;
-  }): CancelablePromise<SchoolFeesTransactionDto> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/payments/transactions/{id}',
-      path: {
-        id: id,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static transactionsUsingGet({
+        studentId,
+        termId,
+    }: {
+        /**
+         * student-id
+         */
+        studentId: string,
+        /**
+         * term-id
+         */
+        termId: string,
+    }): CancelablePromise<Array<SchoolFeesTransactionDto>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/payments/transactions/per-student',
+            query: {
+                'student-id': studentId,
+                'term-id': termId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * verifyPayment
-   * @returns VerifySchoolFeesPaymentResponse OK
-   * @throws ApiError
-   */
-  public static verifyPaymentUsingGet({
-    safsimsTransactionRef,
-  }: {
     /**
-     * safsims_transaction_ref
+     * getTransaction
+     * @returns SchoolFeesTransactionDto OK
+     * @throws ApiError
      */
-    safsimsTransactionRef: string;
-  }): CancelablePromise<Array<VerifySchoolFeesPaymentResponse>> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/payments/verify/{safsims_transaction_ref}',
-      path: {
-        safsims_transaction_ref: safsimsTransactionRef,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static getTransactionUsingGet({
+        id,
+    }: {
+        /**
+         * id
+         */
+        id: string,
+    }): CancelablePromise<SchoolFeesTransactionDto> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/payments/transactions/{id}',
+            path: {
+                'id': id,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
+    /**
+     * verifyPayment
+     * @returns VerifySchoolFeesPaymentResponse OK
+     * @throws ApiError
+     */
+    public static verifyPaymentUsingGet({
+        safsimsTransactionRef,
+    }: {
+        /**
+         * safsims_transaction_ref
+         */
+        safsimsTransactionRef: string,
+    }): CancelablePromise<Array<VerifySchoolFeesPaymentResponse>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/payments/verify/{safsims_transaction_ref}',
+            path: {
+                'safsims_transaction_ref': safsimsTransactionRef,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
 }

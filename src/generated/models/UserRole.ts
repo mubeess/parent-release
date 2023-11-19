@@ -5,6 +5,7 @@
 import type { Role } from './Role';
 
 export type UserRole = {
-  admin_level?: string;
-  role?: Role;
+    admin_level?: string;
+    role?: Role;
 };
+

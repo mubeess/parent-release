@@ -6,6 +6,7 @@ import type { ClassInformationDto } from './ClassInformationDto';
 import type { SubjectDto } from './SubjectDto';
 
 export type ClassAndSubjects = {
-  class_arm?: ClassInformationDto;
-  subjects?: Array<SubjectDto>;
+    class_arm?: ClassInformationDto;
+    subjects?: Array<SubjectDto>;
 };
+

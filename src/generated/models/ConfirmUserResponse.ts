@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type ConfirmUserResponse = {
-  reset_password?: boolean;
-  token?: string;
+    reset_password?: boolean;
+    token?: string;
 };
+

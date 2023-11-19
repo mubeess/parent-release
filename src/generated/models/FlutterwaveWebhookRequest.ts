@@ -5,6 +5,7 @@
 import type { JsonData } from './JsonData';
 
 export type FlutterwaveWebhookRequest = {
-  data?: JsonData;
-  event?: string;
+    data?: JsonData;
+    event?: string;
 };
+

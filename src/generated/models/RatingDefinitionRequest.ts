@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type RatingDefinitionRequest = {
-  color: string;
-  rating: string;
-  rating_order: number;
-  remark: string;
+    color: string;
+    rating: string;
+    rating_order: number;
+    remark: string;
 };
+

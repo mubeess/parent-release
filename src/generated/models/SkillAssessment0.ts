@@ -6,8 +6,9 @@ import type { Skill } from './Skill';
 import type { SkillRatingDefinitionDto } from './SkillRatingDefinitionDto';
 
 export type SkillAssessment0 = {
-  assessment_date?: string;
-  assessor_id?: string;
-  skill?: Skill;
-  skill_rating_definition?: SkillRatingDefinitionDto;
+    assessment_date?: string;
+    assessor_id?: string;
+    skill?: Skill;
+    skill_rating_definition?: SkillRatingDefinitionDto;
 };
+

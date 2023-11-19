@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type ResendVerificationLinkRequest = {
-  username: string;
-  verification_type: 'LINK' | 'OTP' | 'PINCODE';
+    username: string;
+    verification_type: 'LINK' | 'OTP' | 'PINCODE';
 };
+

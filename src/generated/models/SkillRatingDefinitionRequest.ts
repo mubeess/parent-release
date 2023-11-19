@@ -3,9 +3,10 @@
 /* eslint-disable */
 
 export type SkillRatingDefinitionRequest = {
-  color: string;
-  rating: string;
-  rating_order: number;
-  remark: string;
-  skill_rating_id: string;
+    color: string;
+    rating: string;
+    rating_order: number;
+    remark: string;
+    skill_rating_id: string;
 };
+

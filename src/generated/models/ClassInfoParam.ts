@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type ClassInfoParam = {
-  arm_id?: string;
-  class_level_id?: string;
-  term_id?: string;
+    arm_id?: string;
+    class_level_id?: string;
+    term_id?: string;
 };
+

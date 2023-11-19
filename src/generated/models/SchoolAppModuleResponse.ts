@@ -5,5 +5,6 @@
 import type { ModuleSetting } from './ModuleSetting';
 
 export type SchoolAppModuleResponse = {
-  modules?: Array<ModuleSetting>;
+    modules?: Array<ModuleSetting>;
 };
+

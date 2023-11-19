@@ -6,6 +6,7 @@ import type { AssessmentBreakdownRequest } from './AssessmentBreakdownRequest';
 import type { AssessmentRequest } from './AssessmentRequest';
 
 export type AssessmentAndBreakdownRequest = {
-  assessment: AssessmentRequest;
-  breakdowns?: Array<AssessmentBreakdownRequest>;
+    assessment: AssessmentRequest;
+    breakdowns?: Array<AssessmentBreakdownRequest>;
 };
+

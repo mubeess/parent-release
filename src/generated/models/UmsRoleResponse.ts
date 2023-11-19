@@ -5,8 +5,9 @@
 import type { UmsPrivilegeResponse } from './UmsPrivilegeResponse';
 
 export type UmsRoleResponse = {
-  description?: string;
-  id?: string;
-  name?: string;
-  privileges?: Array<UmsPrivilegeResponse>;
+    description?: string;
+    id?: string;
+    name?: string;
+    privileges?: Array<UmsPrivilegeResponse>;
 };
+

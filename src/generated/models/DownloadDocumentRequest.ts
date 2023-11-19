@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type DownloadDocumentRequest = {
-  document_key?: string;
+    document_key?: string;
 };
+

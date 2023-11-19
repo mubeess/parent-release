@@ -5,6 +5,7 @@
 import type { UmsRoleResponse } from './UmsRoleResponse';
 
 export type UmsRole = {
-  admin_level?: string;
-  role?: UmsRoleResponse;
+    admin_level?: string;
+    role?: UmsRoleResponse;
 };
+

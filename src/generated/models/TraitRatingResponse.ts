@@ -7,7 +7,8 @@ import type { TraitRatingDefinitionDto } from './TraitRatingDefinitionDto';
 import type { TraitRatingDto } from './TraitRatingDto';
 
 export type TraitRatingResponse = {
-  class_levels?: Array<ClassLevelLiteDto>;
-  trait_rating?: TraitRatingDto;
-  trait_rating_definitions?: Array<TraitRatingDefinitionDto>;
+    class_levels?: Array<ClassLevelLiteDto>;
+    trait_rating?: TraitRatingDto;
+    trait_rating_definitions?: Array<TraitRatingDefinitionDto>;
 };
+

@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type UpdateTraitRequest = {
-  trait_name: string;
+    trait_name: string;
 };
+

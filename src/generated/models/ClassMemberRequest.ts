@@ -5,6 +5,7 @@
 import type { ClassInformationDto } from './ClassInformationDto';
 
 export type ClassMemberRequest = {
-  class_information_dto?: ClassInformationDto;
-  student_ids?: Array<string>;
+    class_information_dto?: ClassInformationDto;
+    student_ids?: Array<string>;
 };
+

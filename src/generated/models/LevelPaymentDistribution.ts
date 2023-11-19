@@ -5,7 +5,8 @@
 import type { ClassLevel } from './ClassLevel';
 
 export type LevelPaymentDistribution = {
-  class_level?: ClassLevel;
-  outstanding?: number;
-  paid?: number;
+    class_level?: ClassLevel;
+    outstanding?: number;
+    paid?: number;
 };
+

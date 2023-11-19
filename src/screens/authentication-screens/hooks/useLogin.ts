@@ -60,7 +60,7 @@ const useLogin = ({ transfer_code }: Props) => {
         Toast.show({
           type: 'error',
           text1: 'Error',
-          text2: "You don't a parent role",
+          text2: "You don't have a parent role",
         });
         stopLoading();
         return;
@@ -90,7 +90,8 @@ const useLogin = ({ transfer_code }: Props) => {
       callback?.();
       stopLoading();
     } catch (error) {
-      handleError(error, { code: 401, message: error.response.data.message }, true, true);
+      console.log(error);
+      handleError(error);
       stopLoading();
     }
   };

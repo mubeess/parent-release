@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type Session_ = {
-  id?: string;
+    id?: string;
 };
+

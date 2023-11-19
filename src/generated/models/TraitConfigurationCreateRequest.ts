@@ -5,6 +5,7 @@
 import type { CreateTraitRequest } from './CreateTraitRequest';
 
 export type TraitConfigurationCreateRequest = {
-  group_name: string;
-  trait_requests?: Array<CreateTraitRequest>;
+    group_name: string;
+    trait_requests?: Array<CreateTraitRequest>;
 };
+

@@ -15,4 +15,4 @@ const redirect_url = {
   },
 };
 
-export default redirect_url.production;
+export default redirect_url.development;

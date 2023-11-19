@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type ParentOfflinePaymentRequestStatus = {
-  status: 'APPROVED' | 'DECLINED' | 'PENDING';
+    status: 'APPROVED' | 'DECLINED' | 'PENDING';
 };
+

@@ -5,7 +5,12 @@
 import type { JsonData } from './JsonData';
 
 export type InitiatePaymentResponse = {
-  data?: JsonData;
-  message?: string;
-  status?: string;
+    client_secret?: string;
+    data?: JsonData;
+    message?: string;
+    redirect_url?: string;
+    split_code?: string;
+    split_id?: number;
+    status?: string;
 };
+

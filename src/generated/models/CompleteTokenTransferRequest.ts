@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type CompleteTokenTransferRequest = {
-  code: string;
+    code: string;
 };
+

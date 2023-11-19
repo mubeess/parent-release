@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type CreateTermDefinitionRequest = {
-  definition_order?: number;
-  name: string;
+    definition_order?: number;
+    name: string;
 };
+

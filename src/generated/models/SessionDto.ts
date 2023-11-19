@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type SessionDto = {
-  id?: string;
-  name?: string;
+    id?: string;
+    name?: string;
 };
+

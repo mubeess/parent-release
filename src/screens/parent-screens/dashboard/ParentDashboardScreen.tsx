@@ -5,9 +5,10 @@ import SafeAreaComponent from '@safsims/components/SafeAreaComponent/SafeAreaCom
 import Text from '@safsims/components/Text/Text';
 
 import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
+import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import { View } from 'react-native-ui-lib';
 import useBulkPayment from '../school-fees/hooks/useBulkPayment';
@@ -19,6 +20,8 @@ const ParentDashboardScreen = ({ navigation }) => {
   const { currentTerm } = useCurrentTermGet();
   // const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
 
+  // const currentTerm = useAppSelector((state) => state.configuration.currentTerm);
+  const { logEvent } = useLogAnalytics();
   const linked_students = user?.linked_students;
 
   const parentChildren = useMemo(
@@ -36,6 +39,9 @@ const ParentDashboardScreen = ({ navigation }) => {
   const outstandingAmount = bulkCheckout.map((item) => item.total_balance || 0);
   const total_amount = outstandingAmount.reduce((a, b) => a + b, 0);
 
+  useEffect(() => {
+    logEvent('parentDashboard');
+  }, []);
   return (
     <View style={{ flex: 1 }}>
       <ScrollView

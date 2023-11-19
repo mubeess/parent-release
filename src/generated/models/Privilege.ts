@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type Privilege = {
-  date_created?: string;
-  description?: string;
-  id?: number;
-  name?: string;
+    date_created?: string;
+    description?: string;
+    id?: number;
+    name?: string;
 };
+

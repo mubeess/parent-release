@@ -32,6 +32,7 @@ const useAppleAuth = () => {
 
       if (credentialState === appleAuth.State.AUTHORIZED) {
         handle.startLoading();
+
         try {
           const data: LoginToUmsResponse = await apiWrapper(() =>
             AuthenticationRestControllerService.appleSigninUsingPost({
@@ -41,7 +42,7 @@ const useAppleAuth = () => {
               },
             }),
           );
-
+          console.log(data);
           handle.stopLoading();
           const ums = data.ums_login_response;
           const roles = ums?.user?.roles;

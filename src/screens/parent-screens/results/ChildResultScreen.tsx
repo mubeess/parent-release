@@ -3,19 +3,22 @@ import AppHeader from '@safsims/components/Header/AppHeader';
 import Icon from '@safsims/components/Icon/Icon';
 import Text from '@safsims/components/Text/Text';
 import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
-
+import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
+import { useEffect } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import ResultCard from './components/ResultCard';
 
 const ChildResultScreen = ({ navigation }) => {
   const { colors } = useTheme();
   const { currentTerm } = useCurrentTermGet();
-
+  const { logEvent } = useLogAnalytics();
   const parent = useAppSelector((state) => state.user?.parent);
   const children = parent?.linked_students || [];
-
+  useEffect(() => {
+    logEvent('resultScreen');
+  }, []);
   return (
     <View style={{ flex: 1, backgroundColor: colors.PrimaryBackground }}>
       <AppHeader navigation={navigation} pageTitle="Results" />

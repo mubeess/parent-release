@@ -10,229 +10,231 @@ import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 
 export class DocumentsUploadRestControllerService {
-  /**
-   * downloadDocument
-   * @returns ByteArrayResource OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static downloadDocumentUsingPost({
-    request,
-  }: {
-    /**
-     * request
-     */
-    request: DownloadDocumentRequest;
-  }): CancelablePromise<ByteArrayResource | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/documents/download',
-      body: request,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
 
-  /**
-   * listStaffDocuments
-   * @returns Document OK
-   * @throws ApiError
-   */
-  public static listStaffDocumentsUsingGet({
-    staffId,
-  }: {
     /**
-     * staff-id
+     * downloadDocument
+     * @returns ByteArrayResource OK
+     * @returns any Created
+     * @throws ApiError
      */
-    staffId: string;
-  }): CancelablePromise<Array<Document>> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/documents/staff/{staff-id}',
-      path: {
-        'staff-id': staffId,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static downloadDocumentUsingPost({
+        request,
+    }: {
+        /**
+         * request
+         */
+        request: DownloadDocumentRequest,
+    }): CancelablePromise<ByteArrayResource | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/documents/download',
+            body: request,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * uploadStaffDocument
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static uploadStaffDocumentUsingPost({
-    document,
-    staffId,
-    xTenantId,
-  }: {
     /**
-     * document
+     * listStaffDocuments
+     * @returns Document OK
+     * @throws ApiError
      */
-    document: Blob;
-    /**
-     * staff-id
-     */
-    staffId: string;
-    /**
-     * X-TENANT-ID
-     */
-    xTenantId: string;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/documents/staff/{staff-id}',
-      path: {
-        'staff-id': staffId,
-      },
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      body: document,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static listStaffDocumentsUsingGet({
+        staffId,
+    }: {
+        /**
+         * staff-id
+         */
+        staffId: string,
+    }): CancelablePromise<Array<Document>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/documents/staff/{staff-id}',
+            path: {
+                'staff-id': staffId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * deleteStaffDocument
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static deleteStaffDocumentUsingDelete({
-    staffId,
-    documentKey,
-  }: {
     /**
-     * staff-id
+     * uploadStaffDocument
+     * @returns any OK
+     * @throws ApiError
      */
-    staffId: string;
-    /**
-     * documentKey
-     */
-    documentKey?: string;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'DELETE',
-      url: '/documents/staff/{staff-id}',
-      path: {
-        'staff-id': staffId,
-      },
-      body: documentKey,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-      },
-    });
-  }
+    public static uploadStaffDocumentUsingPost({
+        document,
+        staffId,
+        xTenantId,
+    }: {
+        /**
+         * document
+         */
+        document: Blob,
+        /**
+         * staff-id
+         */
+        staffId: string,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/documents/staff/{staff-id}',
+            path: {
+                'staff-id': staffId,
+            },
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            body: document,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * listStudentDocuments
-   * @returns Document OK
-   * @throws ApiError
-   */
-  public static listStudentDocumentsUsingGet({
-    studentId,
-  }: {
     /**
-     * student-id
+     * deleteStaffDocument
+     * @returns any OK
+     * @throws ApiError
      */
-    studentId: string;
-  }): CancelablePromise<Array<Document>> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/documents/student/{student-id}',
-      path: {
-        'student-id': studentId,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static deleteStaffDocumentUsingDelete({
+        staffId,
+        documentKey,
+    }: {
+        /**
+         * staff-id
+         */
+        staffId: string,
+        /**
+         * documentKey
+         */
+        documentKey?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/documents/staff/{staff-id}',
+            path: {
+                'staff-id': staffId,
+            },
+            body: documentKey,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+            },
+        });
+    }
 
-  /**
-   * uploadStudentDocument
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static uploadStudentDocumentUsingPost({
-    document,
-    studentId,
-    xTenantId,
-  }: {
     /**
-     * document
+     * listStudentDocuments
+     * @returns Document OK
+     * @throws ApiError
      */
-    document: Blob;
-    /**
-     * student-id
-     */
-    studentId: string;
-    /**
-     * X-TENANT-ID
-     */
-    xTenantId: string;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/documents/student/{student-id}',
-      path: {
-        'student-id': studentId,
-      },
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      body: document,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static listStudentDocumentsUsingGet({
+        studentId,
+    }: {
+        /**
+         * student-id
+         */
+        studentId: string,
+    }): CancelablePromise<Array<Document>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/documents/student/{student-id}',
+            path: {
+                'student-id': studentId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * deleteStudentDocument
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static deleteStudentDocumentUsingDelete({
-    studentId,
-    documentKey,
-  }: {
     /**
-     * student-id
+     * uploadStudentDocument
+     * @returns any OK
+     * @throws ApiError
      */
-    studentId: string;
+    public static uploadStudentDocumentUsingPost({
+        document,
+        studentId,
+        xTenantId,
+    }: {
+        /**
+         * document
+         */
+        document: Blob,
+        /**
+         * student-id
+         */
+        studentId: string,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/documents/student/{student-id}',
+            path: {
+                'student-id': studentId,
+            },
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            body: document,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
     /**
-     * documentKey
+     * deleteStudentDocument
+     * @returns any OK
+     * @throws ApiError
      */
-    documentKey?: string;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'DELETE',
-      url: '/documents/student/{student-id}',
-      path: {
-        'student-id': studentId,
-      },
-      body: documentKey,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-      },
-    });
-  }
+    public static deleteStudentDocumentUsingDelete({
+        studentId,
+        documentKey,
+    }: {
+        /**
+         * student-id
+         */
+        studentId: string,
+        /**
+         * documentKey
+         */
+        documentKey?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/documents/student/{student-id}',
+            path: {
+                'student-id': studentId,
+            },
+            body: documentKey,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+            },
+        });
+    }
+
 }

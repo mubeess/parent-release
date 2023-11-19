@@ -2,4 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type InputStream = {};
+export type InputStream = {
+};
+

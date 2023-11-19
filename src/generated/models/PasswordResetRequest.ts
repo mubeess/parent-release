@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type PasswordResetRequest = {
-  username: string;
+    username: string;
 };
+

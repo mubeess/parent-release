@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type BankDto = {
-  bank_code?: string;
-  name?: string;
+    bank_code?: string;
+    name?: string;
 };
+

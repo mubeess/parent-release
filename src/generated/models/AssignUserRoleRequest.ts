@@ -5,6 +5,7 @@
 import type { UmsRoleRequest } from './UmsRoleRequest';
 
 export type AssignUserRoleRequest = {
-  roles: Array<UmsRoleRequest>;
-  user_id: string;
+    roles: Array<UmsRoleRequest>;
+    user_id: string;
 };
+

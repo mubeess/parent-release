@@ -8,9 +8,10 @@ import type { FormTeacherDto } from './FormTeacherDto';
 import type { TermDto } from './TermDto';
 
 export type ClassInformationDto = {
-  arm?: ArmDto;
-  assistant_form_teacher?: FormTeacherDto;
-  class_level?: ClassLevelDto;
-  main_form_teacher?: FormTeacherDto;
-  term?: TermDto;
+    arm?: ArmDto;
+    assistant_form_teacher?: FormTeacherDto;
+    class_level?: ClassLevelDto;
+    main_form_teacher?: FormTeacherDto;
+    term?: TermDto;
 };
+

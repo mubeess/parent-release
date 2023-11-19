@@ -5,5 +5,6 @@
 import type { StudentBillItemDto } from './StudentBillItemDto';
 
 export type StudentBillData = {
-  student_bill?: Array<StudentBillItemDto>;
+    student_bill?: Array<StudentBillItemDto>;
 };
+

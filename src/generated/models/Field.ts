@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type Field = {
-  name?: string;
-  order?: number;
-  required?: boolean;
-  type?: string;
+    name?: string;
+    order?: number;
+    required?: boolean;
+    type?: string;
 };
+

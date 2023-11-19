@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type MonthlyPaymentDistribution = {
-  month?: string;
-  no_of_payments?: number;
+    month?: string;
+    no_of_payments?: number;
 };
+

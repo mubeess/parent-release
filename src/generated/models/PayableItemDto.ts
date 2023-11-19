@@ -3,7 +3,9 @@
 /* eslint-disable */
 
 export type PayableItemDto = {
-  description?: string;
-  id?: string;
-  name?: string;
+    collectible?: boolean;
+    description?: string;
+    id?: string;
+    name?: string;
 };
+

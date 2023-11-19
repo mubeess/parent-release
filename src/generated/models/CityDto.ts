@@ -6,8 +6,9 @@ import type { CountryDto } from './CountryDto';
 import type { StateDto } from './StateDto';
 
 export type CityDto = {
-  country?: CountryDto;
-  id?: number;
-  name?: string;
-  state?: StateDto;
+    country?: CountryDto;
+    id?: number;
+    name?: string;
+    state?: StateDto;
 };
+

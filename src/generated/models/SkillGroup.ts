@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type SkillGroup = {
-  id?: string;
-  name?: string;
+    id?: string;
+    name?: string;
 };
+

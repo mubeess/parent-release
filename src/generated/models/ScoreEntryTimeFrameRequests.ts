@@ -5,5 +5,6 @@
 import type { ScoreEntryTimeFrameRequest } from './ScoreEntryTimeFrameRequest';
 
 export type ScoreEntryTimeFrameRequests = {
-  timeframes?: Array<ScoreEntryTimeFrameRequest>;
+    timeframes?: Array<ScoreEntryTimeFrameRequest>;
 };
+

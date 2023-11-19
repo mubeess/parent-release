@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type UpdateTraitRatingRequest = {
-  rating_name: string;
+    rating_name: string;
 };
+

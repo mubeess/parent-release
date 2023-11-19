@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type StartStudentPaperRequest = {
-  paper_id: string;
-  student_id: string;
+    paper_id: string;
+    student_id: string;
 };
+

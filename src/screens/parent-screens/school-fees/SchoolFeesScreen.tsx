@@ -6,7 +6,7 @@ import { EmptyFees } from '@safsims/components/Images';
 import Loader from '@safsims/components/Loader/Loader';
 import Text from '@safsims/components/Text/Text';
 import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
-
+import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
 import { BasicStudentInfo, StudentTermInvoiceSummaryDto } from '@safsims/generated';
 import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import FeesAccordion from '@safsims/screens/parent-screens/school-fees/components/Accordion/FeesAccordion';
@@ -26,7 +26,7 @@ export const calculateSummaryTotals = (summaries: StudentTermInvoiceSummaryDto[]
 
 const SchoolFeesScreen = ({ navigation }) => {
   const { currentTerm } = useCurrentTermGet();
-
+  const { logEvent } = useLogAnalytics();
   const [modalOPen, setModalOpen] = useState(false);
   const { colors } = useTheme();
   const user = useAppSelector((state) => state.user.parent!);
@@ -56,6 +56,7 @@ const SchoolFeesScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
+    logEvent('schoolFeesScreen');
     setStudents(
       invoiceSummaries
         .filter((item) => item.term?.term_id === currentTerm?.term_id)

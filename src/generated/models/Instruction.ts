@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type Instruction = {
-  data?: any;
+    data?: any;
 };
+

@@ -15,16 +15,17 @@ import type { TermCommentDto } from './TermCommentDto';
 import type { TermDto } from './TermDto';
 
 export type StudentCumulativeReportResponse = {
-  attendance?: AttendanceSummaryResponse;
-  class_information?: ClassInformationDto;
-  class_size?: number;
-  grades?: Array<GradeDto>;
-  result?: CumulativeResultAndAssessmentDef;
-  school_information?: BasicSchoolInformationDto;
-  skill_assessments?: Array<StudentSkillAssessmentDto>;
-  skill_rating_definitions?: Array<SkillRatingDefinitionDto>;
-  student?: StudentDto;
-  student_trait_assessments?: Array<StudentTraitAssessmentDto>;
-  term?: TermDto;
-  term_comments?: Array<TermCommentDto>;
+    attendance?: AttendanceSummaryResponse;
+    class_information?: ClassInformationDto;
+    class_size?: number;
+    grades?: Array<GradeDto>;
+    result?: CumulativeResultAndAssessmentDef;
+    school_information?: BasicSchoolInformationDto;
+    skill_assessments?: Array<StudentSkillAssessmentDto>;
+    skill_rating_definitions?: Array<SkillRatingDefinitionDto>;
+    student?: StudentDto;
+    student_trait_assessments?: Array<StudentTraitAssessmentDto>;
+    term?: TermDto;
+    term_comments?: Array<TermCommentDto>;
 };
+

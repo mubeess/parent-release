@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type ShareResultLinkRequest = {
-  emails?: Array<string>;
-  parent_id: string;
-  result_link: string;
+    emails?: Array<string>;
+    parent_id: string;
+    result_link: string;
 };
+

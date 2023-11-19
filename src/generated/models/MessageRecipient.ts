@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type MessageRecipient = {
-  type: 'EMAIL' | 'GROUP' | 'NUMBER';
-  value: string;
+    type: 'EMAIL' | 'GROUP' | 'NUMBER';
+    value: string;
 };
+

@@ -17,7 +17,7 @@
 		383861A091F849CDB886AF76 /* saf-embedded.css in Resources */ = {isa = PBXBuildFile; fileRef = D0B60FBBB51C40DC8813C4EE /* saf-embedded.css */; };
 		589B871D4FDA4BF7B625DD84 /* demo.html in Resources */ = {isa = PBXBuildFile; fileRef = 69FF207300B44A9BB9A6B20C /* demo.html */; };
 		63D639AD47024890810C726A /* saf-codes.css in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0A7E440FE402BA042EC11 /* saf-codes.css */; };
-		736C155E2A6AE03F009A4113 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 736C155D2A6AE03F009A4113 /* GoogleService-Info.plist */; };
+		7357B8652AD414D300BD6865 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7357B8642AD414D300BD6865 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		94E5267A443842CCA8EF6B68 /* saf.woff in Resources */ = {isa = PBXBuildFile; fileRef = 2450218FDD524A16A9F322B9 /* saf.woff */; };
 		9EA243B0BF444700884A4C77 /* saf.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7DC03A919FAB472CADC8B3B7 /* saf.svg */; };
@@ -63,7 +63,7 @@
 		4F59D8571CAD4EB9A448DD8A /* saf.eot */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.eot; path = ../assets/fonts/fontello/font/saf.eot; sourceTree = "<group>"; };
 		69FF207300B44A9BB9A6B20C /* demo.html */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = demo.html; path = ../assets/fonts/fontello/demo.html; sourceTree = "<group>"; };
 		734D0B3A2A6FF9C400545282 /* SAFSIMSParent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SAFSIMSParent.entitlements; path = SAFSIMSParent/SAFSIMSParent.entitlements; sourceTree = "<group>"; };
-		736C155D2A6AE03F009A4113 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7357B8642AD414D300BD6865 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/mubarak/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A1FDEC2D038FFD9D9A806A0 /* Pods_SAFSIMSParent_SAFSIMSParentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SAFSIMSParent_SAFSIMSParentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC03A919FAB472CADC8B3B7 /* saf.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = saf.svg; path = ../assets/fonts/fontello/font/saf.svg; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SAFSIMSParent/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				736C155D2A6AE03F009A4113 /* GoogleService-Info.plist */,
+				7357B8642AD414D300BD6865 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* SAFSIMSParent */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SAFSIMSParentTests */,
@@ -312,7 +312,7 @@
 				EB7DB2F4BF184194AF38E703 /* saf-ie7.css in Resources */,
 				B8ACB3A9A188404C896AFA73 /* saf.css in Resources */,
 				589B871D4FDA4BF7B625DD84 /* demo.html in Resources */,
-				736C155E2A6AE03F009A4113 /* GoogleService-Info.plist in Resources */,
+				7357B8652AD414D300BD6865 /* GoogleService-Info.plist in Resources */,
 				B1B8FC41111C47E0914D7989 /* saf.eot in Resources */,
 				9EA243B0BF444700884A4C77 /* saf.svg in Resources */,
 				94E5267A443842CCA8EF6B68 /* saf.woff in Resources */,
@@ -575,7 +575,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SAFSIMSParent/SAFSIMSParent.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = KKQ9PY9AD8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SAFSIMSParent/Info.plist;
@@ -585,7 +585,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.3;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 1.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -607,7 +608,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SAFSIMSParent/SAFSIMSParent.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = KKQ9PY9AD8;
 				INFOPLIST_FILE = SAFSIMSParent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SAFSIMS Parent";
@@ -616,7 +617,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.3;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 1.0.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

@@ -4,4 +4,4 @@ const publicKey = {
   staging: 'pk_test_782c172a71fe9aaac53c072a0fb705b061f95a07',
 };
 
-export default publicKey.production;
+export default publicKey.development;

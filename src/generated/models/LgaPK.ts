@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type LgaPK = {
-  lga_id: number;
-  state_id: string;
+    lga_id: number;
+    state_id: string;
 };
+

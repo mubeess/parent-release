@@ -5,5 +5,6 @@
 import type { AssessmentConfiguration } from './AssessmentConfiguration';
 
 export type TermAssessmentConfiguration = {
-  assessment_configurations?: Array<AssessmentConfiguration>;
+    assessment_configurations?: Array<AssessmentConfiguration>;
 };
+

@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type UrlPrefixResponse = {
-  url_prefixes?: Array<string>;
+    url_prefixes?: Array<string>;
 };
+

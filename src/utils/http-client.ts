@@ -99,6 +99,7 @@ export async function httpRequest<T>(request: () => Promise<T>): Promise<T> {
       if (error?.response?.status === 401 || error?.status === 401) {
         const originalRequest = error.response?.config || error.body?.config;
         if (originalRequest.url == '/auth/apple/signin') {
+          console.log(originalRequest);
           reject(error);
           return;
         }

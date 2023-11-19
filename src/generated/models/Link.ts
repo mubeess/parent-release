@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type Link = {
-  href?: string;
-  templated?: boolean;
+    href?: string;
+    templated?: boolean;
 };
+

@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type UpdateSignupRequestStatus = {
-  status: 'APPROVED' | 'DECLINED' | 'PENDING';
+    status: 'APPROVED' | 'DECLINED' | 'PENDING';
 };
+

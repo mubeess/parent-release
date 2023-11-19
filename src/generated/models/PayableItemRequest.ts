@@ -3,6 +3,8 @@
 /* eslint-disable */
 
 export type PayableItemRequest = {
-  description?: string;
-  name?: string;
+    collectible?: boolean;
+    description?: string;
+    name?: string;
 };
+

@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type StaffRolePkDto = {
-  role_id?: number;
-  staff_id?: string;
+    role_id?: number;
+    staff_id?: string;
 };
+

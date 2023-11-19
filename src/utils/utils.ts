@@ -70,10 +70,12 @@ interface IObj {
 export const handleError = (err: any, obj?: IObj, show = true, override = false) => {
   // obj = { code: 404, message: "An error occured" } ||
   //  [{ code: 404, message: "An error occured" }]
+
   if (process) {
     const NODE_ENV = process.env.NODE_ENV;
     if (NODE_ENV === 'development') {
       console.error(err);
+      console.log({ error: err?.body });
     }
   }
 

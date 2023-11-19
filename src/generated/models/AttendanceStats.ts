@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type AttendanceStats = {
-  absent?: number;
-  date?: string;
-  late?: number;
-  present?: number;
+    absent?: number;
+    date?: string;
+    late?: number;
+    present?: number;
 };
+

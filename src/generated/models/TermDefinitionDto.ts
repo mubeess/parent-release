@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type TermDefinitionDto = {
-  definition_order?: number;
-  description?: string;
-  id?: string;
+    definition_order?: number;
+    description?: string;
+    id?: string;
 };
+

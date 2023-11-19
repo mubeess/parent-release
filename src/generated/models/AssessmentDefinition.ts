@@ -3,9 +3,10 @@
 /* eslint-disable */
 
 export type AssessmentDefinition = {
-  assessment_breakdown_definitions?: Array<AssessmentDefinition>;
-  assessment_name?: string;
-  display_order?: number;
-  id?: string;
-  percentage?: number;
+    assessment_breakdown_definitions?: Array<AssessmentDefinition>;
+    assessment_name?: string;
+    display_order?: number;
+    id?: string;
+    percentage?: number;
 };
+

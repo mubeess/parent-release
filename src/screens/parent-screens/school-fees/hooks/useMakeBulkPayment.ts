@@ -14,11 +14,13 @@ const useMakeBulkPayment = () => {
     try {
       const data = await apiWrapper(() =>
         SchoolFeesPaymentsRestControllerService.initOnlineBulkPaymentUsingPost({
-          request: payload,
+          request: { ...payload, web: true, latest_version: true },
         }),
       );
       if (payload.payment_method === 'PAYSTACK') {
         const configObj = {
+          splitCode: data?.split_code,
+          splitId: data?.split_id,
           reference: data?.safsims_transaction_ref,
           subaccounts: data?.fees_payments.map((item) => ({
             subaccount: item.subaccount_ref,
@@ -30,11 +32,14 @@ const useMakeBulkPayment = () => {
       if (payload.payment_method === 'FLUTTERWAVE') {
         const configObj = {
           reference: data?.safsims_transaction_ref,
+          splitCode: data?.splitCode,
           subaccounts: data?.fees_payments.map((item) => ({
             id: item.subaccount_ref,
-            share: parseInt(item.amount) * 100,
+            transaction_charge_type: 'flat_subaccount',
+            transaction_charge: Number(parseFloat(`${item.amount}`)) * 100,
           })),
         };
+        console.log('configObj: ', configObj?.subaccounts);
         callback?.(configObj);
       }
       stopLoading();

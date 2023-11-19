@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type UpdateTraitDefinitionRequest = {
-  definition: string;
+    definition: string;
 };
+

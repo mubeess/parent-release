@@ -6,6 +6,7 @@ import type { AssessmentBreakdownDto } from './AssessmentBreakdownDto';
 import type { AssessmentDto } from './AssessmentDto';
 
 export type AssessmentAndBreakdownsDto = {
-  assessment?: AssessmentDto;
-  breakdowns?: Array<AssessmentBreakdownDto>;
+    assessment?: AssessmentDto;
+    breakdowns?: Array<AssessmentBreakdownDto>;
 };
+

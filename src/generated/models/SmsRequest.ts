@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type SmsRequest = {
-  message?: string;
-  recipients?: Array<string>;
-  sender?: string;
-  units?: number;
+    message?: string;
+    recipients?: Array<string>;
+    sender?: string;
+    units?: number;
 };
+

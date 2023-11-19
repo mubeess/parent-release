@@ -5,5 +5,6 @@
 import type { InvoiceTemplateRequest } from './InvoiceTemplateRequest';
 
 export type BulkInvoiceTemplateRequest = {
-  items?: Array<InvoiceTemplateRequest>;
+    items?: Array<InvoiceTemplateRequest>;
 };
+

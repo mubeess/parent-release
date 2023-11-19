@@ -8,8 +8,9 @@ import type { SubjectResult } from './SubjectResult';
 import type { Term_ } from './Term_';
 
 export type StudentSubjectResultDto = {
-  class_information?: ClassInformation_;
-  student?: Student_;
-  subject_result?: SubjectResult;
-  term?: Term_;
+    class_information?: ClassInformation_;
+    student?: Student_;
+    subject_result?: SubjectResult;
+    term?: Term_;
 };
+

@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type AdminChangeUserEmailRequest = {
-  email: string;
-  user_id: string;
-  user_type: 'PARENT' | 'STAFF' | 'STUDENT';
+    email: string;
+    user_id: string;
+    user_type: 'PARENT' | 'STAFF' | 'STUDENT';
 };
+

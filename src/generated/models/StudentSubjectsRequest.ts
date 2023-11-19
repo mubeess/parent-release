@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type StudentSubjectsRequest = {
-  student_id: string;
-  subject_ids?: Array<string>;
+    student_id: string;
+    subject_ids?: Array<string>;
 };
+

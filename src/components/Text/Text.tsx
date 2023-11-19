@@ -19,7 +19,7 @@ export default function Text({ children, h1, h2, h3, style }: TextProps) {
         {
           fontSize: h1 ? 24 : h2 ? 18 : h3 ? 16 : 14,
           fontWeight: h1 ? 'bold' : h2 ? '800' : h3 ? '600' : '400',
-          color: colors.PrimaryFontColor
+          color: colors.PrimaryFontColor,
         },
         style,
       ]}

@@ -5,5 +5,6 @@
 import type { AttendanceStats } from './AttendanceStats';
 
 export type AttendanceDateRangeStatsResponse = {
-  stats?: Array<AttendanceStats>;
+    stats?: Array<AttendanceStats>;
 };
+

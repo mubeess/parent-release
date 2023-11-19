@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type SkillGroupRequest = {
-  group_name: string;
+    group_name: string;
 };
+

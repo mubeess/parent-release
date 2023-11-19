@@ -5,8 +5,9 @@
 import type { TermDefinition } from './TermDefinition';
 
 export type SchoolTermDefinition = {
-  definition_order: number;
-  id: string;
-  name: string;
-  term_definition?: TermDefinition;
+    definition_order: number;
+    id: string;
+    name: string;
+    term_definition?: TermDefinition;
 };
+

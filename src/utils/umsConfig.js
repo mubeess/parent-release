@@ -10,4 +10,4 @@ const umsConfig = {
   },
 };
 
-export default umsConfig.production;
+export default umsConfig.development;

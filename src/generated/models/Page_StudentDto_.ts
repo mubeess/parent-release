@@ -7,15 +7,16 @@ import type { Sort } from './Sort';
 import type { StudentDto } from './StudentDto';
 
 export type Page_StudentDto_ = {
-  content?: Array<StudentDto>;
-  empty?: boolean;
-  first?: boolean;
-  last?: boolean;
-  number?: number;
-  number_of_elements?: number;
-  pageable?: Pageable;
-  size?: number;
-  sort?: Sort;
-  total_elements?: number;
-  total_pages?: number;
+    content?: Array<StudentDto>;
+    empty?: boolean;
+    first?: boolean;
+    last?: boolean;
+    number?: number;
+    number_of_elements?: number;
+    pageable?: Pageable;
+    size?: number;
+    sort?: Sort;
+    total_elements?: number;
+    total_pages?: number;
 };
+

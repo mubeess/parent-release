@@ -7,7 +7,8 @@ import type { SkillRatingDefinitionDto } from './SkillRatingDefinitionDto';
 import type { SkillRatingDto } from './SkillRatingDto';
 
 export type SkillRatingConfiguration = {
-  class_levels?: Array<ClassLevelLiteDto>;
-  skill_rating?: SkillRatingDto;
-  skill_rating_definitions?: Array<SkillRatingDefinitionDto>;
+    class_levels?: Array<ClassLevelLiteDto>;
+    skill_rating?: SkillRatingDto;
+    skill_rating_definitions?: Array<SkillRatingDefinitionDto>;
 };
+

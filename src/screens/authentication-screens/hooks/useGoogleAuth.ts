@@ -11,6 +11,7 @@ const useGoogleAuth = () => {
     const schoolId = (await AsyncStorage.getItem('school_id')) || '';
     handle.startLoading();
     const callbackUrl = `https://${schoolId}.${PUBLIC_URL}/auth?loginMode=mobileapp`;
+    console.log(callbackUrl);
     try {
       const data = await apiWrapper(() =>
         AuthenticationRestControllerService.googleLoginUsingGet({

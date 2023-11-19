@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type GoogleLoginResponse = {
-  redirect_url?: string;
+    redirect_url?: string;
 };
+

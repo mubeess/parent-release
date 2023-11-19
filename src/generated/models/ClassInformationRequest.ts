@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type ClassInformationRequest = {
-  arm_ids?: Array<string>;
-  class_level_id: string;
-  term_id: string;
+    arm_ids?: Array<string>;
+    class_level_id: string;
+    term_id: string;
 };
+

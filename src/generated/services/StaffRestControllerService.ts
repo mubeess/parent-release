@@ -1,356 +1,498 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AssignEvaluatorRoleToStaffRequest } from '../models/AssignEvaluatorRoleToStaffRequest';
 import type { InputStreamResource } from '../models/InputStreamResource';
 import type { Page_StaffDto_ } from '../models/Page_StaffDto_';
 import type { StaffDashboardStats } from '../models/StaffDashboardStats';
 import type { StaffDto } from '../models/StaffDto';
+import type { StaffEvaluatorRoleResponse } from '../models/StaffEvaluatorRoleResponse';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 
 export class StaffRestControllerService {
-  /**
-   * getAllStaff
-   * @returns Page_StaffDto_ OK
-   * @throws ApiError
-   */
-  public static getAllStaffUsingGet({
-    limit,
-    offset,
-    search = ' ',
-    staffType,
-  }: {
-    limit?: number;
-    offset?: number;
-    /**
-     * search
-     */
-    search?: string;
-    /**
-     * staff-type
-     */
-    staffType?: 'ACADEMIC' | 'NON_ACADEMIC';
-  }): CancelablePromise<Page_StaffDto_> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/staff',
-      query: {
-        limit: limit,
-        offset: offset,
-        search: search,
-        'staff-type': staffType,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
 
-  /**
-   * createStaff
-   * @returns StaffDto OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static createStaffUsingPost({
-    staff,
-    xTenantId,
-    photo,
-  }: {
     /**
-     * staff
+     * getAllStaff
+     * @returns Page_StaffDto_ OK
+     * @throws ApiError
      */
-    staff: string;
-    /**
-     * X-TENANT-ID
-     */
-    xTenantId: string;
-    /**
-     * photo
-     */
-    photo?: Blob;
-  }): CancelablePromise<StaffDto | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/staff',
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      query: {
-        staff: staff,
-      },
-      body: photo,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static getAllStaffUsingGet({
+        limit,
+        offset,
+        search = ' ',
+        staffType,
+    }: {
+        limit?: number,
+        offset?: number,
+        /**
+         * search
+         */
+        search?: string,
+        /**
+         * staff-type
+         */
+        staffType?: 'ACADEMIC' | 'NON_ACADEMIC',
+    }): CancelablePromise<Page_StaffDto_> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/staff',
+            query: {
+                'limit': limit,
+                'offset': offset,
+                'search': search,
+                'staff-type': staffType,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * updateStaff
-   * @returns StaffDto OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static updateStaffUsingPut({
-    dto,
-  }: {
     /**
-     * dto
+     * createStaff
+     * @returns StaffDto OK
+     * @returns any Created
+     * @throws ApiError
      */
-    dto: StaffDto;
-  }): CancelablePromise<StaffDto | any> {
-    return __request(OpenAPI, {
-      method: 'PUT',
-      url: '/staff',
-      body: dto,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static createStaffUsingPost({
+        staff,
+        xTenantId,
+        photo,
+    }: {
+        /**
+         * staff
+         */
+        staff: string,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+        /**
+         * photo
+         */
+        photo?: Blob,
+    }): CancelablePromise<StaffDto | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/staff',
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            query: {
+                'staff': staff,
+            },
+            body: photo,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * fetchAllAcademicStaff
-   * @returns StaffDto OK
-   * @throws ApiError
-   */
-  public static fetchAllAcademicStaffUsingGet(): CancelablePromise<Array<StaffDto>> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/staff/academic-staff',
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    /**
+     * updateStaff
+     * @returns StaffDto OK
+     * @returns any Created
+     * @throws ApiError
+     */
+    public static updateStaffUsingPut({
+        dto,
+    }: {
+        /**
+         * dto
+         */
+        dto: StaffDto,
+    }): CancelablePromise<StaffDto | any> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/staff',
+            body: dto,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * downloadBulkUploadTemplate
-   * @returns InputStreamResource OK
-   * @throws ApiError
-   */
-  public static downloadBulkUploadTemplateUsingGet2({
-    xTenantId,
-  }: {
     /**
-     * X-TENANT-ID
+     * fetchAllAcademicStaff
+     * @returns StaffDto OK
+     * @throws ApiError
      */
-    xTenantId: string;
-  }): CancelablePromise<InputStreamResource> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/staff/downloads/template',
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static fetchAllAcademicStaffUsingGet(): CancelablePromise<Array<StaffDto>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/staff/academic-staff',
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * filterStaff
-   * @returns Page_StaffDto_ OK
-   * @throws ApiError
-   */
-  public static filterStaffUsingGet({
-    limit,
-    offset,
-    role = -1,
-    staffType,
-  }: {
-    limit?: number;
-    offset?: number;
     /**
-     * role
+     * assignEvaluatorRoleToStaff
+     * @returns StaffDto OK
+     * @returns any Created
+     * @throws ApiError
      */
-    role?: number;
-    /**
-     * staffType
-     */
-    staffType?: 'ACADEMIC' | 'NON_ACADEMIC';
-  }): CancelablePromise<Page_StaffDto_> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/staff/filter',
-      query: {
-        limit: limit,
-        offset: offset,
-        role: role,
-        staffType: staffType,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static assignEvaluatorRoleToStaffUsingPut({
+        assignEvaluatorRoleToStaffRequest,
+    }: {
+        /**
+         * assignEvaluatorRoleToStaffRequest
+         */
+        assignEvaluatorRoleToStaffRequest: Array<AssignEvaluatorRoleToStaffRequest>,
+    }): CancelablePromise<Array<StaffDto> | any> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/staff/assign-role',
+            body: assignEvaluatorRoleToStaffRequest,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * getStaffStatistics
-   * @returns StaffDashboardStats OK
-   * @throws ApiError
-   */
-  public static getStaffStatisticsUsingGet(): CancelablePromise<StaffDashboardStats> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/staff/statistics',
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    /**
+     * downloadBulkUploadTemplate
+     * @returns InputStreamResource OK
+     * @throws ApiError
+     */
+    public static downloadBulkUploadTemplateUsingGet2({
+        xTenantId,
+    }: {
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<InputStreamResource> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/staff/downloads/template',
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * bulkUploadStaffData
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static bulkUploadStaffDataUsingPost({
-    file,
-    xTenantId,
-  }: {
     /**
-     * file
+     * editStaffEvaluatorRole
+     * @returns StaffEvaluatorRoleResponse OK
+     * @returns any Created
+     * @throws ApiError
      */
-    file: Blob;
-    /**
-     * X-TENANT-ID
-     */
-    xTenantId: string;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/staff/uploads/template',
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      body: file,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static editStaffEvaluatorRoleUsingPut({
+        request,
+    }: {
+        /**
+         * request
+         */
+        request: AssignEvaluatorRoleToStaffRequest,
+    }): CancelablePromise<StaffEvaluatorRoleResponse | any> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/staff/edit-evaluator-role',
+            body: request,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * getStaff
-   * @returns StaffDto OK
-   * @throws ApiError
-   */
-  public static getStaffUsingGet({
-    id,
-  }: {
     /**
-     * id
+     * getStaffWithEvaluatorRole
+     * @returns StaffEvaluatorRoleResponse OK
+     * @throws ApiError
      */
-    id: string;
-  }): CancelablePromise<StaffDto> {
-    return __request(OpenAPI, {
-      method: 'GET',
-      url: '/staff/{id}',
-      path: {
-        id: id,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static getStaffWithEvaluatorRoleUsingGet(): CancelablePromise<Array<StaffEvaluatorRoleResponse>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/staff/evaluator-role',
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * deleteStaff
-   * @returns any OK
-   * @throws ApiError
-   */
-  public static deleteStaffUsingDelete({
-    id,
-    permanently,
-  }: {
     /**
-     * id
+     * filterStaff
+     * @returns Page_StaffDto_ OK
+     * @throws ApiError
      */
-    id: string;
-    /**
-     * permanently
-     */
-    permanently: boolean;
-  }): CancelablePromise<any> {
-    return __request(OpenAPI, {
-      method: 'DELETE',
-      url: '/staff/{id}',
-      path: {
-        id: id,
-      },
-      query: {
-        permanently: permanently,
-      },
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-      },
-    });
-  }
+    public static filterStaffUsingGet({
+        limit,
+        offset,
+        role = -1,
+        staffType,
+    }: {
+        limit?: number,
+        offset?: number,
+        /**
+         * role
+         */
+        role?: number,
+        /**
+         * staffType
+         */
+        staffType?: 'ACADEMIC' | 'NON_ACADEMIC',
+    }): CancelablePromise<Page_StaffDto_> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/staff/filter',
+            query: {
+                'limit': limit,
+                'offset': offset,
+                'role': role,
+                'staffType': staffType,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
 
-  /**
-   * uploadProfilePic
-   * @returns string OK
-   * @returns any Created
-   * @throws ApiError
-   */
-  public static uploadProfilePicUsingPost1({
-    id,
-    photo,
-    xTenantId,
-  }: {
     /**
-     * id
+     * removeStaffEvaluatorRole
+     * @returns any OK
+     * @throws ApiError
      */
-    id: string;
+    public static removeStaffEvaluatorRoleUsingPut({
+        staffId,
+    }: {
+        /**
+         * staffId
+         */
+        staffId: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/staff/remove-evaluator-role/{staffId}',
+            path: {
+                'staffId': staffId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
     /**
-     * photo
+     * getStaffStatistics
+     * @returns StaffDashboardStats OK
+     * @throws ApiError
      */
-    photo: Blob;
+    public static getStaffStatisticsUsingGet(): CancelablePromise<StaffDashboardStats> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/staff/statistics',
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
     /**
-     * X-TENANT-ID
+     * bulkUploadStaffData
+     * @returns any OK
+     * @throws ApiError
      */
-    xTenantId: string;
-  }): CancelablePromise<string | any> {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/staff/{id}/uploads/profile-pic',
-      path: {
-        id: id,
-      },
-      headers: {
-        'X-TENANT-ID': xTenantId,
-      },
-      body: photo,
-      errors: {
-        401: `Unauthorized`,
-        403: `Forbidden`,
-        404: `Not Found`,
-      },
-    });
-  }
+    public static bulkUploadStaffDataUsingPost({
+        file,
+        xTenantId,
+    }: {
+        /**
+         * file
+         */
+        file: Blob,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/staff/uploads/template',
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            body: file,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
+    /**
+     * getStaff
+     * @returns StaffDto OK
+     * @throws ApiError
+     */
+    public static getStaffUsingGet({
+        id,
+    }: {
+        /**
+         * id
+         */
+        id: string,
+    }): CancelablePromise<StaffDto> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/staff/{id}',
+            path: {
+                'id': id,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
+    /**
+     * deleteStaff
+     * @returns any OK
+     * @throws ApiError
+     */
+    public static deleteStaffUsingDelete({
+        id,
+        permanently,
+    }: {
+        /**
+         * id
+         */
+        id: string,
+        /**
+         * permanently
+         */
+        permanently: boolean,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/staff/{id}',
+            path: {
+                'id': id,
+            },
+            query: {
+                'permanently': permanently,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+            },
+        });
+    }
+
+    /**
+     * uploadProfilePic
+     * @returns string OK
+     * @returns any Created
+     * @throws ApiError
+     */
+    public static uploadProfilePicUsingPost1({
+        id,
+        photo,
+        xTenantId,
+    }: {
+        /**
+         * id
+         */
+        id: string,
+        /**
+         * photo
+         */
+        photo: Blob,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<string | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/staff/{id}/uploads/profile-pic',
+            path: {
+                'id': id,
+            },
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            body: photo,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
+    /**
+     * uploadSignature
+     * @returns string OK
+     * @returns any Created
+     * @throws ApiError
+     */
+    public static uploadSignatureUsingPost({
+        id,
+        signature,
+        xTenantId,
+    }: {
+        /**
+         * id
+         */
+        id: string,
+        /**
+         * signature
+         */
+        signature: Blob,
+        /**
+         * X-TENANT-ID
+         */
+        xTenantId: string,
+    }): CancelablePromise<string | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/staff/{id}/uploads/signature',
+            path: {
+                'id': id,
+            },
+            headers: {
+                'X-TENANT-ID': xTenantId,
+            },
+            body: signature,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
 }

@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type CreateTraitDefinitionRequest = {
-  definition: string;
-  td_order: number;
+    definition: string;
+    td_order: number;
 };
+

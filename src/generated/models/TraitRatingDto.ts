@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type TraitRatingDto = {
-  id?: string;
-  rating_name?: string;
+    id?: string;
+    rating_name?: string;
 };
+

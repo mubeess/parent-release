@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type ModuleSetting = {
-  description?: string;
-  name?: string;
-  selected?: boolean;
+    description?: string;
+    name?: string;
+    selected?: boolean;
 };
+

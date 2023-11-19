@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type SchoolFeesCheckoutRequest = {
-  student_id: string;
-  term_id: string;
+    student_id: string;
+    term_id: string;
 };
+

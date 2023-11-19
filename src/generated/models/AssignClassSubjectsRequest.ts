@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type AssignClassSubjectsRequest = {
-  class_level_ids?: Array<string>;
-  subject_ids: Array<string>;
+    class_level_ids?: Array<string>;
+    subject_ids: Array<string>;
 };
+

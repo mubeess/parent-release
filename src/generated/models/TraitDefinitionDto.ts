@@ -5,8 +5,9 @@
 import type { TraitDto } from './TraitDto';
 
 export type TraitDefinitionDto = {
-  definition?: string;
-  id?: string;
-  td_order?: number;
-  trait?: TraitDto;
+    definition?: string;
+    id?: string;
+    td_order?: number;
+    trait?: TraitDto;
 };
+

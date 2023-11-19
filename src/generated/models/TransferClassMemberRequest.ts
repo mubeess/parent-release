@@ -5,6 +5,7 @@
 import type { ClassInfoParam } from './ClassInfoParam';
 
 export type TransferClassMemberRequest = {
-  class_info_param: ClassInfoParam;
-  student_ids?: Array<string>;
+    class_info_param: ClassInfoParam;
+    student_ids?: Array<string>;
 };
+

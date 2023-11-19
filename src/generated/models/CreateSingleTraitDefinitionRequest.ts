@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type CreateSingleTraitDefinitionRequest = {
-  definition: string;
-  td_order: number;
-  trait_id: string;
+    definition: string;
+    td_order: number;
+    trait_id: string;
 };
+

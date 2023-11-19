@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type AdminResetPasswordRequest = {
-  password: string;
-  user_id: string;
+    password: string;
+    user_id: string;
 };
+

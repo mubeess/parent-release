@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type CreatePaymentIntentResponse = {
-  client_secret?: string;
-  transaction_ref?: string;
+    client_secret?: string;
+    transaction_ref?: string;
 };
+

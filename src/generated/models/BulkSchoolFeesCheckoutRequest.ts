@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type BulkSchoolFeesCheckoutRequest = {
-  student_ids?: Array<string>;
-  term_id: string;
+    student_ids?: Array<string>;
+    term_id: string;
 };
+

@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type CreateArmRequest = {
-  active_status: 'ACTIVE' | 'INACTIVE';
-  name: string;
+    active_status: 'ACTIVE' | 'INACTIVE';
+    name: string;
 };
+

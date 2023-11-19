@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 export type InternalUserSignupRequest = {
-  email: string;
-  first_name: string;
-  gender: 'FEMALE' | 'MALE';
-  surname: string;
+    email: string;
+    first_name: string;
+    gender: 'FEMALE' | 'MALE';
+    surname: string;
 };
+

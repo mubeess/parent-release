@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type CountryDto = {
-  country_code?: string;
-  iso3?: string;
-  name?: string;
+    country_code?: string;
+    iso3?: string;
+    name?: string;
 };
+

@@ -3,7 +3,8 @@
 /* eslint-disable */
 
 export type ConfirmUserRequest = {
-  email?: string;
-  token: string;
-  user_id?: string;
+    email?: string;
+    token: string;
+    user_id?: string;
 };
+

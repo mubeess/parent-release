@@ -5,6 +5,8 @@
 import type { AssessmentAndBreakdownRequest } from './AssessmentAndBreakdownRequest';
 
 export type AssessmentConfigurationRequest = {
-  assessment_format_name: string;
-  assessments_and_breakdowns?: Array<AssessmentAndBreakdownRequest>;
+    assessment_format_name: string;
+    assessments_and_breakdowns?: Array<AssessmentAndBreakdownRequest>;
+    enable_sub_breakdowns?: boolean;
 };
+

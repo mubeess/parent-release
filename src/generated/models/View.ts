@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type View = {
-  content_type?: string;
+    content_type?: string;
 };
+

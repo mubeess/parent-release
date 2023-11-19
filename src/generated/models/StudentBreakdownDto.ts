@@ -5,6 +5,7 @@
 import type { StudentLiteDto } from './StudentLiteDto';
 
 export type StudentBreakdownDto = {
-  amount?: number;
-  student?: StudentLiteDto;
+    amount?: number;
+    student?: StudentLiteDto;
 };
+
