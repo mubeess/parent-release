@@ -5,4 +5,4 @@ const publicUrl = {
   production: 'safsims.com',
 };
 
-export default publicUrl.development;
+export default publicUrl.production;

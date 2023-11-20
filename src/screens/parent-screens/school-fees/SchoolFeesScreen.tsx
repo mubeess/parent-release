@@ -101,7 +101,44 @@ const SchoolFeesScreen = ({ navigation }) => {
                   <Text style={{ fontWeight: 'bold' }}>“Record payment”</Text> button
                 </Text>
 
-                <TouchableOpacity onPress={() => setModalOpen(true)} style={[styles.recordButton]}>
+                <TouchableOpacity
+                  onPress={() => {
+                    const allStudents = [];
+                    let myTerm = '';
+                    Object.keys(groupedTermsBySessions).map((session, index) => {
+                      groupedTermsBySessions[session]
+                        .filter((term) =>
+                          invoiceSummaries.find(
+                            (item) =>
+                              item.term?.term_id === term.term_id &&
+                              (item?.invoice_summary?.balance || 0) > 0,
+                          ),
+                        )
+                        .map((term, index) => {
+                          myTerm = term;
+                          const student = invoiceSummaries
+                            .filter((item) => item.term?.term_id === term.term_id)
+                            .sort((a, b) =>
+                              (a.invoice_summary?.student_info?.first_name || '').localeCompare(
+                                b.invoice_summary?.student_info?.first_name || '',
+                              ),
+                            );
+                          allStudents.push(student);
+                        });
+                    });
+
+                    handleOfflineRecord?.(
+                      allStudents
+                        .map((item) => ({
+                          ...(item.invoice_summary?.student_info || {}),
+                          amount: item.invoice_summary?.balance || 0,
+                        }))
+                        .filter((item) => item.amount > 0),
+                      myTerm || '',
+                    );
+                  }}
+                  style={[styles.recordButton]}
+                >
                   <Text style={{ color: '#FFF' }}>Record payment</Text>
                 </TouchableOpacity>
               </View>

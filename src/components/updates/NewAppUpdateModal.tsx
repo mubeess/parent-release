@@ -26,7 +26,7 @@ const NewAppUpdateModal = () => {
 
   useEffect(() => {
     if (update) {
-      const result = semver.compare('1.1.0', update.version);
+      const result = semver.compare('1.1.3', update.version);
       console.log('update: ', version, result);
       if (result === -1) {
         onOpen();

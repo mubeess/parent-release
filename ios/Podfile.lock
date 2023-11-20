@@ -1,5 +1,29 @@
 PODS:
+  - appcenter-analytics (5.0.0):
+    - AppCenter/Analytics (~> 5.0)
+    - AppCenterReactNativeShared (~> 5.0)
+    - React-Core
+  - appcenter-core (5.0.0):
+    - AppCenterReactNativeShared (~> 5.0)
+    - React-Core
+  - appcenter-crashes (5.0.0):
+    - AppCenter/Crashes (~> 5.0)
+    - AppCenterReactNativeShared (~> 5.0)
+    - React-Core
+  - AppCenter/Analytics (5.0.3):
+    - AppCenter/Core
+  - AppCenter/Core (5.0.3)
+  - AppCenter/Crashes (5.0.3):
+    - AppCenter/Core
+  - AppCenterReactNativeShared (5.0.0):
+    - AppCenter/Core (= 5.0.3)
+  - Base64 (1.1.2)
   - boost (1.76.0)
+  - CodePush (8.1.0):
+    - Base64 (~> 1.1)
+    - JWT (~> 3.0.0-beta.12)
+    - React-Core
+    - SSZipArchive (~> 2.2.2)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.71.7)
   - FBReactNativeSpec (0.71.7):
@@ -9,26 +33,15 @@ PODS:
     - React-Core (= 0.71.7)
     - React-jsi (= 0.71.7)
     - ReactCommon/turbomodule/core (= 0.71.7)
-  - Firebase/Analytics (10.12.0):
-    - Firebase/Core
-  - Firebase/Core (10.12.0):
+  - Firebase/AnalyticsWithoutAdIdSupport (10.12.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 10.12.0)
+    - FirebaseAnalytics/WithoutAdIdSupport (~> 10.12.0)
   - Firebase/CoreOnly (10.12.0):
     - FirebaseCore (= 10.12.0)
-  - FirebaseAnalytics (10.12.0):
-    - FirebaseAnalytics/AdIdSupport (= 10.12.0)
+  - FirebaseAnalytics/WithoutAdIdSupport (10.12.0):
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
-    - GoogleUtilities/MethodSwizzler (~> 7.11)
-    - GoogleUtilities/Network (~> 7.11)
-    - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (10.12.0):
-    - FirebaseCore (~> 10.0)
-    - FirebaseInstallations (~> 10.0)
-    - GoogleAppMeasurement (= 10.12.0)
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 10.12.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
@@ -47,20 +60,6 @@ PODS:
     - PromisesObjC (~> 2.1)
   - fmt (6.2.1)
   - glog (0.3.5)
-  - GoogleAppMeasurement (10.12.0):
-    - GoogleAppMeasurement/AdIdSupport (= 10.12.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
-    - GoogleUtilities/MethodSwizzler (~> 7.11)
-    - GoogleUtilities/Network (~> 7.11)
-    - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (10.12.0):
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 10.12.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
-    - GoogleUtilities/MethodSwizzler (~> 7.11)
-    - GoogleUtilities/Network (~> 7.11)
-    - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
   - GoogleAppMeasurement/WithoutAdIdSupport (10.12.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
@@ -89,6 +88,8 @@ PODS:
   - hermes-engine (0.71.7):
     - hermes-engine/Pre-built (= 0.71.7)
   - hermes-engine/Pre-built (0.71.7)
+  - JWT (3.0.0-beta.14):
+    - Base64 (~> 1.1.2)
   - libevent (2.1.12)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
@@ -347,7 +348,7 @@ PODS:
   - React-jsinspector (0.71.7)
   - React-logger (0.71.7):
     - glog
-  - react-native-blob-util (0.19.2):
+  - react-native-blob-util (0.19.4):
     - React-Core
   - react-native-image-picker (5.6.0):
     - React-Core
@@ -452,7 +453,7 @@ PODS:
   - RNCAsyncStorage (1.17.12):
     - React-Core
   - RNFBAnalytics (18.3.0):
-    - Firebase/Analytics (= 10.12.0)
+    - Firebase/AnalyticsWithoutAdIdSupport (= 10.12.0)
     - React-Core
     - RNFBApp
   - RNFBApp (18.3.0):
@@ -496,10 +497,15 @@ PODS:
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
+  - SSZipArchive (2.2.3)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - appcenter-analytics (from `../node_modules/appcenter-analytics`)
+  - appcenter-core (from `../node_modules/appcenter`)
+  - appcenter-crashes (from `../node_modules/appcenter-crashes`)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
+  - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
@@ -555,6 +561,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppCenter
+    - AppCenterReactNativeShared
+    - Base64
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -563,13 +572,23 @@ SPEC REPOS:
     - fmt
     - GoogleAppMeasurement
     - GoogleUtilities
+    - JWT
     - libevent
     - nanopb
     - PromisesObjC
+    - SSZipArchive
 
 EXTERNAL SOURCES:
+  appcenter-analytics:
+    :path: "../node_modules/appcenter-analytics"
+  appcenter-core:
+    :path: "../node_modules/appcenter"
+  appcenter-crashes:
+    :path: "../node_modules/appcenter-crashes"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
+  CodePush:
+    :path: "../node_modules/react-native-code-push"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -672,7 +691,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppCenter: a4070ec3d4418b5539067a51f57155012e486ebd
+  appcenter-analytics: fbeef54afe6fa91d3803dfd31499817baa81fec0
+  appcenter-core: e192ea8b373bebd3e44998882b43311078bd7dda
+  appcenter-crashes: 266063788bcebd553e621344a54286395a8e2010
+  AppCenterReactNativeShared: 01df23849b1c3c6eb8c4049f54322635650e98f0
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
+  CodePush: 255d7607f428dcbec39085f81a206b170e01d012
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: a89a0525bc7ca174675045c2b492b5280d5a2470
   FBReactNativeSpec: 7714e6bc1e9ea23df6c4cb42f0b2fd9c6a3a559c
@@ -686,6 +712,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 2d800fab85e7848b1e66a6f8ce5bca06c5aad892
   GoogleUtilities: c63691989bf362ba0505507da00eeb326192e83e
   hermes-engine: 4438d2b8bf8bebaba1b1ac0451160bab59e491f8
+  JWT: ef71dfb03e1f842081e64dc42eef0e164f35d251
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: 7f84fefd35e085854377a97e19424ae424cc7a9e
@@ -703,7 +730,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: eaa5f71eb8f6861cf0e57f1a0f52aeb020d9e18e
   React-jsinspector: 9885f6f94d231b95a739ef7bb50536fb87ce7539
   React-logger: 3f8ebad1be1bf3299d1ab6d7f971802d7395c7ef
-  react-native-blob-util: c74e4ce87c76d244761c68623df78bf0d1638271
+  react-native-blob-util: 30a6c9fd067aadf9177e61a998f2c7efb670598d
   react-native-image-picker: db60857e03d63721f19b6f4027de20429ddd9cba
   react-native-paystack-webview: d8ed4a0300c7872673e186294cb6176cca46c696
   react-native-pdf: 7c0e91ada997bac8bac3bb5bea5b6b81f5a3caae
@@ -726,15 +753,16 @@ SPEC CHECKSUMS:
   ReactNativeUiLib: 511a5eb03809a0b27f6aefa2b4d6f7c2d6ae4053
   RNAppleAuthentication: 0571c08da8c327ae2afc0261b48b4a515b0286a6
   RNCAsyncStorage: 09fc8595e6d6f6d5abf16b23a56b257d9c6b7c5b
-  RNFBAnalytics: 72da412180980160a7648e2ce8e2fe5d6d1f837f
+  RNFBAnalytics: d9b2e4e7f48db483d3dee78714a49db80220dc6e
   RNFBApp: f0b5cf917b0b91a0ae890fbbaec0fb5d3285ea46
   RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
   RNReanimated: 9976fbaaeb8a188c36026154c844bf374b3b7eeb
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
+  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: d56980c8914db0b51692f55533409e844b66133c
 
-PODFILE CHECKSUM: d855d988f42067ab862fc8a1b862dfc85ab022e8
+PODFILE CHECKSUM: f95c3c54447f84ad395cdbd10f6beed11999147c
 
 COCOAPODS: 1.12.1

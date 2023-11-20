@@ -26,6 +26,7 @@ const useConfigurations = ({ level_id }) => {
           classLevelId: level_id,
         }),
       );
+
       setConfigurations(data);
       setLoading(false);
     } catch (error) {

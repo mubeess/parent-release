@@ -32,6 +32,7 @@ const useLogin = ({ transfer_code }: Props) => {
 
   const loginUser = async ({ username, password, code, callback }: IProps) => {
     startLoading();
+
     const url = code ? '/auth/google/transfer' : '/auth/login';
     const payload = code ? { code } : { username, password };
     try {
@@ -53,14 +54,12 @@ const useLogin = ({ transfer_code }: Props) => {
         user_type: item.toLowerCase(),
         ...ref[item.toLowerCase()],
       }));
-
       const parent = userTypes.find((item) => item.user_type === UserTypesEnum.PARENT);
-
       if (!parent) {
         Toast.show({
           type: 'error',
           text1: 'Error',
-          text2: "You don't have a parent role",
+          text2: "You don't have permission to access this app",
         });
         stopLoading();
         return;

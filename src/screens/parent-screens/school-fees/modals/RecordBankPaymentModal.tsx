@@ -1,8 +1,8 @@
 import { useTheme } from '@react-navigation/native';
-import BottomSlider from '@safsims/components/BottomSlider/BottomSlider';
 import Button from '@safsims/components/Button/Button';
 import Currency from '@safsims/components/Currency/Currency';
 import DatePicker from '@safsims/components/DatePicker/DatePicker';
+import Icon from '@safsims/components/Icon/Icon';
 import { UploadIcon } from '@safsims/components/Images';
 import Input from '@safsims/components/Input/Input';
 import Select from '@safsims/components/Select/Select';
@@ -14,7 +14,15 @@ import { lightTheme } from '@safsims/utils/Theme';
 import { returnUpdatedList } from '@safsims/utils/utils';
 import moment from 'moment';
 import { useEffect, useMemo, useState } from 'react';
-import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
+import {
+  Dimensions,
+  Modal,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Toast from 'react-native-toast-message';
@@ -140,13 +148,7 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
   };
 
   const onSubmit = () => {
-    if (
-      !values.accountName ||
-      !values.accountNumber ||
-      !values.amountPaid ||
-      !values.bank ||
-      !values.tellerNumber
-    ) {
+    if (!values.accountName || !values.amountPaid || !values.bank || !values.tellerNumber) {
       return Toast.show({
         type: 'error',
         text1: 'Error',
@@ -170,13 +172,13 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
         text2: 'less than the total amount paid',
       });
     }
-    if (totalPerChild > parseInt(`${values.amountPaid}`)) {
-      return Toast.show({
-        type: 'error',
-        text1: 'The total breakdown cannot be',
-        text2: 'more than the total amount paid',
-      });
-    }
+    // if (totalPerChild > parseInt(`${values.amountPaid}`)) {
+    //   return Toast.show({
+    //     type: 'error',
+    //     text1: 'The total breakdown cannot be',
+    //     text2: 'more than the total amount paid',
+    //   });
+    // }
     // if (isMulti && totalBalance > values.amountPaid) {
     //   return Notify('You cannot pay less than the total amount.', {
     //     status: 'error',
@@ -186,24 +188,36 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
   };
 
   return (
-    <BottomSlider height={SCREEN_HEIGHT - 150} isOpen={isOpen} onClose={onClose}>
+    <Modal animationType="slide" transparent={true} visible={isOpen} onRequestClose={onClose}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.title} h2>
-            Record Bank Payment
-          </Text>
+          <View style={styles.close}>
+            <Text style={styles.title} h2>
+              Record Bank Payment
+            </Text>
+            <TouchableOpacity
+              style={{
+                backgroundColor: '#FFF',
+                padding: 10,
+                borderRadius: 25,
+              }}
+              onPress={onClose}
+            >
+              <Icon name="close-square" size={24} />
+            </TouchableOpacity>
+          </View>
           <Text>
             By recording all payment you made to banks, the school can freely crosscheck their books
             without disturbing you.
           </Text>
         </View>
-        <View style={styles.divider}></View>
+        <View style={styles.divider} />
         <KeyboardAwareScrollView
           style={styles.scrollStyle}
           contentContainerStyle={styles.scrollContent}
         >
           <Select
-            label="Bank"
+            label="Shool Bank"
             required
             placeholder="Select bank"
             options={banks.map((bank) => ({
@@ -222,20 +236,11 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
             style={styles.input}
             value={values.accountName}
             onChange={(val) => handleChange('accountName', val)}
-            placeholder="Enter Acount Name"
+            placeholder="Acount Name"
             required
-            label="Account Name"
+            label="School Account Name"
           />
-          <Input
-            Icon={<Text style={styles.iconText}>0-9</Text>}
-            type="number-pad"
-            style={styles.input}
-            value={values.accountNumber}
-            onChange={(val) => handleChange('accountNumber', val)}
-            placeholder="Enter Acount Number"
-            required
-            label="Account Number"
-          />
+
           <Input
             Icon={<Text style={styles.iconText}>A-Z</Text>}
             style={styles.input}
@@ -243,7 +248,7 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
             onChange={(val) => handleChange('tellerNumber', val)}
             placeholder="Enter Teller Number"
             required
-            label="Teller Number"
+            label="Teller/Reference Number"
           />
           <Input
             style={styles.input}
@@ -291,7 +296,7 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
             />
           ))}
         </KeyboardAwareScrollView>
-        <View style={styles.divider}></View>
+        <View style={styles.divider} />
         <View style={styles.buttons}>
           <Button pale onPress={onClose} style={{ width: '40%' }} label="Cancel" />
           <Button
@@ -302,13 +307,14 @@ export default function RecordBankPaymentModal({ isOpen, onClose, termId, studen
           />
         </View>
       </View>
-    </BottomSlider>
+    </Modal>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: lightTheme.colors.PrimaryBackground,
+    height: Dimensions.get('window').height - 100,
+    marginTop: 'auto',
   },
   title: {
     fontWeight: '600',
@@ -431,5 +437,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
+  },
+  close: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
   },
 });

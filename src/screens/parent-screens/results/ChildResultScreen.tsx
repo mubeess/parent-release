@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import ResultCard from './components/ResultCard';
 
+
 const ChildResultScreen = ({ navigation }) => {
   const { colors } = useTheme();
   const { currentTerm } = useCurrentTermGet();

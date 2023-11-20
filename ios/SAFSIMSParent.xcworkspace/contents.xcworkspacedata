@@ -8,9 +8,6 @@
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:SAFSIMSParent.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:SAFSIMSParent.xcodeproj">
    </FileRef>
 </Workspace>

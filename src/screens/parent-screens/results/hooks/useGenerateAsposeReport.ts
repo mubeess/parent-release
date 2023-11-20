@@ -19,9 +19,7 @@ const useGenerateAsposeReport = () => {
           includeUnapproved: false,
         }),
       );
-      console.log(data, 'yoooo');
       setPdfURL(data);
-
       setLoading(false);
       setError(false);
     } catch (error) {

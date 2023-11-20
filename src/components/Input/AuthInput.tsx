@@ -1,5 +1,6 @@
-import {lightTheme} from '@safsims/utils/Theme';
-import {memo, useEffect, useRef} from 'react';
+import { useTheme } from '@react-navigation/native';
+import { lightTheme } from '@safsims/utils/Theme';
+import { memo, useEffect, useRef, useState } from 'react';
 import {
   KeyboardType,
   StyleSheet,
@@ -14,11 +15,10 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import {useTheme} from '@react-navigation/native';
+import { EyeCloseIcon, EyeOpenIcon } from '../Images';
 import Text from '../Text/Text';
 
-const AnimatedTouchableOpacity =
-  Animated.createAnimatedComponent(TouchableOpacity);
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 interface InputProps {
   onChange: (e: string) => void;
   text: string;
@@ -38,14 +38,15 @@ function AuthInput({
   error,
   secureEntry = false,
 }: InputProps) {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const translateYValue = useSharedValue(25);
   const borderWidthValue = useSharedValue(0);
+  const [secured, setSecured] = useState(true);
   const reanimtedTextStyle = useAnimatedStyle(() => {
     return {
       transform: [
-        {translateY: translateYValue.value},
-        {scale: translateYValue.value == 25 ? 1 : 0.7},
+        { translateY: translateYValue.value },
+        { scale: translateYValue.value == 25 ? 1 : 0.7 },
       ],
     };
   });
@@ -73,14 +74,14 @@ function AuthInput({
         style={[styles.inputContainer, reanimtedBorderStyle]}
         onPress={() => {
           ref?.current?.focus();
-        }}>
-        <Animated.Text
-          style={[styles.label, reanimtedTextStyle, {color: '#999'}]}>
+        }}
+      >
+        <Animated.Text style={[styles.label, reanimtedTextStyle, { color: '#999' }]}>
           {label}
         </Animated.Text>
         <TextInput
           ref={ref}
-          secureTextEntry={secureEntry}
+          secureTextEntry={secureEntry ? secured : false}
           keyboardType={type}
           autoCapitalize="none"
           onChangeText={onChange}
@@ -88,8 +89,13 @@ function AuthInput({
           onFocus={() => {
             translateYValue.value = withTiming(5);
           }}
-          style={[styles.textInput, {color: colors.PrimaryFontColor}]}
+          style={[styles.textInput, { color: colors.PrimaryFontColor }]}
         />
+        {secureEntry && (
+          <TouchableOpacity onPress={() => setSecured((prev) => !prev)} style={styles.iconRight}>
+            {secured ? <EyeOpenIcon /> : <EyeCloseIcon />}
+          </TouchableOpacity>
+        )}
       </AnimatedTouchableOpacity>
       {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
@@ -141,6 +147,11 @@ const styles = StyleSheet.create({
     color: 'red',
     marginTop: 10,
     fontStyle: 'italic',
+  },
+  iconRight: {
+    position: 'absolute',
+    right: 0,
+    marginRight: 20,
   },
 });
 

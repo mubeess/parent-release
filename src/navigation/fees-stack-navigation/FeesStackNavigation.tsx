@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AllChildrenPaymentScreen from '@safsims/screens/parent-screens/school-fees/AllChildrenPaymentScreen';
 import ChildInvoiceScreen from '@safsims/screens/parent-screens/school-fees/ChildInvoiceScreen';
 import InvoiceHistoryScreen from '@safsims/screens/parent-screens/school-fees/invoice-history/InvoiceHistoryScreen';
+// import InvoiceHistoryScreen from '@safsims/screens/parent-screens/school-fees/invoice-history/InvoiceHistoryScreen';
 import PaymentHistoryScreen from '@safsims/screens/parent-screens/school-fees/payment-history/PaymentHistoryScreen';
 import SchoolFeesScreen from '@safsims/screens/parent-screens/school-fees/SchoolFeesScreen';
 import useTabBarDisplay from '@safsims/utils/useTabBarDisplay/useTabBarDisplay';

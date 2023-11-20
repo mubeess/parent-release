@@ -17,6 +17,7 @@ const useMakeBulkPayment = () => {
           request: { ...payload, web: true, latest_version: true },
         }),
       );
+      console.log(data);
       if (payload.payment_method === 'PAYSTACK') {
         const configObj = {
           splitCode: data?.split_code,

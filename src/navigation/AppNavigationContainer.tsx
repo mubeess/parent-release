@@ -5,13 +5,14 @@ import { updateAppUserState } from '@safsims/redux/users/actions';
 import { darkTheme, lightTheme } from '@safsims/utils/Theme';
 import { useCallback, useEffect } from 'react';
 import { Appearance, ColorSchemeName } from 'react-native';
+import CodePush from 'react-native-code-push';
 import 'react-native-gesture-handler';
 import { ThemeManager } from 'react-native-ui-lib';
 import { useDispatch } from 'react-redux';
 import AppStackScreens from './AppStackScreen';
 import AuthStackScreens from './auth-stack-navigation/AuthStackNavigation';
 import OnboardingStackScreens from './onboarding-stack-navigation/OnboardinStackNavigation';
-
+const codePushOptions = { checkFrequesncy: CodePush.CheckFrequency.ON_APP_RESUME };
 const AppNavigationContainer = () => {
   const dispatch = useDispatch();
   const theme = useAppSelector((state) => state.user?.theme);
@@ -61,4 +62,4 @@ const AppNavigationContainer = () => {
   );
 };
 
-export default AppNavigationContainer;
+export default CodePush(codePushOptions)(AppNavigationContainer);

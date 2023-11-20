@@ -92,14 +92,23 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
   const [removedChildren, setRemovedChildren] = useState<any[]>([]);
 
   const studentBreakdown = bulkPaymentInfo
+    ?.filter((paymentItem) => {
+      const validateAmount = (paymentItem?.total_balance || 0) > 0;
+      const isRemoved = removedChildren?.findIndex((item) => {
+        return (
+          `${item?.id}:${item?.name}` ===
+          `${paymentItem?.student_info?.student_id}:${paymentItem?.student_info?.first_name} ${paymentItem?.student_info?.other_names} ${paymentItem?.student_info?.last_name}`
+        );
+      });
+      return validateAmount && isRemoved < 0;
+    })
     ?.map((child) => {
       return {
         student_id: child?.student_info?.id!,
         term_id: child?.term?.school_term_definition?.id!,
         amount: child?.total_balance || 0,
       };
-    })
-    .filter((x) => (x.amount || 0) > 0);
+    });
 
   const outstandingAmount = children.map((item) => item.amount || 0);
   const total_amount = outstandingAmount.reduce((a, b) => a + b, 0);
@@ -139,6 +148,7 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
         breakdown: studentBreakdown,
         redirect_url: '',
       };
+
       await startPaymentProcess(data, paymentCheckoutCallback);
       callback?.();
     }
@@ -157,6 +167,7 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
 
   const onPaystackPaymentSuccess = useCallback(() => {
     setSafsimsTransactionRef(config.reference);
+
     setStartOnlinePayment(false);
     validationModalHandler.onOpen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -194,7 +205,9 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
       splitCode,
       splitId,
     };
+    console.log(obj, 'obk');
     setConfig(obj);
+
     setStartOnlinePayment(true);
   };
 
@@ -309,8 +322,6 @@ export default function AllChildrenPaymentScreen({ navigation, route }) {
             <PayWithFlutterwave
               onRedirect={handleFlutterRedirect}
               onInitializeError={(error) => {
-                console.log('error: ', error);
-
                 Notify({
                   type: 'error',
                   message: 'An error occurred while initializing flutterwave. Please retry',

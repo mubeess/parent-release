@@ -26,7 +26,7 @@ export default function PaymentOverview({ amount, navigation }) {
         <View style={styles.mainInfo}>
           <Icon name="info-circle" size={20} />
           <Text style={{ fontSize: 12, marginLeft: 5 }}>
-            This is an addition of all your children outstanding fees
+            This is the sum of all your children outstanding fees
           </Text>
         </View>
       </View>
@@ -49,6 +49,7 @@ export default function PaymentOverview({ amount, navigation }) {
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('Fees', {
+              params: { term: currentTerm, defaultPaymentOpen: false },
               screen: 'FeesHome',
             })
           }
