@@ -17,8 +17,10 @@ const useGenerateAsposeReport = () => {
           termId,
           templateId,
           includeUnapproved: false,
+          
         }),
       );
+      console.log(data, 'io');
       setPdfURL(data);
       setLoading(false);
       setError(false);

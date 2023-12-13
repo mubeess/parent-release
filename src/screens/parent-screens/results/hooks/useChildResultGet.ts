@@ -21,6 +21,7 @@ const useChildResultGet = () => {
           studentId,
           termId,
           resultConfigId,
+          includeUnapproved: false,
         }),
       );
       setChildResult(data);

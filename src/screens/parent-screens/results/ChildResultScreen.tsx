@@ -1,6 +1,5 @@
 import { useTheme } from '@react-navigation/native';
 import AppHeader from '@safsims/components/Header/AppHeader';
-import Icon from '@safsims/components/Icon/Icon';
 import Text from '@safsims/components/Text/Text';
 import useCurrentTermGet from '@safsims/general-hooks/useCurrentTermGet';
 import useLogAnalytics from '@safsims/general-hooks/useLogAnalytics';
@@ -9,7 +8,6 @@ import { lightTheme } from '@safsims/utils/Theme';
 import { useEffect } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import ResultCard from './components/ResultCard';
-
 
 const ChildResultScreen = ({ navigation }) => {
   const { colors } = useTheme();
@@ -21,50 +19,27 @@ const ChildResultScreen = ({ navigation }) => {
     logEvent('resultScreen');
   }, []);
   return (
-    <View style={{ flex: 1, backgroundColor: colors.PrimaryBackground }}>
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
       <AppHeader navigation={navigation} pageTitle="Results" />
+      <View style={styles.session}>
+        <View style={{ width: '45%' }}>
+          <Text style={{ fontWeight: 'bold' }}>SESSION</Text>
+          <View>
+            <Text>{currentTerm?.session?.name}</Text>
+          </View>
+        </View>
+
+        <View style={styles.divider} />
+        <View style={{ width: '45%', alignItems: 'flex-end' }}>
+          <Text style={{ fontWeight: 'bold' }}>TERM</Text>
+          <View>
+            <Text>{currentTerm?.school_term_definition?.name}</Text>
+          </View>
+        </View>
+      </View>
       <View style={{ flex: 1 }}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View
-            style={{
-              borderColor: colors.PrimaryBorderColor,
-              padding: 20,
-              //   marginVertical: 20,
-            }}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
-              <Icon name="calendar" />
-              <Text style={{ textTransform: 'capitalize', marginLeft: 5 }}>Current Session</Text>
-            </View>
-            <Text
-              style={{
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                fontSize: 24,
-                color: colors.PrimaryFontColor,
-              }}
-            >
-              {currentTerm?.session?.name}
-            </Text>
-          </View>
-          <View
-            style={{
-              borderTopWidth: 1,
-              borderBottomWidth: 1,
-              borderColor: colors.PrimaryBorderColor,
-              padding: 20,
-              marginBottom: 20,
-            }}
-          >
-            <Text style={{ textTransform: 'capitalize', marginBottom: 5 }}>Current Term</Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
-              <Icon name="calendar" />
-              <Text style={{ textTransform: 'uppercase', marginLeft: 5 }}>
-                {currentTerm?.school_term_definition?.name} - {currentTerm?.session?.name}
-              </Text>
-            </View>
-          </View>
-          <View style={{ flex: 1, paddingHorizontal: 20 }}>
+          <View style={{ flex: 1, padding: 20 }}>
             {children.map((child) => (
               <ResultCard
                 student={child.student}
@@ -124,5 +99,28 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     marginRight: 10,
     elevation: 5,
+  },
+  session: {
+    height: 100,
+    width: '100%',
+    borderBottomColor: lightTheme.colors.PrimaryBorderColor,
+    borderBottomWidth: 1,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderTopColor: lightTheme.colors.PrimaryBorderColor,
+    borderTopWidth: 1,
+  },
+  select: {
+    width: '40%',
+    borderWidth: 0,
+    elevation: 0,
+  },
+  divider: {
+    height: 50,
+    width: 1,
+    backgroundColor: lightTheme.colors.PrimaryBorderColor,
+    marginTop: 'auto',
   },
 });

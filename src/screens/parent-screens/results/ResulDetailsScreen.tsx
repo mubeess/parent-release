@@ -1,8 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import Button from '@safsims/components/Button/Button';
 import EmptyState from '@safsims/components/EmptyState/EmptyState';
-import AppSubHeader from '@safsims/components/Header/AppSubHeader';
-import Icon from '@safsims/components/Icon/Icon';
 import { Student } from '@safsims/components/Images';
 import Input from '@safsims/components/Input/Input';
 import Loader from '@safsims/components/Loader/Loader';
@@ -15,12 +13,15 @@ import { useAppSelector } from '@safsims/redux/hooks/useAppSelector';
 import { lightTheme } from '@safsims/utils/Theme';
 import { SelectOptionType } from '@safsims/utils/types';
 import React, { useEffect, useState } from 'react';
-
-// import { PERMISSIONS, RESULTS, check, request } from 'react-native-permissions';
+import { PERMISSIONS, RESULTS, check, request } from 'react-native-permissions';
 import Toast from 'react-native-toast-message';
 
+import Icon from '@safsims/components/Icon/Icon';
+import TimeTableHeader from '@safsims/screens/more-screens/calendar/components/TimeTableHeader';
+import TimeTableStudentHeader from '@safsims/screens/more-screens/calendar/components/TimeTableStudentHeader';
 import {
   Dimensions,
+  Image,
   Linking,
   Modal,
   RefreshControl,
@@ -30,8 +31,7 @@ import {
   View,
 } from 'react-native';
 import Pdf from 'react-native-pdf';
-// import RNFetchBlob from 'rn-fetch-blob';
-import ResultAccordion from './components/ResultAccordion';
+import RNFetchBlob from 'rn-fetch-blob';
 import SkillCard from './components/SkillCard';
 import SubjectAccordion from './components/SubjectAccordion';
 import useChildAttendanceSummaryGet from './hooks/useChildAttendanceSummaryGet';
@@ -48,12 +48,18 @@ type ViewType = 'chart' | 'text';
 export default function ResulDetailsScreen({ navigation, route }) {
   const { colors } = useTheme();
   const [activeView, setActiveView] = useState<ViewType>('text');
-  const { loadingResult, pdfURL, singleResult, setPdfURL } = useGenerateAsposeReport();
-  const { allTemplates, fetchTemplates, loadingTemplates } = useFetchReportTemplate();
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [extraOpen, setExtraOpen] = useState(false);
+  const parent = useAppSelector((state) => state.user?.parent);
+  const children = parent?.linked_students || [];
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   const [mailText, setMail] = useState('');
   const [emailList, setEmailList] = useState([]);
-
+  const { loadingResult, pdfURL, singleResult, setPdfURL } = useGenerateAsposeReport();
+  const { allTemplates, fetchTemplates, loadingTemplates } = useFetchReportTemplate();
   const { shareResult, loading: sharing } = useShareResult();
   const handleActiveView = () => {
     if (activeView === 'chart') {
@@ -61,11 +67,12 @@ export default function ResulDetailsScreen({ navigation, route }) {
     } else {
       setActiveView('chart');
     }
+    setExtraOpen(false);
   };
+  const [student, setStudent] = useState<StudentDto>(route.params.student);
 
-  const student: StudentDto = route.params.student;
   const termObj: TermDto = route.params.term;
-  const studentId = student?.id;
+
   const user = useAppSelector((user) => user.user);
   const schoolConfig = useAppSelector((data) => data.configuration.selectedSchool);
 
@@ -89,7 +96,7 @@ export default function ResulDetailsScreen({ navigation, route }) {
 
   const termId = termValue?.value;
 
-  const { configurations } = useConfigurations({
+  const { configurations, loading: loadingConfig } = useConfigurations({
     level_id: student?.class_level_id,
   });
 
@@ -97,10 +104,17 @@ export default function ResulDetailsScreen({ navigation, route }) {
   const { childResult, getChildResult, loading } = useChildResultGet();
   const { skills, getSkills, loading: loadingSkills } = useChildSkillsGet();
   const { attendanceSummary, getAttendanceSummary } = useChildAttendanceSummaryGet();
-  const { traitAssessments, getTraitAssessment } = useStudentTraitAssessmentGet();
-
-  const filterdConfig = configurations.find((config) => config.active);
-
+  const {
+    traitAssessments,
+    getTraitAssessment,
+    loading: loadingTraits,
+  } = useStudentTraitAssessmentGet();
+  const [filterdConfig, setFilteredConfig] = useState(
+    configurations.find((config) => config.active),
+  );
+  const traitNames = [
+    ...new Set(traitAssessments.map((item) => item.trait_definition?.trait?.trait_name)),
+  ];
   const classTeacherComment = studentComments.length
     ? studentComments.filter((item) => item.staff_comment_type === 'FORM_TEACHER_COMMENT')
     : [];
@@ -122,26 +136,27 @@ export default function ResulDetailsScreen({ navigation, route }) {
     if (student?.early_years) {
       getTraitAssessment({
         termId,
-        studentId,
+        studentId: student.id,
+        traitGroupId: filterdConfig?.trait_group?.id,
       });
     } else {
       getChildResult({
         termId,
-        studentId,
+        studentId: student.id,
         resultConfigId: filterdConfig?.id,
       });
     }
     getComments({
       termId,
-      studentId,
+      studentId: student.id,
     });
     getAttendanceSummary({
       termId,
-      studentId,
+      studentId: student.id,
     });
     getSkills({
       termId,
-      studentId,
+      studentId: student.id,
     });
   };
   const downloadResult = () => {
@@ -165,6 +180,7 @@ export default function ResulDetailsScreen({ navigation, route }) {
           text1: 'Download Successful',
           text2: 'Check your downloads!!',
         });
+        setExtraOpen(false);
       });
   };
 
@@ -185,45 +201,78 @@ export default function ResulDetailsScreen({ navigation, route }) {
       handleStudenAssessment(termObj?.term_id);
       setPdfURL('');
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAspose, student, filterdConfig]);
+  }, [isAspose, student, filterdConfig, configurations]);
 
   useEffect(() => {
     fetchTemplates();
   }, []);
 
+  useEffect(() => {
+    setFilteredConfig(configurations.find((config) => config.active));
+  }, [configurations]);
+
   return (
     <View style={styles.container}>
-      <SafeAreaComponent />
-      <AppSubHeader
-        onBack={() => navigation.goBack()}
-        iconName="setting-4"
-        avatar={student?.profile_pic}
-        name={`${student?.first_name} ${student?.surname}`}
-        onIconPress={handleActiveView}
+      {/* <SafeAreaComponent /> */}
+      {/* <StatusBar
+        translucent
+        backgroundColor={lightTheme.colors.PrimaryColor}
+        barStyle="light-content"
+      /> */}
+      <TimeTableHeader
+        withMenu
+        onMenuPress={() => setExtraOpen(true)}
+        name={`${termValue?.label}[${sessionValue?.label}]`}
+        short_name="Result breakdown"
       />
-
-      <ResultAccordion
+      <TimeTableStudentHeader
+        setTermOptions={setSelectTermOptions}
+        changeTerm={setTermValue}
+        swapStudent={() => setModalOpen(true)}
+        student={student}
         selectTermOptions={selectTermOptions}
         termValue={termValue}
-        sessionValue={sessionValue}
-        sessionOptions={Object.keys(groupedTermsBySessions).map((item) => ({
+        session={sessionValue}
+        selectSessionOptions={Object.keys(groupedTermsBySessions).map((item) => ({
           label: item,
           value: groupedTermsBySessions[item],
         }))}
-        onSessionChange={(e) => {
-          setSessionValue(e);
-          setTermValue(null);
-          setSelectTermOptions(e.value);
-        }}
-        onTermChange={(e) => {
-          setTermValue(e);
-          handleStudenAssessment(e?.value);
-        }}
       />
-      {loading || loadingComments || loadingSkills ? (
+      <View style={{ marginTop: 50 }} />
+      <View style={styles.configContainer}>
+        {configurations
+          .filter((conf) => conf.active)
+          .map((main) => (
+            <TouchableOpacity
+              onPress={() => {
+                setFilteredConfig(main);
+              }}
+              style={[
+                styles.config,
+                {
+                  backgroundColor:
+                    main.id == filterdConfig?.id ? lightTheme.colors.PrimaryColor : '#fff',
+                },
+              ]}
+              key={main.id}
+            >
+              <Text style={{ color: main.id == filterdConfig?.id ? '#fff' : '#000' }}>
+                {main.config_name}
+              </Text>
+            </TouchableOpacity>
+          ))}
+      </View>
+      {loading ||
+      loadingComments ||
+      loadingSkills ||
+      loadingTraits ||
+      loadingResult ||
+      loadingConfig ? (
         <Loader />
-      ) : isAspose ? (
+      ) : null}
+      {isAspose && !loading && !loadingResult && (
         <>
           {pdfURL && (
             <>
@@ -235,222 +284,265 @@ export default function ResulDetailsScreen({ navigation, route }) {
                 }}
                 style={styles.pdf}
               />
-              <View style={styles.share_button}>
-                <Button
-                  onPress={() => setModalVisible(true)}
-                  style={{
-                    width: '45%',
-                  }}
-                  label="Share result"
-                />
-                <Button
-                  disabled={filterdConfig ? (reportTemplate.length > 0 ? false : true) : true}
-                  onPress={() => {
-                    if (!filterdConfig || reportTemplate.length == 0) {
-                      return;
-                    }
-                    Linking.openURL(
-                      `${schoolConfig?.school_url}/student-report?studentId=${studentId}&termId=${termId}&configId=${filterdConfig?.id}&reportId=${reportTemplate[0].id}&fromParent=true`,
-                    );
-                  }}
-                  fontStyle={{
-                    color: '#000',
-                  }}
-                  style={{
-                    width: '45%',
-                    backgroundColor: '#fff',
-                    borderWidth: 1,
-                    borderColor: lightTheme.colors.PrimaryBorderColor,
-                    opacity: filterdConfig ? (reportTemplate.length > 0 ? 1 : 0.3) : 0.3,
-                  }}
-                  label="Download and print"
-                />
-              </View>
+            </>
+          )}
+
+          {!pdfURL && (
+            <>
+              <EmptyState Image={<Student />} title="Not Approved" info="Result not yet approved" />
             </>
           )}
         </>
-      ) : childResult?.term_result && childResult?.term_result?.result_approved ? (
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl
-              refreshing={loading || loadingComments || loadingSkills}
-              onRefresh={() => {
-                handleStudenAssessment(termId);
-              }}
-            />
-          }
-          style={styles.details}
-        >
-          <>
-            <View style={styles.grade}>
-              <View style={styles.final}>
-                <Text>FINAL GRADE</Text>
-                <Text h3>{childResult?.term_result?.result?.grade}</Text>
-              </View>
-              <View style={styles.class}>
-                <Text>NO IN CLASS</Text>
-                <Text style={styles.score}>{childResult?.term_result?.result?.out_of}</Text>
-              </View>
-            </View>
+      )}
+      {!isAspose && !loading && !loadingResult && !loadingComments && !loadingSkills && (
+        <>
+          {student.early_years ? (
+            <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 20 }}>
+              {traitNames.map((trait, ind) => {
+                const filteredData = traitAssessments.filter(
+                  (item) => item.trait_definition?.trait?.trait_name === trait,
+                );
 
-            {activeView === 'text' ? (
-              <View style={styles.grade}>
-                <View style={styles.classAverage}>
-                  <Text>CLASS AVERAGE</Text>
-                  <Text style={styles.score}>
-                    {childResult?.term_result?.result?.average_score}
+                return (
+                  <TouchableOpacity activeOpacity={0.8} key={ind}>
+                    <Text h2>{trait}</Text>
+                    {filteredData.map((commonTrait, index) => (
+                      <SkillCard
+                        key={index}
+                        name={commonTrait.trait_definition?.definition}
+                        grade={commonTrait.trait_rating_definition?.rating}
+                      />
+                    ))}
+                  </TouchableOpacity>
+                );
+              })}
+              <View style={styles.note}>
+                <Text h2>Comments</Text>
+              </View>
+              <View style={styles.comments}>
+                <View style={styles.commentsContainer}>
+                  <Text style={{ color: '#8C8C8C' }} h3>
+                    Class Teacher comments
+                  </Text>
+                  <View
+                    style={{
+                      width: '100%',
+                      height: 1,
+                      backgroundColor: lightTheme.colors.PrimaryBorderColor,
+                      marginVertical: 20,
+                    }}
+                  />
+                  <Text style={{ textAlign: 'justify' }}>
+                    {classTeacherComment.length ? classTeacherComment[0].comments : ''}
                   </Text>
                 </View>
-                <View style={styles.highestAverage}>
-                  <Text>HIGHEST AVERAGE</Text>
-                  <Text style={styles.score}>
-                    {childResult?.term_result?.result?.highest_score}
+                <View style={styles.commentsContainer}>
+                  <Text style={{ color: '#8C8C8C' }} h3>
+                    Head Teacher comments
+                  </Text>
+                  <View
+                    style={{
+                      width: '100%',
+                      height: 1,
+                      backgroundColor: lightTheme.colors.PrimaryBorderColor,
+                      marginVertical: 20,
+                    }}
+                  />
+                  <Text style={{ textAlign: 'justify' }}>
+                    {principalComment.length ? principalComment[0].comments : ''}
                   </Text>
                 </View>
-                <View style={styles.lowestAverage}>
-                  <Text>LOWEST AVERAGE</Text>
-                  <Text style={styles.score}>{childResult?.term_result?.result?.lowest_score}</Text>
-                </View>
               </View>
-            ) : (
-              <View style={{ padding: 20 }}>
-                <Item
-                  color={colors.PrimaryYellow}
-                  title={'LOWEST AVERAGE'}
-                  score={childResult?.term_result?.result?.lowest_score}
-                />
-                <Item
-                  color={colors.PrimaryGreen}
-                  title={'Highest AVERAGE'}
-                  score={childResult?.term_result?.result?.highest_score}
-                />
-                <Item
-                  color={'#BE7EFC'}
-                  title={'CLASS AVERAGE'}
-                  score={childResult?.term_result?.result?.average_score}
-                />
-                <Item
-                  color={colors.SafsimsBlue}
-                  title={'Final AVERAGE'}
-                  score={childResult?.term_result?.result?.final_average}
-                />
-              </View>
-            )}
-
-            <View style={styles.grade}>
-              <View style={styles.finalAverage}>
-                <Text>FINAL AVERAGE</Text>
-                <Text style={styles.score}>{childResult?.term_result?.result?.final_average}</Text>
-              </View>
-            </View>
-          </>
-
-          <View style={styles.note}>
-            <Text>Subject Assessment</Text>
-          </View>
-          {childResult?.term_result?.subject_results?.map((subject) => (
-            <SubjectAccordion key={subject.subject_id} subject={subject} activeView={activeView} />
-          ))}
-
-          {skills?.assessments?.map((item, index) => {
-            const selectedSkills = item.skill_assessments?.map(
-              (elem) => elem.skill_rating_definition,
-            );
-            return (
-              <React.Fragment key={index}>
-                {selectedSkills?.some((item) => item === null) ? null : (
+            </ScrollView>
+          ) : (
+            <>
+              {childResult?.term_result && childResult?.term_result?.result_approved ? (
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  refreshControl={
+                    <RefreshControl
+                      refreshing={loading || loadingComments || loadingSkills}
+                      onRefresh={() => {
+                        handleStudenAssessment(termId);
+                      }}
+                    />
+                  }
+                  style={styles.details}
+                >
                   <>
-                    <View style={styles.note}>
-                      <Text>{item?.skill_group?.name}/traits</Text>
+                    <View style={styles.grade}>
+                      <View style={styles.final}>
+                        <Text>FINAL GRADE</Text>
+                        <Text h3>{childResult?.term_result?.result?.grade}</Text>
+                      </View>
+
+                      <View style={styles.class}>
+                        <Text>NO IN CLASS</Text>
+                        <Text style={styles.score}>{childResult?.term_result?.result?.out_of}</Text>
+                      </View>
                     </View>
-                    <View style={styles.skillContainer}>
-                      {item.skill_assessments?.map((elem, i) => (
-                        <SkillCard
-                          key={i}
-                          name={elem.skill?.name}
-                          grade={elem?.skill_rating_definition?.rating}
+
+                    {activeView === 'text' ? (
+                      <View style={styles.grade}>
+                        <View style={styles.classAverage}>
+                          <Text>CLASS AVERAGE</Text>
+                          <Text style={styles.score}>
+                            {childResult?.term_result?.result?.average_score}
+                          </Text>
+                        </View>
+                        <View style={styles.highestAverage}>
+                          <Text>HIGHEST AVERAGE</Text>
+                          <Text style={styles.score}>
+                            {childResult?.term_result?.result?.highest_score}
+                          </Text>
+                        </View>
+                        <View style={styles.lowestAverage}>
+                          <Text>LOWEST AVERAGE</Text>
+                          <Text style={styles.score}>
+                            {childResult?.term_result?.result?.lowest_score}
+                          </Text>
+                        </View>
+                      </View>
+                    ) : (
+                      <View style={{ padding: 20 }}>
+                        <Item
+                          color={colors.PrimaryYellow}
+                          title={'LOWEST AVERAGE'}
+                          score={childResult?.term_result?.result?.lowest_score}
                         />
-                      ))}
+                        <Item
+                          color={colors.PrimaryGreen}
+                          title={'Highest AVERAGE'}
+                          score={childResult?.term_result?.result?.highest_score}
+                        />
+                        <Item
+                          color={'#BE7EFC'}
+                          title={'CLASS AVERAGE'}
+                          score={childResult?.term_result?.result?.average_score}
+                        />
+                        <Item
+                          color={colors.SafsimsBlue}
+                          title={'Final AVERAGE'}
+                          score={childResult?.term_result?.result?.final_average}
+                        />
+                      </View>
+                    )}
+
+                    <View style={styles.grade}>
+                      <View style={styles.finalAverage}>
+                        <Text>FINAL AVERAGE</Text>
+                        <Text style={styles.score}>
+                          {childResult?.term_result?.result?.final_average}
+                        </Text>
+                      </View>
                     </View>
                   </>
-                )}
-              </React.Fragment>
-            );
-          })}
 
-          <View style={styles.note}>
-            <Text>Comments</Text>
-          </View>
-          <View style={styles.comments}>
-            <View style={styles.commentHeader}>
-              <Text style={{ marginRight: 10, marginBottom: 10 }} h3>
-                Class Teacher
-              </Text>
-              <Icon name="message-2" size={20} color={lightTheme.colors.PrimaryFontColor} />
-            </View>
-            <Text>{classTeacherComment.length ? classTeacherComment[0].comments : ''}</Text>
-            <View style={styles.commentHeader}>
-              <Text style={{ marginRight: 10, marginBottom: 10 }} h3>
-                Head Teacher
-              </Text>
-              <Icon name="message-2" size={20} color={lightTheme.colors.PrimaryFontColor} />
-            </View>
-            <Text>{principalComment.length ? principalComment[0].comments : ''}</Text>
-          </View>
-          <View style={styles.share_button}>
-            <Button
-              onPress={() => setModalVisible(true)}
-              style={{
-                width: '45%',
-              }}
-              label="Share result"
-            />
-            <Button
-              disabled={filterdConfig ? (reportTemplate.length > 0 ? false : true) : true}
-              onPress={() => {
-                if (!filterdConfig || reportTemplate.length == 0) {
-                  return;
-                }
-                Linking.openURL(
-                  `${schoolConfig?.school_url}/student-report?studentId=${studentId}&termId=${termId}&configId=${filterdConfig?.id}&reportId=${reportTemplate[0].id}&fromParent=true`,
-                );
-              }}
-              fontStyle={{
-                color: '#000',
-              }}
-              style={{
-                width: '45%',
-                backgroundColor: '#fff',
-                borderWidth: 1,
-                borderColor: lightTheme.colors.PrimaryBorderColor,
-                opacity: filterdConfig ? (reportTemplate.length > 0 ? 1 : 0.3) : 0.3,
-              }}
-              label="Download and print"
-            />
-          </View>
-        </ScrollView>
-      ) : (
-        <EmptyState
-          section
-          Image={<Student />}
-          title="No Report Available"
-          info="This child has no report available for this term"
-          Action={
-            (termValue?.extra || 0) > 1 ? (
-              <View style={{ paddingHorizontal: 20 }}>
-                <Button
-                  isLoading={loading || loadingComments || loadingSkills}
-                  onPress={handlePreviousResult}
-                  label="View Previous Term's Result"
+                  <View style={styles.note}>
+                    <Text h2>Subject Assessment</Text>
+                    <Text>Score/performance breakdown of subjects</Text>
+                  </View>
+                  {childResult?.term_result?.subject_results?.map((subject) => (
+                    <SubjectAccordion
+                      key={subject.subject_id}
+                      subject={subject}
+                      activeView={activeView}
+                    />
+                  ))}
+                  <View style={styles.note}>
+                    <Text h2>Affective Domain</Text>
+                    <Text>Physical and mannerisms assessment</Text>
+                  </View>
+                  {skills?.assessments?.map((item, index) => {
+                    const selectedSkills = item.skill_assessments?.map(
+                      (elem) => elem.skill_rating_definition,
+                    );
+                    return (
+                      <React.Fragment key={index}>
+                        {selectedSkills?.some((item) => item === null) ? null : (
+                          <>
+                            <View style={styles.note}>
+                              <Text>{item?.skill_group?.name}/traits</Text>
+                            </View>
+                            <View style={styles.skillContainer}>
+                              {item.skill_assessments?.map((elem, i) => (
+                                <SkillCard
+                                  key={i}
+                                  name={elem.skill?.name}
+                                  grade={elem?.skill_rating_definition?.rating}
+                                />
+                              ))}
+                            </View>
+                          </>
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
+
+                  <View style={styles.note}>
+                    <Text h2>Comments</Text>
+                  </View>
+                  <View style={styles.comments}>
+                    <View style={styles.commentsContainer}>
+                      <Text style={{ color: '#8C8C8C' }} h3>
+                        Class Teacher comments
+                      </Text>
+                      <View
+                        style={{
+                          width: '100%',
+                          height: 1,
+                          backgroundColor: lightTheme.colors.PrimaryBorderColor,
+                          marginVertical: 20,
+                        }}
+                      />
+                      <Text style={{ textAlign: 'justify' }}>
+                        {classTeacherComment.length ? classTeacherComment[0].comments : ''}
+                      </Text>
+                    </View>
+                    <View style={styles.commentsContainer}>
+                      <Text style={{ color: '#8C8C8C' }} h3>
+                        Head Teacher comments
+                      </Text>
+                      <View
+                        style={{
+                          width: '100%',
+                          height: 1,
+                          backgroundColor: lightTheme.colors.PrimaryBorderColor,
+                          marginVertical: 20,
+                        }}
+                      />
+                      <Text style={{ textAlign: 'justify' }}>
+                        {principalComment.length ? principalComment[0].comments : ''}
+                      </Text>
+                    </View>
+                  </View>
+                </ScrollView>
+              ) : (
+                <EmptyState
+                  section
+                  Image={<Student />}
+                  title="No Report Available"
+                  info="This child has no report available for this term"
+                  Action={
+                    (termValue?.extra || 0) > 1 ? (
+                      <View style={{ paddingHorizontal: 20 }}>
+                        <Button
+                          isLoading={loading || loadingComments || loadingSkills}
+                          onPress={handlePreviousResult}
+                          label="View Previous Term's Result"
+                        />
+                      </View>
+                    ) : (
+                      <></>
+                    )
+                  }
                 />
-              </View>
-            ) : (
-              <></>
-            )
-          }
-        />
+              )}
+            </>
+          )}
+        </>
       )}
+
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.overlay}>
           <ScrollView style={styles.content}>
@@ -532,6 +624,132 @@ export default function ResulDetailsScreen({ navigation, route }) {
         </View>
       </Modal>
       <SafeAreaComponent style={{ backgroundColor: colors.PrimaryWhite }} />
+      <Modal statusBarTranslucent transparent animationType={'slide'} visible={modalOpen}>
+        <View style={styles.modal}>
+          <TouchableOpacity onPress={() => setModalOpen(false)} style={styles.close}>
+            <Text>X</Text>
+          </TouchableOpacity>
+          <View style={styles.mainItem}>
+            <Text style={{ fontWeight: 'bold', marginLeft: 20, marginTop: 20 }}>Swap Child</Text>
+            <Text style={{ marginLeft: 20, marginRight: 20 }}>
+              This enables you switch between your children's profile
+            </Text>
+
+            <ScrollView
+              style={styles.modalContent}
+              contentContainerStyle={{ paddingHorizontal: 20 }}
+            >
+              {children.map((individualChild, ind) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    setStudent(individualChild.student);
+                    setModalOpen(false);
+                  }}
+                  key={ind}
+                  style={styles.childList}
+                >
+                  <Image
+                    style={styles.childListImage}
+                    source={{ uri: individualChild.student?.profile_pic }}
+                  />
+                  <View>
+                    <Text>
+                      {individualChild.student?.first_name} {individualChild.student?.other_names}
+                    </Text>
+                    <Text>
+                      {individualChild.student?.class_level_name}{' '}
+                      {individualChild.student?.arm_name}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal statusBarTranslucent transparent animationType={'slide'} visible={extraOpen}>
+        <View style={styles.modal}>
+          <TouchableOpacity onPress={() => setExtraOpen(false)} style={styles.close}>
+            <Text>X</Text>
+          </TouchableOpacity>
+          <View style={styles.mainItem}>
+            <Text style={{ fontWeight: 'bold', marginLeft: 20, marginTop: 20 }}>Extras</Text>
+
+            <ScrollView
+              style={styles.modalContent}
+              contentContainerStyle={{ paddingHorizontal: 20 }}
+            >
+              {activeView == 'text' ? (
+                <TouchableOpacity onPress={handleActiveView} style={styles.childList}>
+                  <Icon name="chart-3" size={25} color="#000" />
+                  <Text style={{ marginLeft: 10 }}>Switch to chart view</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity onPress={handleActiveView} style={styles.childList}>
+                  <Icon name="text-block" size={25} color="#000" />
+                  <Text style={{ marginLeft: 10 }}>Switch to text view</Text>
+                </TouchableOpacity>
+              )}
+
+              {filterdConfig && reportTemplate.length > 0 && (
+                <>
+                  <TouchableOpacity
+                    onPress={() => {
+                      setExtraOpen(false);
+                      setModalVisible(true);
+                    }}
+                    style={styles.childList}
+                  >
+                    <Icon name="share" size={25} color="#000" />
+                    <Text style={{ marginLeft: 10 }}>Share result</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (isAspose && pdfURL) {
+                        check(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE)
+                          .then(async (result) => {
+                            switch (result) {
+                              case RESULTS.UNAVAILABLE:
+                                return;
+
+                              case RESULTS.DENIED:
+                                const permited = await request(
+                                  PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+                                );
+                                if (permited == 'granted') {
+                                  downloadResult();
+                                }
+                                break;
+
+                              case RESULTS.GRANTED:
+                                downloadResult();
+                                break;
+                              case RESULTS.BLOCKED:
+                                return;
+                            }
+                          })
+                          .catch((error) => {
+                            // …
+                          });
+                        return;
+                      }
+                      Linking.openURL(
+                        `${schoolConfig?.school_url}/student-report?studentId=${student.id}&termId=${termId}&configId=${filterdConfig?.id}&reportId=${reportTemplate[0].id}&fromParent=true`,
+                      );
+                      setExtraOpen(false);
+                    }}
+                    style={styles.childList}
+                  >
+                    <Icon name="document-download" size={25} color="#000" />
+                    <Text style={{ marginLeft: 10 }}>Download And Print Result</Text>
+                  </TouchableOpacity>
+                </>
+              )}
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -616,8 +834,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   note: {
-    height: 50,
-    backgroundColor: lightTheme.colors.PrimaryBackground,
+    height: 80,
+    backgroundColor: lightTheme.colors.PrimaryFade,
     width: '100%',
     justifyContent: 'center',
     paddingHorizontal: 20,
@@ -630,6 +848,14 @@ const styles = StyleSheet.create({
     backgroundColor: lightTheme.colors.PrimaryWhite,
     width: '100%',
     padding: 20,
+  },
+  commentsContainer: {
+    height: 'auto',
+    padding: 20,
+    borderRadius: 10,
+    borderColor: lightTheme.colors.PrimaryBorderColor,
+    borderWidth: 1,
+    marginTop: 10,
   },
   commentHeader: {
     flexDirection: 'row',
@@ -670,5 +896,66 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  configContainer: {
+    flexDirection: 'row',
+    padding: 10,
+    marginVertical: 10,
+  },
+  config: {
+    padding: 10,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: lightTheme.colors.PrimaryColor,
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modal: {
+    width: '100%',
+    height: Dimensions.get('window').height + 60,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+
+    paddingBottom: 0,
+  },
+  close: {
+    height: 34,
+    width: 34,
+    backgroundColor: '#fff',
+    borderRadius: 34,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 'auto',
+    marginTop: 'auto',
+    marginRight: 20,
+  },
+  mainItem: {
+    height: 300,
+    width: '100%',
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    marginTop: 40,
+  },
+  modalContent: {
+    flex: 1,
+    borderTopColor: lightTheme.colors.PrimaryBorderColor,
+    borderTopWidth: 1,
+    marginVertical: 20,
+  },
+  childList: {
+    width: '100%',
+    height: 70,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: lightTheme.colors.PrimaryBorderColor,
+  },
+  childListImage: {
+    height: 40,
+    width: 40,
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: lightTheme.colors.PrimaryBorderColor,
+    marginRight: 20,
   },
 });

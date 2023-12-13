@@ -8,7 +8,7 @@ interface SkillCardProps {
 export default function SkillCard({ name = '', grade = '' }: SkillCardProps) {
   return (
     <View style={styles.cardContainer}>
-      <Text>{name}</Text>
+      <Text style={{ width: '70%' }}>{name}</Text>
       <View style={styles.grade}>
         <Text style={{ color: lightTheme.colors.PrimaryWhite, textTransform: 'uppercase' }} h1>
           {grade}

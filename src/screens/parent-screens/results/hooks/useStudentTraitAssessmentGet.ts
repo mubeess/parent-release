@@ -16,15 +16,18 @@ const useStudentTraitAssessmentGet = () => {
   const { loading, startLoading, stopLoading } = useLoading();
   const [traitAssessments, setTraitAssessments] = useState<StudentTraitAssessmentDto[]>([]);
 
-  const getTraitAssessment = async ({ termId, studentId }) => {
+  const getTraitAssessment = async ({ termId, studentId, traitGroupId = '' }) => {
     startLoading();
     try {
       const data = await apiWrapper(() =>
         StudentTraitAssessmentRestControllerService.getStudentTraitAssessmentsUsingGet({
           studentId,
           termId,
+          includeUnapproved: false,
+          traitGroupId,
         }),
       );
+      console.log(data, 'loio');
       setTraitAssessments(data);
       stopLoading();
     } catch (error) {

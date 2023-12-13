@@ -92,6 +92,7 @@ export default function ResultAccordion({
 const styles = StyleSheet.create({
   accordionContainer: {
     minHeight: 100,
+    marginTop: 50,
   },
   accordionHeader: {
     backgroundColor: lightTheme.colors.PrimaryFade,

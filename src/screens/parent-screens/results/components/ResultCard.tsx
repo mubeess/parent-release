@@ -1,8 +1,8 @@
 import Avatar from '@safsims/components/Avatar/Avatar';
+import { LinkIcon } from '@safsims/components/Images';
 import { StudentDto } from '@safsims/generated';
 import { lightTheme } from '@safsims/utils/Theme';
 import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
-import Icon from '../../../../components/Icon/Icon';
 import Text from '../../../../components/Text/Text';
 
 interface ResultCardProps {
@@ -23,12 +23,12 @@ export default function ResultCard({ onPress, style, student }: ResultCardProps)
       <View style={styles.userDetail}>
         <View style={styles.nameContainer}>
           <Avatar image={avatar} size={34} style={{ marginRight: 10 }} />
-          <View>
+          <View style={{ marginLeft: 10 }}>
             <Text h3>{name}</Text>
             <Text>{student?.student_id}</Text>
           </View>
         </View>
-        <Icon size={30} name="arrow-right" color={lightTheme.colors.PrimaryGrey} />
+        <LinkIcon />
       </View>
 
       <View style={styles.grades}>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     height: 144,
     width: '100%',
     backgroundColor: '#fff',
-    borderRadius: 3,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: lightTheme.colors.PrimaryBorderColor,
     marginBottom: 20,
@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   grades: {
     flex: 1,
@@ -74,6 +76,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: lightTheme.colors.PrimaryBorderColor,
     flexDirection: 'row',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   avatar: {
     height: 34,
@@ -102,6 +106,8 @@ const styles = StyleSheet.create({
     backgroundColor: lightTheme.colors.PrimaryBackground,
     height: '100%',
     padding: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   label: {
     textTransform: 'uppercase',

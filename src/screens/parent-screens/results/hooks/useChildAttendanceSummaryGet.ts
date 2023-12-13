@@ -25,6 +25,7 @@ const useChildAttendanceSummaryGet = () => {
         AttendanceRestControllerService.getStudentAttendanceSummaryUsingGet({
           studentId,
           termId,
+          
         }),
       );
       setAttendanceSummary(data);
